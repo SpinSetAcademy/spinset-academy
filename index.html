@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SpinSet Academy</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f7f1;
+    color:#111;
+    line-height:1.6;
+}
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    background:#173b1c;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+.logo{
+    color:white;
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:24px;
+    font-weight:bold;
+}
+
+.hero{
+    height:100vh;
+    background:linear-gradient(to bottom right,#cde86a,#7da33d);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    padding:40px;
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.hero h1{
+    font-size:84px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:24px;
+}
+
+.button{
+    display:inline-block;
+    margin-top:30px;
+    padding:14px 28px;
+    background:white;
+    color:#173b1c;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+section{
+    padding:100px 10%;
+}
+
+.section-title{
+    font-size:42px;
+    margin-bottom:30px;
+    color:#173b1c;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.price{
+    font-size:36px;
+    color:#173b1c;
+    font-weight:bold;
+    margin-top:10px;
+}
+
+.contact-box{
+    background:#173b1c;
+    color:white;
+    padding:40px;
+    border-radius:20px;
+}
+
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:30px;
+}
+
+@media(max-width:700px){
+    .hero h1{
+        font-size:54px;
+    }
+
+    nav{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    nav a{
+        margin:0 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <div class="logo">SpinSet Academy</div>
+
+    <div>
+        <a href="#about">About</a>
+        <a href="#classes">Classes</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>SpinSet Academy</h1>
+        <p>Round Rock Youth Tennis Training</p>
+
+        <a class="button" href="#classes">View Classes</a>
+    </div>
+</section>
+
+<section id="about">
+    <h2 class="section-title">About</h2>
+
+    <div class="card">
+        <p>
+        Coach Sanav has been playing tennis since age 4 and created SpinSet Academy
+        to help young players learn proper fundamentals in a focused and welcoming environment.
+        </p>
+
+        <br>
+
+        <p>
+        SpinSet focuses on confidence, movement, consistency, and helping beginners enjoy the game.
+        </p>
+    </div>
+</section>
+
+<section id="classes">
+    <h2 class="section-title">Classes</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Beginner Group Lessons</h3>
+
+            <p>
+            Small group training for young players learning tennis fundamentals.
+            </p>
+
+            <br>
+
+            <p><strong>Saturday • 10:00 AM</strong></p>
+
+            <p>Old Settlers Park Tennis Courts</p>
+        </div>
+
+        <div class="card">
+            <h3>Private Lessons</h3>
+
+            <p>
+            One-on-one coaching focused on technique and improvement.
+            </p>
+
+            <br>
+
+            <p><strong>Flexible Scheduling</strong></p>
+        </div>
+
+    </div>
+</section>
+
+<section id="pricing">
+    <h2 class="section-title">Pricing</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Group Lessons</h3>
+            <div class="price">$12/hr</div>
+            <p>Beginner-friendly training in small groups.</p>
+        </div>
+
+        <div class="card">
+            <h3>Private Lessons</h3>
+            <div class="price">$25/hr</div>
+            <p>Focused one-on-one coaching sessions.</p>
+        </div>
+
+    </div>
+
+    <br><br>
+
+    <div class="card">
+        <strong>First class free for all new students.</strong>
+    </div>
+</section>
+
+<section id="contact">
+    <h2 class="section-title">Contact</h2>
+
+    <div class="contact-box">
+        <h3>SpinSet Academy</h3>
+
+        <br>
+
+        <p>Old Settlers Park Tennis Courts</p>
+        <p>Round Rock, Texas</p>
+
+        <br>
+
+        <p>Email: yourparentemail@example.com</p>
+
+        <br>
+
+        <p>Request a spot to join beginner tennis lessons.</p>
+    </div>
+</section>
+
+<footer>
+    SpinSet Academy • Round Rock, Texas
+</footer>
+
+</body>
+</html>
