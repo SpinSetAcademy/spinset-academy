@@ -1,302 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SpinSet Academy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    body {
+      font-family: Inter, sans-serif;
+      background: #0b0f14;
+      color: #fff;
+    }
 
-<title>SpinSet Academy</title>
+    header {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.4);
+      backdrop-filter: blur(10px);
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    .logo {
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    nav a {
+      margin-left: 25px;
+      text-decoration: none;
+      color: #ddd;
+      font-size: 14px;
+    }
 
-<style>
+    nav a:hover {
+      color: #fff;
+    }
 
-/* RESET */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0 60px;
+      background: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d') center/cover no-repeat;
+      position: relative;
+    }
 
-html, body{
-    overflow-x:hidden;
-    font-family:'Outfit', sans-serif;
-    background:#f4f7f3;
-}
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
+    }
 
-/* CURSOR */
-.cursor{
-    position:fixed;
-    width:18px;
-    height:18px;
-    background:#d4ff3a;
-    border-radius:50%;
-    pointer-events:none;
-    z-index:9999;
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 20px rgba(212,255,58,0.8);
-}
+    .hero-content {
+      position: relative;
+      max-width: 700px;
+    }
 
-/* NAV */
-nav{
-    position:fixed;
-    top:0;
-    width:100%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:18px 8%;
-    background:rgba(10,30,15,0.85);
-    backdrop-filter:blur(10px);
-    z-index:1000;
-}
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: 64px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
 
-.logo{
-    font-family:'Bebas Neue', sans-serif;
-    font-size:30px;
-    color:white;
-    letter-spacing:2px;
-}
+    .hero p {
+      color: #ccc;
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:20px;
-    font-weight:600;
-}
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border: 1px solid #fff;
+      margin-right: 10px;
+      text-decoration: none;
+      color: #fff;
+      transition: 0.3s;
+    }
 
-/* HERO */
-.hero{
-    height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
+    .btn:hover {
+      background: #fff;
+      color: #000;
+    }
 
-    background:
-    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.4)),
-    url("logo.png");
+    section {
+      padding: 80px 60px;
+    }
 
-    background-size:cover;
-    background-position:center;
-}
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-family: "Playfair Display", serif;
+    }
 
-.hero-content{
-    max-width:900px;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
 
-.hero p{
-    font-size:28px;
-    color:white;
-    margin-top:10px;
-    font-weight:600;
-}
+    .card {
+      background: #121824;
+      padding: 20px;
+      border-radius: 10px;
+    }
 
-.hero a{
-    display:inline-block;
-    margin-top:25px;
-    padding:14px 30px;
-    background:white;
-    color:#173b1c;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:700;
-    transition:0.3s;
-}
-
-.hero a:hover{
-    transform:scale(1.05);
-}
-
-/* SECTIONS */
-section{
-    padding:100px 10%;
-}
-
-.title{
-    text-align:center;
-    font-size:44px;
-    margin-bottom:40px;
-    font-family:'Bebas Neue', sans-serif;
-    color:#173b1c;
-}
-
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-}
-
-/* CARD */
-.card{
-    background:white;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-/* FAQ */
-.faq{
-    background:white;
-    padding:25px;
-    border-radius:16px;
-    margin-bottom:15px;
-}
-
-/* CONTACT */
-.contact{
-    background:#173b1c;
-    color:white;
-    padding:40px;
-    border-radius:18px;
-}
-
-/* FOOTER */
-footer{
-    background:#111;
-    color:white;
-    text-align:center;
-    padding:25px;
-}
-
-</style>
-
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #777;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="cursor"></div>
+<header>
+  <div class="logo">SPINSET ACADEMY</div>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#programs">Programs</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-<nav>
-<div class="logo">SpinSet Academy</div>
-
-<div>
-<a href="#about">About</a>
-<a href="#classes">Classes</a>
-<a href="#pricing">Pricing</a>
-<a href="#faq">FAQ</a>
-<a href="#contact">Contact</a>
-</div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-
-<div class="hero-content">
-
-<p>Elite Youth Tennis Training in Round Rock</p>
-
-<a href="#classes">View Classes</a>
-
+<div class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Elite Tennis Training<br>Built For Champions</h1>
+    <p>High-performance youth development, technique mastery, and competitive mindset coaching in a modern academy environment.</p>
+    <a href="#programs" class="btn">View Programs</a>
+    <a href="#contact" class="btn">Join Now</a>
+  </div>
 </div>
 
+<section id="programs">
+  <h2 class="section-title">Programs</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Junior Development</h3>
+      <p>Foundational technique, footwork, and match basics for young athletes.</p>
+    </div>
+    <div class="card">
+      <h3>Elite Training</h3>
+      <p>High-intensity training for competitive tournament players.</p>
+    </div>
+    <div class="card">
+      <h3>Private Coaching</h3>
+      <p>1-on-1 sessions tailored to individual performance goals.</p>
+    </div>
+  </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-
-<h2 class="title">About</h2>
-
-<div class="card">
-We train young athletes to build confidence, discipline, and strong tennis fundamentals in a positive and competitive environment.
-</div>
-
+  <h2 class="section-title">About SpinSet</h2>
+  <p>
+    SpinSet Academy is dedicated to developing disciplined, confident, and technically advanced tennis players.
+    Our coaching system blends modern athletic training with elite competitive strategy.
+  </p>
 </section>
 
-<!-- CLASSES -->
-<section id="classes">
-
-<h2 class="title">Classes</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Group Lessons</h3>
-<p>Beginner-friendly sessions focused on fundamentals and consistency.</p>
-</div>
-
-<div class="card">
-<h3>Private Lessons</h3>
-<p>1-on-1 coaching designed for focused improvement and development.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-
-<h2 class="title">Pricing</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Group Lessons</h3>
-<p>$12/hr</p>
-</div>
-
-<div class="card">
-<h3>Private Lessons</h3>
-<p>$25/hr</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-
-<h2 class="title">FAQ</h2>
-
-<div class="faq">
-<b>Do I need experience?</b>
-<p>No, beginners are welcome.</p>
-</div>
-
-<div class="faq">
-<b>What should I bring?</b>
-<p>Please bring a racket, water bottle, and athletic shoes.</p>
-</div>
-
-<div class="faq">
-<b>Where are lessons held?</b>
-<p>Old Settlers Park Tennis Courts in Round Rock.</p>
-</div>
-
-</section>
-
-<!-- CONTACT -->
 <section id="contact">
-
-<h2 class="title">Contact</h2>
-
-<div class="contact">
-Email: spinsetacademy@gmail.com<br>
-Phone: 512-839-7026
-</div>
-
+  <h2 class="section-title">Contact</h2>
+  <p>Email:spinsetacademy@gmail.com</p>
+    <p>Phone:512-839-7026</p>
 </section>
 
 <footer>
-SpinSet Academy • Round Rock, Texas
+  © 2026 SpinSet Academy. All rights reserved.
 </footer>
-
-<script>
-
-const cursor = document.querySelector(".cursor");
-
-document.addEventListener("mousemove", (e) => {
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
-});
-
-</script>
 
 </body>
 </html>
