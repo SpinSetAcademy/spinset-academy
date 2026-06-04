@@ -22,11 +22,11 @@ body {
   cursor: none;
 }
 
-/* 🎾 SPINNING CURSOR */
+/* 🎾 SIMPLE TENNIS BALL CURSOR */
 .cursor {
   position: fixed;
-  width: 38px;
-  height: 38px;
+  width: 26px;
+  height: 26px;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
@@ -35,12 +35,6 @@ body {
 .cursor img {
   width: 100%;
   height: 100%;
-  animation: spin 0.8s linear infinite;
-}
-
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
 
 /* HEADER */
@@ -73,20 +67,28 @@ nav a:hover {
   color: #fff;
 }
 
-/* HERO */
+/* 🎬 CINEMATIC HERO */
 .hero {
   height: 100vh;
-  background: url('https://images.unsplash.com/photo-1595435934249-5e5e6d1a1c0a') center/cover no-repeat;
+  position: relative;
   display: flex;
   align-items: center;
   padding: 0 60px;
-  position: relative;
+
+  background:
+    url('https://images.unsplash.com/photo-1595435934249-5e5e6d1a1c0a') center/cover no-repeat;
 }
 
-.overlay {
+.hero::before {
+  content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.88), rgba(0,0,0,0.35));
+  background: linear-gradient(
+    120deg,
+    rgba(0,0,0,0.92),
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.85)
+  );
 }
 
 .hero-content {
@@ -145,18 +147,18 @@ section {
   border-radius: 12px;
 }
 
-/* PRICING */
-.price {
-  font-size: 26px;
-  color: #ffd27d;
-  margin-top: 10px;
-}
-
 /* ABOUT */
 .highlight {
   background: #121824;
   padding: 25px;
   border-radius: 12px;
+}
+
+/* PRICING */
+.price {
+  font-size: 26px;
+  color: #ffd27d;
+  margin-top: 10px;
 }
 
 /* FAQ */
@@ -198,10 +200,11 @@ footer {
 
 <!-- HERO -->
 <div class="hero">
-  <div class="overlay"></div>
   <div class="hero-content">
     <h1>Elite Tennis Training<br>Built For Champions</h1>
-    <p>High-level coaching designed to build discipline, skill, and confidence on the court.</p>
+    <p>
+      High-level coaching focused on discipline, skill development, and competitive growth.
+    </p>
     <a href="#pricing" class="btn">View Pricing</a>
     <a href="#contact" class="btn">Join Now</a>
   </div>
@@ -210,33 +213,38 @@ footer {
 <!-- PROGRAMS -->
 <section id="programs">
   <h2 class="section-title">Programs</h2>
+
   <div class="grid">
     <div class="card">
       <h3>Junior Development</h3>
       <p>Fundamentals, movement, and consistency for young players.</p>
     </div>
+
     <div class="card">
       <h3>Competitive Training</h3>
-      <p>Advanced drills, match play, and tournament readiness.</p>
+      <p>Match strategy, advanced drills, and tournament readiness.</p>
     </div>
+
     <div class="card">
       <h3>Private Coaching</h3>
-      <p>1-on-1 elite training for rapid improvement.</p>
+      <p>1-on-1 personalized elite training.</p>
     </div>
   </div>
 </section>
 
-<!-- ABOUT YOU -->
+<!-- ABOUT -->
 <section id="about">
   <h2 class="section-title">Why SpinSet Academy Exists</h2>
+
   <div class="highlight">
     <p>
       My name is <b>Sanav</b>, and I have been playing tennis since I was 4 years old.
-      Tennis has shaped my discipline, mindset, and love for competition.
-      I started SpinSet Academy to share that same passion and help players improve faster
-      through structured, high-quality coaching.
+      Tennis has shaped my discipline, mindset, and competitive drive.
+      I created SpinSet Academy to bring structured, high-quality coaching to players
+      who want to improve seriously and reach their full potential.
       <br><br>
-      This is not just training — it’s building athletes who think, move, and compete like champions.
+      This academy is built on real passion for the game and the belief that great players
+      are developed, not born.
     </p>
   </div>
 </section>
@@ -254,7 +262,7 @@ footer {
 
     <div class="card">
       <h3>1-on-1 Coaching</h3>
-      <p>Private elite training sessions</p>
+      <p>Private training sessions</p>
       <div class="price">$25 / hour</div>
     </div>
   </div>
@@ -265,27 +273,27 @@ footer {
   <h2 class="section-title">FAQ</h2>
 
   <div class="faq">
-    <h4>Do I need experience?</h4>
-    <p>No — beginners through advanced players are welcome.</p>
+    <h4>Do beginners join?</h4>
+    <p>Yes — all levels are welcome.</p>
   </div>
 
   <div class="faq">
-    <h4>What ages do you train?</h4>
-    <p>Primarily youth and teen athletes.</p>
+    <h4>What ages?</h4>
+    <p>Mainly youth and teens.</p>
   </div>
 
   <div class="faq">
-    <h4>Where are sessions held?</h4>
-    <p>Local tennis courts depending on group schedule.</p>
+    <h4>Where are sessions?</h4>
+    <p>Local tennis courts depending on schedule.</p>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
   <h2 class="section-title">Contact</h2>
+
   <p><b>Email:</b> spinsetacademy@gmail.com</p>
   <p><b>Phone:</b> 512-839-7026</p>
-  <p>Reach out to join training sessions or ask questions about programs.</p>
 </section>
 
 <footer>
