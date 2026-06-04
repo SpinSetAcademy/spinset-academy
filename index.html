@@ -88,17 +88,11 @@ nav a{
     max-width:900px;
 }
 
-.hero h1{
-    font-family:'Bebas Neue', sans-serif;
-    font-size:110px;
-    color:white;
-    letter-spacing:4px;
-}
-
 .hero p{
-    font-size:22px;
+    font-size:28px;
     color:white;
     margin-top:10px;
+    font-weight:600;
 }
 
 .hero a{
@@ -110,6 +104,11 @@ nav a{
     border-radius:12px;
     text-decoration:none;
     font-weight:700;
+    transition:0.3s;
+}
+
+.hero a:hover{
+    transform:scale(1.05);
 }
 
 /* SECTIONS */
@@ -174,6 +173,7 @@ footer{
 
 <nav>
 <div class="logo">SpinSet Academy</div>
+
 <div>
 <a href="#about">About</a>
 <a href="#classes">Classes</a>
@@ -183,38 +183,75 @@ footer{
 </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
+
 <div class="hero-content">
-<h1>SpinSet Academy</h1>
+
 <p>Elite Youth Tennis Training in Round Rock</p>
+
 <a href="#classes">View Classes</a>
+
 </div>
+
 </section>
 
+<!-- ABOUT -->
 <section id="about">
+
 <h2 class="title">About</h2>
+
 <div class="card">
-We train young athletes to build confidence, discipline, and strong tennis fundamentals.
+We train young athletes to build confidence, discipline, and strong tennis fundamentals in a positive and competitive environment.
 </div>
+
 </section>
 
+<!-- CLASSES -->
 <section id="classes">
+
 <h2 class="title">Classes</h2>
+
 <div class="grid">
-<div class="card">Group Lessons</div>
-<div class="card">Private Lessons</div>
+
+<div class="card">
+<h3>Group Lessons</h3>
+<p>Beginner-friendly sessions focused on fundamentals and consistency.</p>
 </div>
+
+<div class="card">
+<h3>Private Lessons</h3>
+<p>1-on-1 coaching designed for focused improvement and development.</p>
+</div>
+
+</div>
+
 </section>
 
+<!-- PRICING -->
 <section id="pricing">
+
 <h2 class="title">Pricing</h2>
+
 <div class="grid">
-<div class="card">$12/hr Group</div>
-<div class="card">$25/hr Private</div>
+
+<div class="card">
+<h3>Group Lessons</h3>
+<p>$12/hr</p>
 </div>
+
+<div class="card">
+<h3>Private Lessons</h3>
+<p>$25/hr</p>
+</div>
+
+</div>
+
 </section>
 
+<!-- FAQ -->
 <section id="faq">
+
 <h2 class="title">FAQ</h2>
 
 <div class="faq">
@@ -224,22 +261,26 @@ We train young athletes to build confidence, discipline, and strong tennis funda
 
 <div class="faq">
 <b>What should I bring?</b>
-<p>Racket, water, and sports shoes.</p>
+<p>Please bring a racket, water bottle, and athletic shoes.</p>
 </div>
 
 <div class="faq">
-<b>Where are lessons?</b>
-<p>Old Settlers Park Tennis Courts.</p>
+<b>Where are lessons held?</b>
+<p>Old Settlers Park Tennis Courts in Round Rock.</p>
 </div>
 
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
+
 <h2 class="title">Contact</h2>
+
 <div class="contact">
 Email: spinsetacademy@gmail.com<br>
 Phone: 512-839-7026
 </div>
+
 </section>
 
 <footer>
@@ -247,12 +288,14 @@ SpinSet Academy • Round Rock, Texas
 </footer>
 
 <script>
+
 const cursor = document.querySelector(".cursor");
 
 document.addEventListener("mousemove", (e) => {
     cursor.style.left = e.clientX + "px";
     cursor.style.top = e.clientY + "px";
 });
+
 </script>
 
 </body>
