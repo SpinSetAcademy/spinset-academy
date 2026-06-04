@@ -27,8 +27,7 @@ html, body{
     background:#f4f7f3;
 }
 
-/* ================= CURSOR ================= */
-
+/* CURSOR */
 .cursor{
     position:fixed;
     width:18px;
@@ -76,9 +75,11 @@ nav a{
     justify-content:center;
     align-items:center;
     text-align:center;
+
     background:
     linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.4)),
     url("logo.png");
+
     background-size:cover;
     background-position:center;
 }
@@ -139,15 +140,6 @@ section{
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* GALLERY FIX (NO ZOOM ISSUES) */
-.gallery img{
-    width:100%;
-    height:260px;
-    object-fit:cover;
-    border-radius:18px;
-    display:block;
-}
-
 /* FAQ */
 .faq{
     background:white;
@@ -172,35 +164,25 @@ footer{
     padding:25px;
 }
 
-/* ANIMATION */
-@keyframes fadeUp{
-    from{opacity:0; transform:translateY(30px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
 </style>
 
 </head>
 
 <body>
 
-<!-- CURSOR -->
 <div class="cursor"></div>
 
-<!-- NAV -->
 <nav>
 <div class="logo">SpinSet Academy</div>
 <div>
 <a href="#about">About</a>
 <a href="#classes">Classes</a>
 <a href="#pricing">Pricing</a>
-<a href="#gallery">Gallery</a>
 <a href="#faq">FAQ</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 <div class="hero-content">
 <h1>SpinSet Academy</h1>
@@ -209,7 +191,6 @@ footer{
 </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
 <h2 class="title">About</h2>
 <div class="card">
@@ -217,7 +198,6 @@ We train young athletes to build confidence, discipline, and strong tennis funda
 </div>
 </section>
 
-<!-- CLASSES -->
 <section id="classes">
 <h2 class="title">Classes</h2>
 <div class="grid">
@@ -226,7 +206,6 @@ We train young athletes to build confidence, discipline, and strong tennis funda
 </div>
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
 <h2 class="title">Pricing</h2>
 <div class="grid">
@@ -235,17 +214,6 @@ We train young athletes to build confidence, discipline, and strong tennis funda
 </div>
 </section>
 
-<!-- GALLERY -->
-<section id="gallery">
-<h2 class="title">Gallery</h2>
-<div class="grid">
-<img src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3">
-<img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8">
-<img src="https://images.unsplash.com/photo-1622279457486-28f1fa9fdb57">
-</div>
-</section>
-
-<!-- FAQ -->
 <section id="faq">
 <h2 class="title">FAQ</h2>
 
@@ -266,7 +234,6 @@ We train young athletes to build confidence, discipline, and strong tennis funda
 
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
 <h2 class="title">Contact</h2>
 <div class="contact">
