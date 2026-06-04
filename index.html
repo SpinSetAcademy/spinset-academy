@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,17 +7,14 @@
 
 <title>SpinSet Academy</title>
 
-<!-- PREMIUM GOOGLE FONTS -->
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
 /* RESET */
-
 *{
     margin:0;
     padding:0;
@@ -31,834 +27,314 @@ html{
 
 body{
     font-family:'Outfit', sans-serif;
-    background:#f4f7f3;
-    color:#111;
+    background:#f5f7f4;
     overflow-x:hidden;
+    cursor:none; /* hides normal cursor */
 }
 
-/* NAVBAR */
+/* ===== CUSTOM TENNIS BALL CURSOR ===== */
+
+.cursor{
+    position:fixed;
+    top:0;
+    left:0;
+    width:18px;
+    height:18px;
+    background:#d4ff3a;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 20px rgba(212,255,58,0.8);
+}
+
+.cursor-trail{
+    position:fixed;
+    width:10px;
+    height:10px;
+    background:rgba(212,255,58,0.4);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9998;
+    transform:translate(-50%,-50%);
+}
+
+/* NAV */
 
 nav{
     position:fixed;
     top:0;
     width:100%;
-    padding:20px 8%;
-
+    padding:18px 8%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-
-    background:rgba(10,24,13,0.72);
-
-    backdrop-filter:blur(14px);
-
+    background:rgba(10,30,15,0.8);
+    backdrop-filter:blur(12px);
     z-index:1000;
-
-    animation:navReveal 1s ease;
 }
 
 .logo{
-    color:white;
-    font-size:34px;
+    font-size:30px;
     font-weight:800;
-    letter-spacing:1px;
+    color:white;
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:2px;
 }
 
-nav ul{
-    display:flex;
-    list-style:none;
-}
-
-nav ul li{
-    margin-left:30px;
-}
-
-nav ul li a{
+nav a{
     color:white;
     text-decoration:none;
+    margin-left:24px;
     font-weight:600;
-    transition:0.25s;
-}
-
-nav ul li a:hover{
-    opacity:0.65;
 }
 
 /* HERO */
 
 .hero{
-    position:relative;
-
     height:100vh;
-
-    overflow:hidden;
-
     display:flex;
     justify-content:center;
     align-items:center;
-
     text-align:center;
 
     background:
-    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.45)),
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)),
     url("logo.png");
 
     background-size:cover;
     background-position:center;
 
-    animation:bgZoom 18s ease-in-out infinite alternate;
+    position:relative;
+    overflow:hidden;
 }
 
-/* TENNIS BALL GLOW */
-
-.hero::after{
+/* moving glow */
+.hero::before{
     content:"";
-
     position:absolute;
-
     width:500px;
     height:500px;
-
-    background:radial-gradient(circle, rgba(180,255,0,0.15), transparent 70%);
-
-    top:-100px;
-    right:-100px;
-
-    animation:orbMove 8s ease-in-out infinite;
+    background:radial-gradient(circle, rgba(200,255,50,0.15), transparent 70%);
+    animation:floatGlow 8s infinite ease-in-out;
 }
 
-/* HERO CONTENT */
+/* CONTENT */
 
 .hero-content{
     position:relative;
     z-index:2;
-
-    max-width:950px;
-
-    padding:20px;
-
-    animation:heroRise 1.5s ease;
-}
-
-/* TENNIS RACKET SWING EFFECT */
-
-.racket-line{
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    border:6px solid rgba(255,255,255,0.08);
-
-    border-radius:50%;
-
-    transform:rotate(-20deg);
-
-    top:50%;
-    left:50%;
-
-    translate:-50% -50%;
-
-    z-index:1;
-
-    animation:racketSpin 8s linear infinite;
 }
 
 .hero h1{
     font-family:'Bebas Neue', sans-serif;
-
-    font-size:130px;
-
-    line-height:0.9;
-
-    letter-spacing:6px;
-
+    font-size:120px;
     color:white;
-
-    margin-bottom:15px;
-
-    text-shadow:0 8px 25px rgba(0,0,0,0.7);
-
-    animation:titleBlast 1.5s ease;
+    letter-spacing:4px;
+    text-shadow:0 10px 30px rgba(0,0,0,0.7);
+    animation:fadeUp 1.5s ease;
 }
 
 .hero p{
-    font-size:26px;
-
     color:white;
-
-    font-weight:500;
-
-    margin-bottom:34px;
-
-    text-shadow:0 4px 14px rgba(0,0,0,0.6);
-
-    animation:subtitleFade 2s ease;
+    font-size:22px;
+    margin-top:10px;
+    animation:fadeUp 1.8s ease;
 }
 
-.hero-btn{
+.hero a{
     display:inline-block;
-
-    padding:18px 40px;
-
-    border-radius:18px;
-
+    margin-top:30px;
+    padding:16px 34px;
     background:white;
-
     color:#173b1c;
-
-    text-decoration:none;
-
+    border-radius:14px;
     font-weight:700;
-
-    font-size:18px;
-
+    text-decoration:none;
     transition:0.3s;
-
-    animation:buttonRise 2.2s ease;
+    animation:fadeUp 2s ease;
 }
 
-.hero-btn:hover{
-    transform:translateY(-6px) scale(1.05);
-
-    box-shadow:
-    0 0 20px rgba(255,255,255,0.4),
-    0 0 40px rgba(255,255,255,0.2);
+.hero a:hover{
+    transform:scale(1.08);
 }
 
-/* GENERAL SECTIONS */
+/* SECTIONS */
 
 section{
-    padding:120px 10%;
+    padding:100px 10%;
 }
 
-.section-title{
+.title{
     text-align:center;
-
-    font-size:54px;
-
+    font-size:44px;
+    margin-bottom:40px;
+    font-family:'Bebas Neue', sans-serif;
     color:#173b1c;
-
-    margin-bottom:50px;
-
-    font-weight:800;
-}
-
-/* ABOUT */
-
-.about-box{
-    background:white;
-
-    padding:55px;
-
-    border-radius:30px;
-
-    box-shadow:0 15px 40px rgba(0,0,0,0.08);
-
-    max-width:1100px;
-
-    margin:auto;
-
-    line-height:1.9;
-
-    font-size:19px;
-
-    transform:translateY(0);
-
-    transition:0.3s;
-}
-
-.about-box:hover{
-    transform:translateY(-8px);
-}
-
-/* GRID */
-
-.grid{
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-
-    gap:34px;
 }
 
 /* CARDS */
 
-.card{
-    background:white;
-
-    padding:42px;
-
-    border-radius:28px;
-
-    box-shadow:0 15px 40px rgba(0,0,0,0.08);
-
-    transition:0.35s;
-
-    position:relative;
-
-    overflow:hidden;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
-.card::before{
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:0;
-
-    width:100%;
-    height:5px;
-
-    background:#173b1c;
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-12px) scale(1.02);
-}
-
-.card h3{
-    font-size:30px;
-
-    color:#173b1c;
-
-    margin-bottom:18px;
-}
-
-.price{
-    font-size:46px;
-
-    font-weight:800;
-
-    color:#173b1c;
-
-    margin:20px 0;
+    transform:translateY(-10px);
 }
 
 /* GALLERY */
 
-.gallery{
-    display:grid;
-
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-
-    gap:24px;
-}
-
 .gallery img{
     width:100%;
-
-    height:280px;
-
+    border-radius:20px;
+    height:250px;
     object-fit:cover;
-
-    border-radius:24px;
-
-    transition:0.35s;
-
-    box-shadow:0 12px 30px rgba(0,0,0,0.12);
+    transition:0.3s;
 }
 
 .gallery img:hover{
-    transform:scale(1.04) rotate(1deg);
-}
-
-/* FAQ */
-
-.faq-box{
-    background:white;
-
-    padding:35px;
-
-    border-radius:24px;
-
-    margin-bottom:22px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
-    transition:0.25s;
-}
-
-.faq-box:hover{
-    transform:translateX(8px);
-}
-
-.faq-box h3{
-    color:#173b1c;
-
-    margin-bottom:12px;
-
-    font-size:24px;
+    transform:scale(1.05);
 }
 
 /* CONTACT */
 
-.contact-box{
+.contact{
     background:#173b1c;
-
     color:white;
-
-    padding:55px;
-
-    border-radius:30px;
-
-    max-width:950px;
-
-    margin:auto;
-
-    box-shadow:0 18px 40px rgba(0,0,0,0.18);
-}
-
-.contact-box h3{
-    font-size:38px;
-
-    margin-bottom:18px;
+    padding:40px;
+    border-radius:20px;
 }
 
 /* FOOTER */
 
 footer{
-    background:#111;
-
-    color:white;
-
     text-align:center;
-
-    padding:36px;
-
-    margin-top:70px;
-
-    font-size:15px;
+    padding:30px;
+    background:#111;
+    color:white;
 }
 
 /* ANIMATIONS */
 
-@keyframes navReveal{
-    from{
-        opacity:0;
-        transform:translateY(-20px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
 }
 
-@keyframes heroRise{
-    from{
-        opacity:0;
-        transform:translateY(80px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes titleBlast{
-    0%{
-        opacity:0;
-        transform:scale(0.8);
-        letter-spacing:20px;
-    }
-
-    100%{
-        opacity:1;
-        transform:scale(1);
-        letter-spacing:6px;
-    }
-}
-
-@keyframes subtitleFade{
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
-}
-
-@keyframes buttonRise{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes bgZoom{
-    0%{
-        background-size:100%;
-    }
-
-    100%{
-        background-size:112%;
-    }
-}
-
-@keyframes orbMove{
-    0%{
-        transform:translate(0,0);
-    }
-
-    50%{
-        transform:translate(-40px,40px);
-    }
-
-    100%{
-        transform:translate(0,0);
-    }
-}
-
-@keyframes racketSpin{
-    from{
-        transform:translate(-50%,-50%) rotate(0deg);
-    }
-
-    to{
-        transform:translate(-50%,-50%) rotate(360deg);
-    }
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-    nav{
-        flex-direction:column;
-        gap:12px;
-    }
-
-    nav ul{
-        flex-wrap:wrap;
-        justify-content:center;
-    }
-
-    nav ul li{
-        margin:6px 10px;
-    }
-
-    .hero h1{
-        font-size:72px;
-    }
-
-    .hero p{
-        font-size:20px;
-    }
-
-    section{
-        padding:90px 7%;
-    }
-
-    .section-title{
-        font-size:40px;
-    }
+@keyframes floatGlow{
+    0%{transform:translate(0,0);}
+    50%{transform:translate(80px,50px);}
+    100%{transform:translate(0,0);}
 }
 
 </style>
+
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+<div class="cursor"></div>
 
 <nav>
-
-<div class="logo">
-SpinSet Academy
+<div class="logo">SpinSet</div>
+<div>
+<a href="#about">About</a>
+<a href="#classes">Classes</a>
+<a href="#pricing">Pricing</a>
 </div>
-
-<ul>
-<li><a href="#about">About</a></li>
-<li><a href="#classes">Classes</a></li>
-<li><a href="#pricing">Pricing</a></li>
-<li><a href="#gallery">Gallery</a></li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-
 </nav>
 
-<!-- HERO -->
-
 <section class="hero">
-
-<div class="racket-line"></div>
-
 <div class="hero-content">
-
-<h1>
-SpinSet Academy
-</h1>
-
-<p>
-Elite Youth Tennis Training in Round Rock, Texas
-</p>
-
-<a href="#classes" class="hero-btn">
-Explore Classes
-</a>
-
+<h1>SpinSet Academy</h1>
+<p>Elite Tennis Training in Round Rock</p>
+<a href="#classes">View Classes</a>
 </div>
-
 </section>
-
-<!-- ABOUT -->
 
 <section id="about">
-
-<h2 class="section-title">
-About SpinSet Academy
-</h2>
-
-<div class="about-box">
-
-<p>
-SpinSet Academy was created to help young tennis players develop confidence, movement, consistency, and strong fundamentals in a positive and motivating environment.
-</p>
-
-<br>
-
-<p>
-Coach Sanav has been playing tennis since age 4 and focuses on helping beginner and intermediate players improve through structured training, discipline, movement development, and match-focused coaching.
-</p>
-
-<br>
-
-<p>
-SpinSet Academy combines high-energy training with fun learning experiences so players continue improving while enjoying the game and building long-term confidence on the court.
-</p>
-
+<h2 class="title">About</h2>
+<div class="card">
+We train young athletes to build confidence, consistency, and strong fundamentals.
 </div>
-
 </section>
-
-<!-- CLASSES -->
 
 <section id="classes">
-
-<h2 class="section-title">
-Classes
-</h2>
-
+<h2 class="title">Classes</h2>
 <div class="grid">
-
 <div class="card">
-
-<h3>
-Beginner Group Lessons
-</h3>
-
-<p>
-Small group sessions focused on fundamentals, rallying, movement, consistency, and confidence building.
-</p>
-
-<br>
-
-<p>
-<strong>Saturday • 10:00 AM</strong>
-</p>
-
-<p>
-Old Settlers Park Tennis Courts
-</p>
-
+<h3>Group Lessons</h3>
+<p>Beginner friendly training sessions.</p>
 </div>
-
 <div class="card">
-
-<h3>
-Private Lessons
-</h3>
-
-<p>
-One-on-one coaching focused on technique, consistency, movement, and player development.
-</p>
-
-<br>
-
-<p>
-<strong>Flexible Scheduling</strong>
-</p>
-
+<h3>Private Lessons</h3>
+<p>1-on-1 focused improvement coaching.</p>
 </div>
-
 </div>
-
 </section>
-
-<!-- PRICING -->
-
-<section id="pricing">
-
-<h2 class="section-title">
-Pricing
-</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>
-Group Lessons
-</h3>
-
-<div class="price">
-$12/hr
-</div>
-
-<p>
-Beginner-friendly small group training sessions.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>
-Private Lessons
-</h3>
-
-<div class="price">
-$25/hr
-</div>
-
-<p>
-Personalized one-on-one coaching sessions.
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- GALLERY -->
 
 <section id="gallery">
-
-<h2 class="section-title">
-Training Gallery
-</h2>
-
-<div class="gallery">
-
-<img src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=1200&auto=format&fit=crop">
-
-<img src="https://images.unsplash.com/photo-1622279457486-28f1fa9fdb57?q=80&w=1200&auto=format&fit=crop">
-
+<h2 class="title">Gallery</h2>
+<div class="grid">
+<img src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3">
+<img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8">
 </div>
-
 </section>
 
-<!-- FAQ -->
-
-<section id="faq">
-
-<h2 class="section-title">
-Frequently Asked Questions
-</h2>
-
-<div class="faq-box">
-
-<h3>
-What age groups do you coach?
-</h3>
-
-<p>
-SpinSet Academy primarily coaches beginner and intermediate youth players.
-</p>
-
+<section id="pricing">
+<h2 class="title">Pricing</h2>
+<div class="grid">
+<div class="card">$12/hr Group</div>
+<div class="card">$25/hr Private</div>
 </div>
-
-<div class="faq-box">
-
-<h3>
-Do students need previous tennis experience?
-</h3>
-
-<p>
-No. Beginner lessons are designed for players who are completely new to tennis.
-</p>
-
-</div>
-
-<div class="faq-box">
-
-<h3>
-What should students bring?
-</h3>
-
-<p>
-Students should bring a tennis racket, athletic shoes, and a water bottle.
-</p>
-
-</div>
-
-<div class="faq-box">
-
-<h3>
-Where are lessons held?
-</h3>
-
-<p>
-Lessons are currently held at Old Settlers Park Tennis Courts in Round Rock, Texas.
-</p>
-
-</div>
-
 </section>
-
-<!-- CONTACT -->
 
 <section id="contact">
-
-<h2 class="section-title">
-Contact
-</h2>
-
-<div class="contact-box">
-
-<h3>
-SpinSet Academy
-</h3>
-
-<p>
-Old Settlers Park Tennis Courts
-</p>
-
-<p>
-Round Rock, Texas
-</p>
-
-<br>
-
-<p>
-Email: sanavsharma20@gmail.com
-</p>
-
-<p>
+<h2 class="title">Contact</h2>
+<div class="contact">
+Email: spinset@example.com<br>
 Phone: 512-839-7026
-</p>
-
 </div>
-
 </section>
 
 <footer>
 SpinSet Academy • Round Rock, Texas
 </footer>
 
+<script>
+
+/* ===== TENNIS BALL CURSOR ===== */
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.pageX + "px";
+    cursor.style.top = e.pageY + "px";
+
+    const trail = document.createElement("div");
+    trail.className = "cursor-trail";
+    trail.style.left = e.pageX + "px";
+    trail.style.top = e.pageY + "px";
+
+    document.body.appendChild(trail);
+
+    setTimeout(() => {
+        trail.remove();
+    }, 400);
+});
+
+</script>
+
 </body>
 </html>
-```
