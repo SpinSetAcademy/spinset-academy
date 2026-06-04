@@ -2,11 +2,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SpinSet Academy</title>
 
+<!-- PREMIUM FONTS -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
+
+/* RESET */
 
 *{
     margin:0;
@@ -19,10 +30,10 @@ html{
 }
 
 body{
-    font-family:Arial, sans-serif;
+    font-family:'Poppins', sans-serif;
     background:#f5f7f4;
     color:#111;
-    line-height:1.6;
+    overflow-x:hidden;
 }
 
 /* NAVBAR */
@@ -32,18 +43,20 @@ nav{
     top:0;
     width:100%;
     padding:18px 8%;
-    background:rgba(12,40,16,0.92);
     display:flex;
     justify-content:space-between;
     align-items:center;
+
+    background:rgba(13,35,18,0.88);
+    backdrop-filter:blur(10px);
+
     z-index:1000;
-    backdrop-filter:blur(8px);
 }
 
 .logo{
     color:white;
-    font-size:30px;
-    font-weight:bold;
+    font-size:32px;
+    font-weight:700;
     letter-spacing:1px;
 }
 
@@ -59,8 +72,8 @@ nav ul li{
 nav ul li a{
     color:white;
     text-decoration:none;
-    font-weight:bold;
-    transition:0.2s;
+    font-weight:600;
+    transition:0.25s;
 }
 
 nav ul li a:hover{
@@ -71,6 +84,7 @@ nav ul li a:hover{
 
 .hero{
     position:relative;
+
     height:100vh;
 
     background-image:url("logo.png");
@@ -81,149 +95,265 @@ nav ul li a:hover{
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
 
-    overflow:hidden;
+    text-align:center;
 }
 
 .hero::before{
     content:"";
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.35);
+
+    background:rgba(0,0,0,0.42);
 }
+
+/* HERO CONTENT */
 
 .hero-content{
     position:relative;
     z-index:2;
-    max-width:800px;
+
+    max-width:850px;
+
     padding:20px;
+
+    animation:fadeUp 1.2s ease;
 }
 
 .hero h1{
-    font-size:82px;
+    font-family:'Bebas Neue', sans-serif;
+
+    font-size:110px;
+    letter-spacing:4px;
+
     color:white;
-    text-shadow:0 5px 20px rgba(0,0,0,0.6);
-    margin-bottom:10px;
+
+    margin-bottom:12px;
+
+    text-shadow:0 6px 20px rgba(0,0,0,0.7);
 }
 
 .hero p{
-    font-size:24px;
     color:white;
-    margin-bottom:30px;
-    text-shadow:0 3px 10px rgba(0,0,0,0.6);
+
+    font-size:24px;
+    font-weight:500;
+
+    margin-bottom:32px;
+
+    text-shadow:0 4px 12px rgba(0,0,0,0.6);
 }
 
 .hero-btn{
     display:inline-block;
-    padding:16px 34px;
+
+    padding:16px 36px;
+
     background:white;
     color:#173b1c;
+
     text-decoration:none;
+
     border-radius:14px;
-    font-weight:bold;
+
+    font-weight:700;
+
     transition:0.25s;
 }
 
 .hero-btn:hover{
-    transform:translateY(-4px);
+    transform:translateY(-5px) scale(1.03);
 }
 
-/* GENERAL SECTION */
+/* ANIMATIONS */
+
+@keyframes fadeUp{
+
+    from{
+        opacity:0;
+        transform:translateY(45px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* SECTIONS */
 
 section{
-    padding:100px 10%;
+    padding:110px 10%;
 }
 
 .section-title{
-    font-size:42px;
-    color:#173b1c;
-    margin-bottom:35px;
     text-align:center;
+
+    font-size:46px;
+    color:#173b1c;
+
+    margin-bottom:45px;
+
+    font-weight:700;
 }
 
 /* ABOUT */
 
 .about-box{
     background:white;
-    padding:40px;
-    border-radius:22px;
-    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+
+    padding:50px;
+
+    border-radius:26px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,0.08);
+
     max-width:1000px;
+
     margin:auto;
+
+    line-height:1.9;
+
     font-size:18px;
+}
+
+/* GRID */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
 }
 
 /* CARDS */
 
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:28px;
-}
-
 .card{
     background:white;
-    padding:35px;
-    border-radius:22px;
-    box-shadow:0 12px 30px rgba(0,0,0,0.08);
-    transition:0.25s;
+
+    padding:38px;
+
+    border-radius:26px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,0.08);
+
+    transition:0.3s;
 }
 
 .card:hover{
-    transform:translateY(-6px);
+    transform:translateY(-10px);
 }
 
 .card h3{
-    margin-bottom:15px;
     color:#173b1c;
+
+    margin-bottom:18px;
+
+    font-size:28px;
 }
 
+/* PRICE */
+
 .price{
-    font-size:38px;
-    font-weight:bold;
+    font-size:42px;
+
+    font-weight:700;
+
     color:#173b1c;
+
     margin:18px 0;
+}
+
+/* GALLERY */
+
+.gallery{
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+
+    gap:22px;
+}
+
+.gallery img{
+    width:100%;
+
+    height:260px;
+
+    object-fit:cover;
+
+    border-radius:22px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+
+    transition:0.25s;
+}
+
+.gallery img:hover{
+    transform:scale(1.03);
+}
+
+/* FAQ */
+
+.faq-box{
+    background:white;
+
+    padding:30px;
+
+    border-radius:22px;
+
+    margin-bottom:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.faq-box h3{
+    color:#173b1c;
+
+    margin-bottom:10px;
 }
 
 /* CONTACT */
 
 .contact-box{
     background:#173b1c;
+
     color:white;
-    padding:45px;
-    border-radius:22px;
+
+    padding:50px;
+
+    border-radius:26px;
+
     max-width:900px;
+
     margin:auto;
-    box-shadow:0 12px 30px rgba(0,0,0,0.15);
+
+    box-shadow:0 12px 35px rgba(0,0,0,0.18);
 }
 
 .contact-box h3{
-    margin-bottom:15px;
-    font-size:32px;
+    font-size:34px;
+
+    margin-bottom:16px;
 }
 
 /* FOOTER */
 
 footer{
     background:#111;
+
     color:white;
+
     text-align:center;
-    padding:30px;
-    margin-top:50px;
+
+    padding:32px;
+
+    margin-top:70px;
 }
 
 /* MOBILE */
 
 @media(max-width:700px){
-
-    .hero h1{
-        font-size:52px;
-    }
-
-    .hero p{
-        font-size:20px;
-    }
 
     nav{
         flex-direction:column;
@@ -239,8 +369,16 @@ footer{
         margin:6px 10px;
     }
 
+    .hero h1{
+        font-size:62px;
+    }
+
+    .hero p{
+        font-size:20px;
+    }
+
     section{
-        padding:80px 7%;
+        padding:85px 7%;
     }
 }
 
@@ -253,14 +391,18 @@ footer{
 
 <nav>
 
-    <div class="logo">SpinSet Academy</div>
+<div class="logo">
+SpinSet Academy
+</div>
 
-    <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#classes">Classes</a></li>
-        <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+<ul>
+<li><a href="#about">About</a></li>
+<li><a href="#classes">Classes</a></li>
+<li><a href="#pricing">Pricing</a></li>
+<li><a href="#gallery">Gallery</a></li>
+<li><a href="#faq">FAQ</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 
 </nav>
 
@@ -268,19 +410,21 @@ footer{
 
 <section class="hero">
 
-    <div class="hero-content">
+<div class="hero-content">
 
-        <h1>SpinSet Academy</h1>
+<h1>
+SpinSet Academy
+</h1>
 
-        <p>
-        Youth Tennis Training in Round Rock, Texas
-        </p>
+<p>
+Youth Tennis Training in Round Rock, Texas
+</p>
 
-        <a href="#classes" class="hero-btn">
-        View Classes
-        </a>
+<a href="#classes" class="hero-btn">
+Explore Classes
+</a>
 
-    </div>
+</div>
 
 </section>
 
@@ -288,29 +432,29 @@ footer{
 
 <section id="about">
 
-    <h2 class="section-title">
-    About SpinSet Academy
-    </h2>
+<h2 class="section-title">
+About SpinSet Academy
+</h2>
 
-    <div class="about-box">
+<div class="about-box">
 
-        <p>
-        SpinSet Academy was created to help young players build confidence, consistency, and strong tennis fundamentals in a positive training environment.
-        </p>
+<p>
+SpinSet Academy was created to help young players develop confidence, movement, consistency, and strong tennis fundamentals in a positive and motivating training environment.
+</p>
 
-        <br>
+<br>
 
-        <p>
-        Coach Sanav has been playing tennis since age 4 and focuses on helping beginners improve through structured lessons, movement training, and match-focused development.
-        </p>
+<p>
+Coach Sanav has been playing tennis since age 4 and focuses on helping beginner and intermediate players improve through structured lessons, discipline, movement training, and match-focused development.
+</p>
 
-        <br>
+<br>
 
-        <p>
-        Whether students are completely new to tennis or already developing their skills, SpinSet Academy is designed to make improvement fun, focused, and motivating.
-        </p>
+<p>
+SpinSet Academy is designed to make tennis training both fun and challenging so students continue improving while enjoying the game and building long-term confidence on the court.
+</p>
 
-    </div>
+</div>
 
 </section>
 
@@ -318,49 +462,53 @@ footer{
 
 <section id="classes">
 
-    <h2 class="section-title">
-    Classes
-    </h2>
+<h2 class="section-title">
+Classes
+</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="card">
+<div class="card">
 
-            <h3>Beginner Group Lessons</h3>
+<h3>
+Beginner Group Lessons
+</h3>
 
-            <p>
-            Small group sessions focused on fundamentals, movement, rallying, and confidence building.
-            </p>
+<p>
+Small group sessions focused on fundamentals, rallying, movement, consistency, and confidence building.
+</p>
 
-            <br>
+<br>
 
-            <p>
-            <strong>Saturday • 10:00 AM</strong>
-            </p>
+<p>
+<strong>Saturday • 10:00 AM</strong>
+</p>
 
-            <p>
-            Old Settlers Park Tennis Courts
-            </p>
+<p>
+Old Settlers Park Tennis Courts
+</p>
 
-        </div>
+</div>
 
-        <div class="card">
+<div class="card">
 
-            <h3>Private Lessons</h3>
+<h3>
+Private Lessons
+</h3>
 
-            <p>
-            Personalized one-on-one coaching focused on improvement, technique, and match play.
-            </p>
+<p>
+One-on-one coaching focused on technique, consistency, movement, and player development.
+</p>
 
-            <br>
+<br>
 
-            <p>
-            <strong>Flexible Scheduling</strong>
-            </p>
+<p>
+<strong>Flexible Scheduling</strong>
+</p>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
@@ -368,37 +516,123 @@ footer{
 
 <section id="pricing">
 
-    <h2 class="section-title">
-    Pricing
-    </h2>
+<h2 class="section-title">
+Pricing
+</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <div class="card">
+<div class="card">
 
-            <h3>Group Lessons</h3>
+<h3>
+Group Lessons
+</h3>
 
-            <div class="price">$12/hr</div>
+<div class="price">
+$12/hr
+</div>
 
-            <p>
-            Beginner-friendly small group training.
-            </p>
+<p>
+Beginner-friendly small group training sessions.
+</p>
 
-        </div>
+</div>
 
-        <div class="card">
+<div class="card">
 
-            <h3>Private Lessons</h3>
+<h3>
+Private Lessons
+</h3>
 
-            <div class="price">$25/hr</div>
+<div class="price">
+$25/hr
+</div>
 
-            <p>
-            Focused individual coaching sessions.
-            </p>
+<p>
+Personalized one-on-one coaching sessions.
+</p>
 
-        </div>
+</div>
 
-    </div>
+</div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+<h2 class="section-title">
+Training Gallery
+</h2>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?q=80&w=1200&auto=format&fit=crop">
+
+<img src="https://images.unsplash.com/photo-1622279457486-28f1fa9fdb57?q=80&w=1200&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section id="faq">
+
+<h2 class="section-title">
+Frequently Asked Questions
+</h2>
+
+<div class="faq-box">
+
+<h3>
+What age groups do you coach?
+</h3>
+
+<p>
+SpinSet Academy primarily coaches beginner and intermediate youth players.
+</p>
+
+</div>
+
+<div class="faq-box">
+
+<h3>
+Do students need previous tennis experience?
+</h3>
+
+<p>
+No. Beginner lessons are designed for players who are new to tennis.
+</p>
+
+</div>
+
+<div class="faq-box">
+
+<h3>
+What should students bring?
+</h3>
+
+<p>
+Students should bring a tennis racket, athletic shoes, and a water bottle.
+</p>
+
+</div>
+
+<div class="faq-box">
+
+<h3>
+Where are lessons held?
+</h3>
+
+<p>
+Lessons are currently held at Old Settlers Park Tennis Courts in Round Rock, Texas.
+</p>
+
+</div>
 
 </section>
 
@@ -406,39 +640,35 @@ footer{
 
 <section id="contact">
 
-    <h2 class="section-title">
-    Contact
-    </h2>
+<h2 class="section-title">
+Contact
+</h2>
 
-    <div class="contact-box">
+<div class="contact-box">
 
-        <h3>SpinSet Academy</h3>
+<h3>
+SpinSet Academy
+</h3>
 
-        <p>
-        Old Settlers Park Tennis Courts
-        </p>
+<p>
+Old Settlers Park Tennis Courts
+</p>
 
-        <p>
-        Round Rock, Texas
-        </p>
+<p>
+Round Rock, Texas
+</p>
 
-        <br>
+<br>
 
-        <p>
-        Email: sanavsharma20@gmail.com
-        </p>
+<p>
+Email: sanavsharma20@gmail.com
+</p>
 
-        <p>
-        Phone: 512-839-7026
-        </p>
+<p>
+Phone: 512-839-7026
+</p>
 
-        <br>
-
-        <p>
-        Request a spot to join beginner tennis lessons.
-        </p>
-
-    </div>
+</div>
 
 </section>
 
