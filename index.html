@@ -8,12 +8,12 @@
 
 <title>SpinSet Academy</title>
 
-<!-- PREMIUM FONTS -->
+<!-- PREMIUM GOOGLE FONTS -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -30,8 +30,8 @@ html{
 }
 
 body{
-    font-family:'Poppins', sans-serif;
-    background:#f5f7f4;
+    font-family:'Outfit', sans-serif;
+    background:#f4f7f3;
     color:#111;
     overflow-x:hidden;
 }
@@ -42,21 +42,25 @@ nav{
     position:fixed;
     top:0;
     width:100%;
-    padding:18px 8%;
+    padding:20px 8%;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    background:rgba(13,35,18,0.88);
-    backdrop-filter:blur(10px);
+    background:rgba(10,24,13,0.72);
+
+    backdrop-filter:blur(14px);
 
     z-index:1000;
+
+    animation:navReveal 1s ease;
 }
 
 .logo{
     color:white;
-    font-size:32px;
-    font-weight:700;
+    font-size:34px;
+    font-weight:800;
     letter-spacing:1px;
 }
 
@@ -66,7 +70,7 @@ nav ul{
 }
 
 nav ul li{
-    margin-left:28px;
+    margin-left:30px;
 }
 
 nav ul li a{
@@ -77,7 +81,7 @@ nav ul li a{
 }
 
 nav ul li a:hover{
-    opacity:0.7;
+    opacity:0.65;
 }
 
 /* HERO */
@@ -87,24 +91,40 @@ nav ul li a:hover{
 
     height:100vh;
 
-    background-image:url("logo.png");
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
+    overflow:hidden;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
     text-align:center;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.45)),
+    url("logo.png");
+
+    background-size:cover;
+    background-position:center;
+
+    animation:bgZoom 18s ease-in-out infinite alternate;
 }
 
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
+/* TENNIS BALL GLOW */
 
-    background:rgba(0,0,0,0.42);
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    background:radial-gradient(circle, rgba(180,255,0,0.15), transparent 70%);
+
+    top:-100px;
+    right:-100px;
+
+    animation:orbMove 8s ease-in-out infinite;
 }
 
 /* HERO CONTENT */
@@ -113,88 +133,115 @@ nav ul li a:hover{
     position:relative;
     z-index:2;
 
-    max-width:850px;
+    max-width:950px;
 
     padding:20px;
 
-    animation:fadeUp 1.2s ease;
+    animation:heroRise 1.5s ease;
+}
+
+/* TENNIS RACKET SWING EFFECT */
+
+.racket-line{
+    position:absolute;
+
+    width:500px;
+    height:500px;
+
+    border:6px solid rgba(255,255,255,0.08);
+
+    border-radius:50%;
+
+    transform:rotate(-20deg);
+
+    top:50%;
+    left:50%;
+
+    translate:-50% -50%;
+
+    z-index:1;
+
+    animation:racketSpin 8s linear infinite;
 }
 
 .hero h1{
     font-family:'Bebas Neue', sans-serif;
 
-    font-size:110px;
-    letter-spacing:4px;
+    font-size:130px;
+
+    line-height:0.9;
+
+    letter-spacing:6px;
 
     color:white;
 
-    margin-bottom:12px;
+    margin-bottom:15px;
 
-    text-shadow:0 6px 20px rgba(0,0,0,0.7);
+    text-shadow:0 8px 25px rgba(0,0,0,0.7);
+
+    animation:titleBlast 1.5s ease;
 }
 
 .hero p{
+    font-size:26px;
+
     color:white;
 
-    font-size:24px;
     font-weight:500;
 
-    margin-bottom:32px;
+    margin-bottom:34px;
 
-    text-shadow:0 4px 12px rgba(0,0,0,0.6);
+    text-shadow:0 4px 14px rgba(0,0,0,0.6);
+
+    animation:subtitleFade 2s ease;
 }
 
 .hero-btn{
     display:inline-block;
 
-    padding:16px 36px;
+    padding:18px 40px;
+
+    border-radius:18px;
 
     background:white;
+
     color:#173b1c;
 
     text-decoration:none;
 
-    border-radius:14px;
-
     font-weight:700;
 
-    transition:0.25s;
+    font-size:18px;
+
+    transition:0.3s;
+
+    animation:buttonRise 2.2s ease;
 }
 
 .hero-btn:hover{
-    transform:translateY(-5px) scale(1.03);
+    transform:translateY(-6px) scale(1.05);
+
+    box-shadow:
+    0 0 20px rgba(255,255,255,0.4),
+    0 0 40px rgba(255,255,255,0.2);
 }
 
-/* ANIMATIONS */
-
-@keyframes fadeUp{
-
-    from{
-        opacity:0;
-        transform:translateY(45px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* SECTIONS */
+/* GENERAL SECTIONS */
 
 section{
-    padding:110px 10%;
+    padding:120px 10%;
 }
 
 .section-title{
     text-align:center;
 
-    font-size:46px;
+    font-size:54px;
+
     color:#173b1c;
 
-    margin-bottom:45px;
+    margin-bottom:50px;
 
-    font-weight:700;
+    font-weight:800;
 }
 
 /* ABOUT */
@@ -202,19 +249,27 @@ section{
 .about-box{
     background:white;
 
-    padding:50px;
+    padding:55px;
 
-    border-radius:26px;
+    border-radius:30px;
 
-    box-shadow:0 12px 35px rgba(0,0,0,0.08);
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
 
-    max-width:1000px;
+    max-width:1100px;
 
     margin:auto;
 
     line-height:1.9;
 
-    font-size:18px;
+    font-size:19px;
+
+    transform:translateY(0);
+
+    transition:0.3s;
+}
+
+.about-box:hover{
+    transform:translateY(-8px);
 }
 
 /* GRID */
@@ -222,9 +277,9 @@ section{
 .grid{
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
 
-    gap:30px;
+    gap:34px;
 }
 
 /* CARDS */
@@ -232,37 +287,53 @@ section{
 .card{
     background:white;
 
-    padding:38px;
+    padding:42px;
 
-    border-radius:26px;
+    border-radius:28px;
 
-    box-shadow:0 12px 35px rgba(0,0,0,0.08);
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
 
-    transition:0.3s;
+    transition:0.35s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:5px;
+
+    background:#173b1c;
 }
 
 .card:hover{
-    transform:translateY(-10px);
+    transform:translateY(-12px) scale(1.02);
 }
 
 .card h3{
+    font-size:30px;
+
     color:#173b1c;
 
     margin-bottom:18px;
-
-    font-size:28px;
 }
 
-/* PRICE */
-
 .price{
-    font-size:42px;
+    font-size:46px;
 
-    font-weight:700;
+    font-weight:800;
 
     color:#173b1c;
 
-    margin:18px 0;
+    margin:20px 0;
 }
 
 /* GALLERY */
@@ -270,27 +341,27 @@ section{
 .gallery{
     display:grid;
 
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 
-    gap:22px;
+    gap:24px;
 }
 
 .gallery img{
     width:100%;
 
-    height:260px;
+    height:280px;
 
     object-fit:cover;
 
-    border-radius:22px;
+    border-radius:24px;
 
-    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+    transition:0.35s;
 
-    transition:0.25s;
+    box-shadow:0 12px 30px rgba(0,0,0,0.12);
 }
 
 .gallery img:hover{
-    transform:scale(1.03);
+    transform:scale(1.04) rotate(1deg);
 }
 
 /* FAQ */
@@ -298,19 +369,27 @@ section{
 .faq-box{
     background:white;
 
-    padding:30px;
+    padding:35px;
 
-    border-radius:22px;
+    border-radius:24px;
 
-    margin-bottom:20px;
+    margin-bottom:22px;
 
-    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+    transition:0.25s;
+}
+
+.faq-box:hover{
+    transform:translateX(8px);
 }
 
 .faq-box h3{
     color:#173b1c;
 
-    margin-bottom:10px;
+    margin-bottom:12px;
+
+    font-size:24px;
 }
 
 /* CONTACT */
@@ -320,21 +399,21 @@ section{
 
     color:white;
 
-    padding:50px;
+    padding:55px;
 
-    border-radius:26px;
+    border-radius:30px;
 
-    max-width:900px;
+    max-width:950px;
 
     margin:auto;
 
-    box-shadow:0 12px 35px rgba(0,0,0,0.18);
+    box-shadow:0 18px 40px rgba(0,0,0,0.18);
 }
 
 .contact-box h3{
-    font-size:34px;
+    font-size:38px;
 
-    margin-bottom:16px;
+    margin-bottom:18px;
 }
 
 /* FOOTER */
@@ -346,14 +425,112 @@ footer{
 
     text-align:center;
 
-    padding:32px;
+    padding:36px;
 
     margin-top:70px;
+
+    font-size:15px;
+}
+
+/* ANIMATIONS */
+
+@keyframes navReveal{
+    from{
+        opacity:0;
+        transform:translateY(-20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes heroRise{
+    from{
+        opacity:0;
+        transform:translateY(80px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes titleBlast{
+    0%{
+        opacity:0;
+        transform:scale(0.8);
+        letter-spacing:20px;
+    }
+
+    100%{
+        opacity:1;
+        transform:scale(1);
+        letter-spacing:6px;
+    }
+}
+
+@keyframes subtitleFade{
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+}
+
+@keyframes buttonRise{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes bgZoom{
+    0%{
+        background-size:100%;
+    }
+
+    100%{
+        background-size:112%;
+    }
+}
+
+@keyframes orbMove{
+    0%{
+        transform:translate(0,0);
+    }
+
+    50%{
+        transform:translate(-40px,40px);
+    }
+
+    100%{
+        transform:translate(0,0);
+    }
+}
+
+@keyframes racketSpin{
+    from{
+        transform:translate(-50%,-50%) rotate(0deg);
+    }
+
+    to{
+        transform:translate(-50%,-50%) rotate(360deg);
+    }
 }
 
 /* MOBILE */
 
-@media(max-width:700px){
+@media(max-width:768px){
 
     nav{
         flex-direction:column;
@@ -370,7 +547,7 @@ footer{
     }
 
     .hero h1{
-        font-size:62px;
+        font-size:72px;
     }
 
     .hero p{
@@ -378,7 +555,11 @@ footer{
     }
 
     section{
-        padding:85px 7%;
+        padding:90px 7%;
+    }
+
+    .section-title{
+        font-size:40px;
     }
 }
 
@@ -410,6 +591,8 @@ SpinSet Academy
 
 <section class="hero">
 
+<div class="racket-line"></div>
+
 <div class="hero-content">
 
 <h1>
@@ -417,7 +600,7 @@ SpinSet Academy
 </h1>
 
 <p>
-Youth Tennis Training in Round Rock, Texas
+Elite Youth Tennis Training in Round Rock, Texas
 </p>
 
 <a href="#classes" class="hero-btn">
@@ -439,19 +622,19 @@ About SpinSet Academy
 <div class="about-box">
 
 <p>
-SpinSet Academy was created to help young players develop confidence, movement, consistency, and strong tennis fundamentals in a positive and motivating training environment.
+SpinSet Academy was created to help young tennis players develop confidence, movement, consistency, and strong fundamentals in a positive and motivating environment.
 </p>
 
 <br>
 
 <p>
-Coach Sanav has been playing tennis since age 4 and focuses on helping beginner and intermediate players improve through structured lessons, discipline, movement training, and match-focused development.
+Coach Sanav has been playing tennis since age 4 and focuses on helping beginner and intermediate players improve through structured training, discipline, movement development, and match-focused coaching.
 </p>
 
 <br>
 
 <p>
-SpinSet Academy is designed to make tennis training both fun and challenging so students continue improving while enjoying the game and building long-term confidence on the court.
+SpinSet Academy combines high-energy training with fun learning experiences so players continue improving while enjoying the game and building long-term confidence on the court.
 </p>
 
 </div>
@@ -605,7 +788,7 @@ Do students need previous tennis experience?
 </h3>
 
 <p>
-No. Beginner lessons are designed for players who are new to tennis.
+No. Beginner lessons are designed for players who are completely new to tennis.
 </p>
 
 </div>
