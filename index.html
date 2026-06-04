@@ -13,26 +13,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-html, body{
-    overflow-x:hidden;
-}
+
 /* RESET */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
-img{
-    max-width:100%;
-}
-html{
-    scroll-behavior:smooth;
-}
 
-body{
+html, body{
+    overflow-x:hidden;
     font-family:'Outfit', sans-serif;
     background:#f4f7f3;
-    color:#111;
+}
+
+/* ================= CURSOR ================= */
+
+.cursor{
+    position:fixed;
+    width:18px;
+    height:18px;
+    background:#d4ff3a;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    box-shadow:0 0 20px rgba(212,255,58,0.8);
 }
 
 /* NAV */
@@ -43,7 +49,6 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     padding:18px 8%;
     background:rgba(10,30,15,0.85);
     backdrop-filter:blur(10px);
@@ -71,11 +76,9 @@ nav a{
     justify-content:center;
     align-items:center;
     text-align:center;
-
     background:
     linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.4)),
     url("logo.png");
-
     background-size:cover;
     background-position:center;
 }
@@ -128,7 +131,7 @@ section{
     gap:25px;
 }
 
-/* CARDS */
+/* CARD */
 .card{
     background:white;
     padding:30px;
@@ -136,18 +139,13 @@ section{
     box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-/* 🔥 FIXED GALLERY (NO MORE ZOOM ISSUES) */
+/* GALLERY FIX (NO ZOOM ISSUES) */
 .gallery img{
     width:100%;
     height:260px;
-
-    object-fit:contain;   /* FIX: prevents zoom crop */
-    background:white;     /* makes edges clean */
-
+    object-fit:cover;
     border-radius:18px;
-    padding:10px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    display:block;
 }
 
 /* FAQ */
@@ -174,17 +172,24 @@ footer{
     padding:25px;
 }
 
+/* ANIMATION */
+@keyframes fadeUp{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
 </style>
 
 </head>
 
 <body>
 
+<!-- CURSOR -->
+<div class="cursor"></div>
+
 <!-- NAV -->
 <nav>
-
 <div class="logo">SpinSet Academy</div>
-
 <div>
 <a href="#about">About</a>
 <a href="#classes">Classes</a>
@@ -193,96 +198,60 @@ footer{
 <a href="#faq">FAQ</a>
 <a href="#contact">Contact</a>
 </div>
-
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-
 <div class="hero-content">
 <h1>SpinSet Academy</h1>
 <p>Elite Youth Tennis Training in Round Rock</p>
 <a href="#classes">View Classes</a>
 </div>
-
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-
 <h2 class="title">About</h2>
-
 <div class="card">
-We help young athletes build confidence, discipline, and strong tennis fundamentals through structured training.
+We train young athletes to build confidence, discipline, and strong tennis fundamentals.
 </div>
-
 </section>
 
 <!-- CLASSES -->
 <section id="classes">
-
 <h2 class="title">Classes</h2>
-
 <div class="grid">
-
-<div class="card">
-<h3>Group Lessons</h3>
-<p>Beginner-friendly training sessions.</p>
+<div class="card">Group Lessons</div>
+<div class="card">Private Lessons</div>
 </div>
-
-<div class="card">
-<h3>Private Lessons</h3>
-<p>1-on-1 focused improvement coaching.</p>
-</div>
-
-</div>
-
 </section>
 
 <!-- PRICING -->
 <section id="pricing">
-
 <h2 class="title">Pricing</h2>
-
 <div class="grid">
-
-<div class="card">
-<h3>Group</h3>
-<p>$12/hr</p>
+<div class="card">$12/hr Group</div>
+<div class="card">$25/hr Private</div>
 </div>
-
-<div class="card">
-<h3>Private</h3>
-<p>$25/hr</p>
-</div>
-
-</div>
-
 </section>
 
 <!-- GALLERY -->
 <section id="gallery">
-
 <h2 class="title">Gallery</h2>
-
 <div class="grid">
-
 <img src="https://images.unsplash.com/photo-1542144582-1ba00456b5e3">
 <img src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8">
 <img src="https://images.unsplash.com/photo-1622279457486-28f1fa9fdb57">
-
 </div>
-
 </section>
 
 <!-- FAQ -->
 <section id="faq">
-
 <h2 class="title">FAQ</h2>
 
 <div class="faq">
 <b>Do I need experience?</b>
-<p>No — beginners are welcome.</p>
+<p>No, beginners are welcome.</p>
 </div>
 
 <div class="faq">
@@ -299,19 +268,25 @@ We help young athletes build confidence, discipline, and strong tennis fundament
 
 <!-- CONTACT -->
 <section id="contact">
-
 <h2 class="title">Contact</h2>
-
 <div class="contact">
 Email: spinsetacademy@gmail.com<br>
 Phone: 512-839-7026
 </div>
-
 </section>
 
 <footer>
 SpinSet Academy • Round Rock, Texas
 </footer>
+
+<script>
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+</script>
 
 </body>
 </html>
