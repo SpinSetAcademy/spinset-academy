@@ -1,131 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SpinSet Academy</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>SpinSet Academy</title>
 
-    body {
-      font-family: Inter, sans-serif;
-      background: #0b0f14;
-      color: #fff;
-    }
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-    header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      left: 0;
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(10px);
-    }
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .logo {
-      font-weight: 700;
-      letter-spacing: 2px;
-    }
+body {
+  font-family: Inter, sans-serif;
+  background: #0b0f14;
+  color: #fff;
+  line-height: 1.6;
+  cursor: none;
+}
 
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: #ddd;
-      font-size: 14px;
-    }
+/* 🎾 SPINNING CURSOR */
+.cursor {
+  position: fixed;
+  width: 38px;
+  height: 38px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
 
-    nav a:hover {
-      color: #fff;
-    }
+.cursor img {
+  width: 100%;
+  height: 100%;
+  animation: spin 0.8s linear infinite;
+}
 
-    .hero {
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 0 60px;
-      background: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d') center/cover no-repeat;
-      position: relative;
-    }
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
 
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(0,0,0,0.8), rgba(0,0,0,0.3));
-    }
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 18px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
 
-    .hero-content {
-      position: relative;
-      max-width: 700px;
-    }
+.logo {
+  font-weight: 700;
+  letter-spacing: 2px;
+}
 
-    .hero h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 64px;
-      line-height: 1.1;
-      margin-bottom: 20px;
-    }
+nav a {
+  margin-left: 18px;
+  color: #ccc;
+  text-decoration: none;
+  font-size: 14px;
+}
 
-    .hero p {
-      color: #ccc;
-      margin-bottom: 30px;
-      font-size: 18px;
-    }
+nav a:hover {
+  color: #fff;
+}
 
-    .btn {
-      display: inline-block;
-      padding: 12px 24px;
-      border: 1px solid #fff;
-      margin-right: 10px;
-      text-decoration: none;
-      color: #fff;
-      transition: 0.3s;
-    }
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url('https://images.unsplash.com/photo-1521412644187-c49fa049e84d') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 0 60px;
+  position: relative;
+}
 
-    .btn:hover {
-      background: #fff;
-      color: #000;
-    }
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0,0,0,0.88), rgba(0,0,0,0.3));
+}
 
-    section {
-      padding: 80px 60px;
-    }
+.hero-content {
+  position: relative;
+  max-width: 750px;
+}
 
-    .section-title {
-      font-size: 28px;
-      margin-bottom: 20px;
-      font-family: "Playfair Display", serif;
-    }
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 62px;
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 30px;
-    }
+.hero p {
+  color: #ccc;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
 
-    .card {
-      background: #121824;
-      padding: 20px;
-      border-radius: 10px;
-    }
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  border: 1px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+  transition: 0.3s;
+}
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      color: #777;
-    }
-  </style>
+.btn:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* SECTIONS */
+section {
+  padding: 80px 60px;
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #121824;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* PRICING */
+.price {
+  font-size: 26px;
+  color: #ffd27d;
+  margin-top: 10px;
+}
+
+/* ABOUT BOX */
+.highlight {
+  background: #121824;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+/* FAQ */
+.faq {
+  background: #121824;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  color: #777;
+  border-top: 1px solid #1a1f2b;
+}
+</style>
 </head>
 
 <body>
+
+<!-- 🎾 CURSOR -->
+<div class="cursor" id="cursor">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Tennis_ball.svg" />
+</div>
 
 <header>
   <div class="logo">SPINSET ACADEMY</div>
@@ -133,55 +190,115 @@
     <a href="#">Home</a>
     <a href="#programs">Programs</a>
     <a href="#about">About</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <div class="hero">
   <div class="overlay"></div>
   <div class="hero-content">
     <h1>Elite Tennis Training<br>Built For Champions</h1>
-    <p>High-performance youth development, technique mastery, and competitive mindset coaching in a modern academy environment.</p>
-    <a href="#programs" class="btn">View Programs</a>
+    <p>High-level coaching designed to build discipline, skill, and confidence on the court.</p>
+    <a href="#pricing" class="btn">View Pricing</a>
     <a href="#contact" class="btn">Join Now</a>
   </div>
 </div>
 
+<!-- PROGRAMS -->
 <section id="programs">
   <h2 class="section-title">Programs</h2>
   <div class="grid">
     <div class="card">
       <h3>Junior Development</h3>
-      <p>Foundational technique, footwork, and match basics for young athletes.</p>
+      <p>Fundamentals, movement, and consistency for young players.</p>
     </div>
     <div class="card">
-      <h3>Elite Training</h3>
-      <p>High-intensity training for competitive tournament players.</p>
+      <h3>Competitive Training</h3>
+      <p>Advanced drills, match play, and tournament readiness.</p>
     </div>
     <div class="card">
       <h3>Private Coaching</h3>
-      <p>1-on-1 sessions tailored to individual performance goals.</p>
+      <p>1-on-1 elite training for fast improvement.</p>
     </div>
   </div>
 </section>
 
+<!-- ABOUT YOU -->
 <section id="about">
-  <h2 class="section-title">About SpinSet</h2>
-  <p>
-    SpinSet Academy is dedicated to developing disciplined, confident, and technically advanced tennis players.
-    Our coaching system blends modern athletic training with elite competitive strategy.
-  </p>
+  <h2 class="section-title">Why SpinSet Exists</h2>
+  <div class="highlight">
+    <p>
+      My name is <b>Sanav</b>, and I have been playing tennis since I was 4 years old.
+      Over the years, tennis has shaped my discipline, mindset, and confidence.
+      I created SpinSet Academy to share that experience with other players who want to improve,
+      compete, and grow into stronger athletes.
+      <br><br>
+      This academy is built on real passion for the game — not just training, but building players who think, move, and compete like athletes.
+    </p>
+  </div>
 </section>
 
+<!-- PRICING -->
+<section id="pricing">
+  <h2 class="section-title">Pricing</h2>
+
+  <div class="grid">
+    <div class="card">
+      <h3>Small Group Training</h3>
+      <p>2–5 players per session</p>
+      <div class="price">$12 / hour</div>
+    </div>
+
+    <div class="card">
+      <h3>1-on-1 Coaching</h3>
+      <p>Personal elite training sessions</p>
+      <div class="price">$25 / hour</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <h2 class="section-title">FAQ</h2>
+
+  <div class="faq">
+    <h4>Do I need experience?</h4>
+    <p>No — we train beginners to advanced players.</p>
+  </div>
+
+  <div class="faq">
+    <h4>What ages do you train?</h4>
+    <p>All youth and teen players are welcome.</p>
+  </div>
+
+  <div class="faq">
+    <h4>Where are sessions held?</h4>
+    <p>Local courts based on group scheduling.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
 <section id="contact">
   <h2 class="section-title">Contact</h2>
-  <p>Email:spinsetacademy@gmail.com</p>
-    <p>Phone:512-839-7026</p>
+  <p>Email: contact@spinsetacademy.com</p>
+  <p>Reach out to join sessions or ask questions about training.</p>
 </section>
 
 <footer>
   © 2026 SpinSet Academy. All rights reserved.
 </footer>
+
+<script>
+const cursor = document.getElementById("cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+});
+</script>
 
 </body>
 </html>
