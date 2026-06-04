@@ -1,244 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>SpinSet Academy</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
+<title>TEST</title>
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: Inter, sans-serif;
-  background: #0b0f14;
-  color: #fff;
-  line-height: 1.6;
+  margin: 0;
 }
 
-/* HEADER */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 18px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,0,0,0.65);
-  backdrop-filter: blur(10px);
-  z-index: 10;
-}
-
-.logo {
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-nav a {
-  margin-left: 18px;
-  color: #ccc;
-  text-decoration: none;
-  font-size: 14px;
-}
-
-nav a:hover {
-  color: #fff;
-}
-
-/* 🎬 CINEMATIC HERO (FIXED BACKGROUND) */
 .hero {
   height: 100vh;
+  background: red;
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 0 60px;
-  position: relative;
-
-  /* ✅ FIXED BACKGROUND */
-  background-image: url("https://images.unsplash.com/photo-1521412644187-c49fa049e84d?auto=format&fit=crop&w=2000&q=80");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-/* DARK OVERLAY */
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, rgba(0,0,0,0.92), rgba(0,0,0,0.55), rgba(0,0,0,0.85));
-}
-
-.hero-content {
-  position: relative;
-  max-width: 780px;
-  z-index: 2;
-}
-
-.hero h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 64px;
-  line-height: 1.1;
-  margin-bottom: 20px;
-}
-
-.hero p {
-  color: #ccc;
-  font-size: 18px;
-  margin-bottom: 25px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 22px;
-  border: 1px solid #fff;
-  color: #fff;
-  text-decoration: none;
-  margin-right: 10px;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #fff;
-  color: #000;
-}
-
-/* SECTIONS */
-section {
-  padding: 80px 60px;
-}
-
-.section-title {
-  font-family: "Playfair Display", serif;
-  font-size: 34px;
-  margin-bottom: 20px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
-}
-
-.card {
-  background: #121824;
-  padding: 20px;
-  border-radius: 12px;
-}
-
-.price {
-  font-size: 26px;
-  color: #ffd27d;
-  margin-top: 10px;
-}
-
-/* ABOUT */
-.highlight {
-  background: #121824;
-  padding: 25px;
-  border-radius: 12px;
-}
-
-/* FAQ */
-.faq {
-  background: #121824;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 12px;
-}
-
-/* FOOTER */
-footer {
-  text-align: center;
-  padding: 40px;
-  color: #777;
-  border-top: 1px solid #1a1f2b;
+  font-size: 40px;
+  color: white;
 }
 </style>
 </head>
 
 <body>
-
-<header>
-  <div class="logo">SPINSET ACADEMY</div>
-  <nav>
-    <a href="#programs">Programs</a>
-    <a href="#about">About</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#faq">FAQ</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
 <div class="hero">
-  <div class="hero-content">
-    <h1>Elite Tennis Training<br>Built For Champions</h1>
-    <p>High-level coaching designed to build skill, discipline, and confidence on court.</p>
-    <a href="#pricing" class="btn">View Pricing</a>
-    <a href="#contact" class="btn">Join Now</a>
-  </div>
+IF YOU SEE RED, SITE IS UPDATED
 </div>
-
-<section id="about">
-  <h2 class="section-title">Why SpinSet Academy Exists</h2>
-
-  <div class="highlight">
-    My name is <b>Sanav</b>, and I have been playing tennis since I was 4 years old.
-    I created SpinSet Academy to help players improve through structured, serious training that builds real skill and confidence.
-  </div>
-</section>
-
-<section id="pricing">
-  <h2 class="section-title">Pricing</h2>
-
-  <div class="grid">
-    <div class="card">
-      <h3>Small Group Training</h3>
-      <p>2–5 players per session</p>
-      <div class="price">$12 / hour</div>
-    </div>
-
-    <div class="card">
-      <h3>1-on-1 Coaching</h3>
-      <p>Private training sessions</p>
-      <div class="price">$25 / hour</div>
-    </div>
-  </div>
-</section>
-
-<section id="faq">
-  <h2 class="section-title">FAQ</h2>
-
-  <div class="faq">
-    <h4>Do beginners join?</h4>
-    <p>Yes, all levels are welcome.</p>
-  </div>
-
-  <div class="faq">
-    <h4>What ages?</h4>
-    <p>Youth and teens primarily.</p>
-  </div>
-
-  <div class="faq">
-    <h4>Where are sessions?</h4>
-    <p>Local courts based on scheduling.</p>
-  </div>
-</section>
-
-<section id="contact">
-  <h2 class="section-title">Contact</h2>
-  <p>Email: spinsetacademy@gmail.com</p>
-  <p>Phone: 512-839-7026</p>
-</section>
-
-<footer>
-  © 2026 SpinSet Academy. All rights reserved.
-</footer>
-
 </body>
 </html>
