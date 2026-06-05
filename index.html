@@ -7,10 +7,7 @@
 
 <title>SpinSet Academy</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -21,31 +18,72 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    overflow-x:hidden;
     font-family:'Outfit',sans-serif;
-
-    /* LIGHTER PREMIUM BACKGROUND */
-    background:linear-gradient(180deg,#f7faf7,#eef6ef);
-
-    color:#102015;
+    overflow-x:hidden;
+    background:#f5f7f8;
+    color:#111;
 }
 
-/* CURSOR */
+/* CURSOR (light tennis ball) */
 .cursor{
     width:16px;
     height:16px;
-    background:#6aff7a;
+    background:#7cf78a;
     border-radius:50%;
     position:fixed;
     transform:translate(-50%,-50%);
     pointer-events:none;
     z-index:9999;
-    box-shadow:0 0 20px rgba(106,255,122,0.6);
+    box-shadow:0 0 18px rgba(124,247,138,0.8);
+}
+
+/* INTRO */
+.intro{
+    position:fixed;
+    inset:0;
+    background:#f5f7f8;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:99999;
+    animation:fadeOut 1s ease forwards;
+    animation-delay:3.8s;
+}
+
+/* RACKET ANIMATION */
+.intro-racket{
+    width:220px;
+    position:absolute;
+    left:-250px;
+    top:45%;
+    transform:rotate(-35deg);
+    animation:racketSwing 2.2s ease forwards;
+}
+
+/* BALL */
+.intro-ball{
+    width:38px;
+    height:38px;
+    background:#7cf78a;
+    border-radius:50%;
+    position:absolute;
+    left:-120px;
+    top:50%;
+    box-shadow:0 0 20px #7cf78a;
+    animation:ballFly 2.2s ease forwards;
+}
+
+/* LOGO */
+.intro-text{
+    font-family:'Orbitron',sans-serif;
+    font-size:40px;
+    letter-spacing:3px;
+    opacity:0;
+    animation:fadeIn 1s ease forwards;
+    animation-delay:2s;
+    color:#1f3b28;
 }
 
 /* NAV */
@@ -53,37 +91,32 @@ nav{
     position:fixed;
     top:0;
     width:100%;
-    padding:18px 8%;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
-
+    padding:18px 8%;
     background:rgba(255,255,255,0.7);
-    backdrop-filter:blur(12px);
-
-    border-bottom:1px solid rgba(0,0,0,0.05);
-
+    backdrop-filter:blur(10px);
     z-index:1000;
+    border-bottom:1px solid rgba(0,0,0,0.06);
 }
 
 .logo{
     font-family:'Orbitron',sans-serif;
     font-size:26px;
-    font-weight:800;
-
-    color:#1f4d2a;
+    font-weight:700;
+    color:#2d6a4f;
 }
 
 nav a{
-    margin-left:22px;
     text-decoration:none;
-    color:#2a3b2f;
-    font-weight:600;
+    color:#222;
+    margin-left:22px;
+    font-weight:500;
 }
 
 nav a:hover{
-    color:#1f8f3a;
+    color:#2d6a4f;
 }
 
 /* HERO */
@@ -93,70 +126,31 @@ nav a:hover{
     justify-content:center;
     align-items:center;
     text-align:center;
-
-    padding:120px 20px 60px;
-
-    background:
-    radial-gradient(circle at top,#dff5e3,#f7faf7);
+    padding:120px 20px;
+    background:linear-gradient(135deg,#f5f7f8,#e8f5ea);
 }
 
-.hero-content{
-    max-width:900px;
-}
-
-/* LOGO */
 .hero-logo{
-    width:320px;
+    width:300px;
     max-width:80%;
-
     margin-bottom:25px;
-
-    filter:drop-shadow(0 10px 25px rgba(0,0,0,0.12));
-
     animation:float 4s ease-in-out infinite;
 }
 
 .hero p{
-    font-size:26px;
-    color:#2a3b2f;
+    font-size:22px;
+    color:#333;
     margin-bottom:30px;
 }
 
-/* BUTTONS */
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:16px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:14px 32px;
+.hero a{
+    display:inline-block;
+    padding:14px 28px;
+    background:#7cf78a;
+    color:#0b2e1a;
     border-radius:12px;
     text-decoration:none;
-    font-weight:700;
-    transition:0.3s;
-}
-
-.btn-main{
-    background:#2f7d3b;
-    color:white;
-}
-
-.btn-main:hover{
-    transform:translateY(-3px);
-    background:#256430;
-}
-
-.btn-outline{
-    border:2px solid #2f7d3b;
-    color:#2f7d3b;
-    background:transparent;
-}
-
-.btn-outline:hover{
-    background:#2f7d3b;
-    color:white;
+    font-weight:600;
 }
 
 /* SECTIONS */
@@ -166,12 +160,13 @@ section{
 
 .title{
     text-align:center;
-    font-size:42px;
+    font-size:40px;
     margin-bottom:40px;
-    color:#1f4d2a;
+    font-family:'Orbitron',sans-serif;
+    color:#2d6a4f;
 }
 
-/* CARD */
+/* CARDS */
 .card{
     background:white;
     padding:30px;
@@ -179,42 +174,53 @@ section{
     box-shadow:0 10px 25px rgba(0,0,0,0.06);
 }
 
-/* GRID */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:25px;
-}
-
-/* FAQ */
-.faq{
-    background:white;
-    padding:25px;
-    border-radius:16px;
-    margin-bottom:15px;
 }
 
 /* CONTACT */
 .contact{
-    background:#1f4d2a;
+    background:#2d6a4f;
     color:white;
     padding:40px;
     border-radius:18px;
 }
 
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:25px;
-    background:#0f1a12;
-    color:white;
+/* ANIMATIONS */
+@keyframes racketSwing{
+0%{ left:-250px; transform:rotate(-35deg); }
+70%{ left:45%; transform:rotate(15deg); }
+100%{ left:40%; transform:rotate(0deg); }
 }
 
-/* ANIMATION */
+@keyframes ballFly{
+0%{ left:-120px; }
+70%{ left:50%; }
+100%{ left:50%; opacity:0; }
+}
+
+@keyframes fadeOut{
+to{ opacity:0; visibility:hidden; }
+}
+
+@keyframes fadeIn{
+to{ opacity:1; }
+}
+
 @keyframes float{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-10px);}
-100%{transform:translateY(0px);}
+0%{ transform:translateY(0); }
+50%{ transform:translateY(-10px); }
+100%{ transform:translateY(0); }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+nav{
+    flex-direction:column;
+    gap:10px;
+}
 }
 
 </style>
@@ -223,11 +229,24 @@ footer{
 
 <body>
 
+<!-- INTRO -->
+<div class="intro">
+
+<img src="racket.png" class="intro-racket">
+
+<div class="intro-ball"></div>
+
+<div class="intro-text">SPINSET ACADEMY</div>
+
+</div>
+
+<!-- CURSOR -->
 <div class="cursor"></div>
 
+<!-- NAV -->
 <nav>
 
-<div class="logo">SPINSET</div>
+<div class="logo">SpinSet</div>
 
 <div>
 <a href="#about">About</a>
@@ -239,51 +258,58 @@ footer{
 
 </nav>
 
+<!-- HERO -->
 <section class="hero">
 
-<div class="hero-content">
+<div>
 
 <img src="logo.png" class="hero-logo">
 
 <p>Elite Youth Tennis Training in Round Rock</p>
 
-<div class="hero-buttons">
-
-<a href="#classes" class="btn btn-main">View Classes</a>
-<a href="#contact" class="btn btn-outline">Contact</a>
-
-</div>
+<a href="#classes">View Classes</a>
 
 </div>
 
 </section>
 
+<!-- ABOUT -->
 <section id="about">
+
 <h2 class="title">About</h2>
+
 <div class="card">
-We train young athletes in a fun, structured, and competitive environment.
+We train young tennis players with focus on fundamentals, confidence, and movement.
 </div>
+
 </section>
 
+<!-- CLASSES -->
 <section id="classes">
+
 <h2 class="title">Classes</h2>
+
 <div class="grid">
 
 <div class="card">
 <h3>Group Lessons</h3>
-<p>Beginner-friendly tennis training.</p>
+<p>Beginner friendly training sessions.</p>
 </div>
 
 <div class="card">
 <h3>Private Lessons</h3>
-<p>1-on-1 coaching for faster improvement.</p>
+<p>1-on-1 coaching for fast improvement.</p>
 </div>
 
 </div>
+
 </section>
 
+<!-- PRICING -->
 <section id="pricing">
+
 <h2 class="title">Pricing</h2>
+
 <div class="grid">
 
 <div class="card">
@@ -297,39 +323,38 @@ We train young athletes in a fun, structured, and competitive environment.
 </div>
 
 </div>
+
 </section>
 
+<!-- FAQ -->
 <section id="faq">
+
 <h2 class="title">FAQ</h2>
 
-<div class="faq">
-<b>Do I need experience?</b>
-<p>No.</p>
-</div>
-
-<div class="faq">
-<b>Where are lessons?</b>
-<p>Old Settlers Park, Round Rock.</p>
+<div class="card">
+<b>Do beginners join?</b>
+<p>Yes, all levels welcome.</p>
 </div>
 
 </section>
 
+<!-- CONTACT -->
 <section id="contact">
+
 <h2 class="title">Contact</h2>
+
 <div class="contact">
 spinsetacademy@gmail.com
 </div>
+
 </section>
 
-<footer>
-SpinSet Academy • Round Rock
-</footer>
-
 <script>
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",(e)=>{
-cursor.style.left=e.clientX+"px";
-cursor.style.top=e.clientY+"px";
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", e=>{
+cursor.style.left = e.clientX + "px";
+cursor.style.top = e.clientY + "px";
 });
 </script>
 
