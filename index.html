@@ -7,7 +7,7 @@
 
 <title>SpinSet Academy</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -19,71 +19,83 @@
 }
 
 body{
-    font-family:'Outfit',sans-serif;
+    background:#071008;
+    color:white;
+    font-family:Outfit,sans-serif;
     overflow-x:hidden;
-    background:#f5f7f8;
-    color:#111;
 }
 
-/* CURSOR (light tennis ball) */
+/* CURSOR */
 .cursor{
-    width:16px;
-    height:16px;
-    background:#7cf78a;
+    width:18px;
+    height:18px;
+    background:#d7ff3f;
     border-radius:50%;
     position:fixed;
     transform:translate(-50%,-50%);
     pointer-events:none;
     z-index:9999;
-    box-shadow:0 0 18px rgba(124,247,138,0.8);
+    box-shadow:0 0 20px #d7ff3f;
 }
 
 /* INTRO */
 .intro{
     position:fixed;
     inset:0;
-    background:#f5f7f8;
+    background:#071008;
+    z-index:99999;
     display:flex;
     justify-content:center;
     align-items:center;
-    flex-direction:column;
-    z-index:99999;
-    animation:fadeOut 1s ease forwards;
-    animation-delay:3.8s;
+    overflow:hidden;
 }
 
-/* RACKET ANIMATION */
+/* BIGGER RACKET */
 .intro-racket{
-    width:220px;
     position:absolute;
-    left:-250px;
-    top:45%;
-    transform:rotate(-35deg);
+    width:420px;
+    left:-500px;
+    top:35%;
+    transform:rotate(-45deg);
     animation:racketSwing 2.2s ease forwards;
 }
 
-/* BALL */
+/* BALL THAT GOES THROUGH SCREEN */
 .intro-ball{
-    width:38px;
-    height:38px;
-    background:#7cf78a;
-    border-radius:50%;
     position:absolute;
-    left:-120px;
+    width:45px;
+    height:45px;
+    background:#d7ff3f;
+    border-radius:50%;
     top:50%;
-    box-shadow:0 0 20px #7cf78a;
-    animation:ballFly 2.2s ease forwards;
+    left:-120px;
+    box-shadow:0 0 25px #d7ff3f;
+    animation:ballSmash 2.2s ease forwards;
 }
 
 /* LOGO */
-.intro-text{
-    font-family:'Orbitron',sans-serif;
-    font-size:40px;
-    letter-spacing:3px;
+.intro-logo{
+    width:260px;
     opacity:0;
-    animation:fadeIn 1s ease forwards;
+    animation:logoAppear 1s ease forwards;
     animation-delay:2s;
-    color:#1f3b28;
+    filter:drop-shadow(0 0 40px #d7ff3f);
+}
+
+.intro-text{
+    margin-top:20px;
+    font-family:Orbitron,sans-serif;
+    font-size:40px;
+    letter-spacing:4px;
+    opacity:0;
+    animation:textAppear 1s ease forwards;
+    animation-delay:2.4s;
+}
+
+/* FADE OUT INTRO */
+.intro{
+    animation:introFade 1s ease forwards;
+    animation-delay:4s;
 }
 
 /* NAV */
@@ -93,30 +105,15 @@ nav{
     width:100%;
     display:flex;
     justify-content:space-between;
-    align-items:center;
-    padding:18px 8%;
-    background:rgba(255,255,255,0.7);
-    backdrop-filter:blur(10px);
+    padding:20px 8%;
+    background:rgba(0,0,0,0.5);
     z-index:1000;
-    border-bottom:1px solid rgba(0,0,0,0.06);
-}
-
-.logo{
-    font-family:'Orbitron',sans-serif;
-    font-size:26px;
-    font-weight:700;
-    color:#2d6a4f;
 }
 
 nav a{
+    color:white;
+    margin-left:20px;
     text-decoration:none;
-    color:#222;
-    margin-left:22px;
-    font-weight:500;
-}
-
-nav a:hover{
-    color:#2d6a4f;
 }
 
 /* HERO */
@@ -126,101 +123,33 @@ nav a:hover{
     justify-content:center;
     align-items:center;
     text-align:center;
-    padding:120px 20px;
-    background:linear-gradient(135deg,#f5f7f8,#e8f5ea);
-}
-
-.hero-logo{
-    width:300px;
-    max-width:80%;
-    margin-bottom:25px;
-    animation:float 4s ease-in-out infinite;
-}
-
-.hero p{
-    font-size:22px;
-    color:#333;
-    margin-bottom:30px;
-}
-
-.hero a{
-    display:inline-block;
-    padding:14px 28px;
-    background:#7cf78a;
-    color:#0b2e1a;
-    border-radius:12px;
-    text-decoration:none;
-    font-weight:600;
-}
-
-/* SECTIONS */
-section{
-    padding:100px 10%;
-}
-
-.title{
-    text-align:center;
-    font-size:40px;
-    margin-bottom:40px;
-    font-family:'Orbitron',sans-serif;
-    color:#2d6a4f;
-}
-
-/* CARDS */
-.card{
-    background:white;
-    padding:30px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.06);
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
-}
-
-/* CONTACT */
-.contact{
-    background:#2d6a4f;
-    color:white;
-    padding:40px;
-    border-radius:18px;
 }
 
 /* ANIMATIONS */
+
 @keyframes racketSwing{
-0%{ left:-250px; transform:rotate(-35deg); }
-70%{ left:45%; transform:rotate(15deg); }
-100%{ left:40%; transform:rotate(0deg); }
+    0%{left:-500px; transform:rotate(-60deg);}
+    60%{left:40%; transform:rotate(25deg);}
+    100%{left:35%; transform:rotate(0deg);}
 }
 
-@keyframes ballFly{
-0%{ left:-120px; }
-70%{ left:50%; }
-100%{ left:50%; opacity:0; }
+/* BALL GOES THROUGH SCREEN */
+@keyframes ballSmash{
+    0%{left:-120px; transform:scale(1);}
+    50%{left:45%; transform:scale(1.4);}
+    100%{left:120%; transform:scale(0.8); opacity:0;}
 }
 
-@keyframes fadeOut{
-to{ opacity:0; visibility:hidden; }
+@keyframes logoAppear{
+    to{opacity:1;}
 }
 
-@keyframes fadeIn{
-to{ opacity:1; }
+@keyframes textAppear{
+    to{opacity:1;}
 }
 
-@keyframes float{
-0%{ transform:translateY(0); }
-50%{ transform:translateY(-10px); }
-100%{ transform:translateY(0); }
-}
-
-/* MOBILE */
-@media(max-width:768px){
-nav{
-    flex-direction:column;
-    gap:10px;
-}
+@keyframes introFade{
+    to{opacity:0; visibility:hidden;}
 }
 
 </style>
@@ -229,25 +158,24 @@ nav{
 
 <body>
 
+<div class="cursor"></div>
+
 <!-- INTRO -->
 <div class="intro">
 
 <img src="racket.png" class="intro-racket">
-
 <div class="intro-ball"></div>
 
+<div style="text-align:center;">
+<img src="logo.png" class="intro-logo">
 <div class="intro-text">SPINSET ACADEMY</div>
+</div>
 
 </div>
 
-<!-- CURSOR -->
-<div class="cursor"></div>
-
 <!-- NAV -->
 <nav>
-
-<div class="logo">SpinSet</div>
-
+<div>SPINSET</div>
 <div>
 <a href="#about">About</a>
 <a href="#classes">Classes</a>
@@ -255,104 +183,17 @@ nav{
 <a href="#faq">FAQ</a>
 <a href="#contact">Contact</a>
 </div>
-
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-
-<div>
-
-<img src="logo.png" class="hero-logo">
-
-<p>Elite Youth Tennis Training in Round Rock</p>
-
-<a href="#classes">View Classes</a>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-
-<h2 class="title">About</h2>
-
-<div class="card">
-We train young tennis players with focus on fundamentals, confidence, and movement.
-</div>
-
-</section>
-
-<!-- CLASSES -->
-<section id="classes">
-
-<h2 class="title">Classes</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Group Lessons</h3>
-<p>Beginner friendly training sessions.</p>
-</div>
-
-<div class="card">
-<h3>Private Lessons</h3>
-<p>1-on-1 coaching for fast improvement.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-
-<h2 class="title">Pricing</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Group</h3>
-<p>$12/hr</p>
-</div>
-
-<div class="card">
-<h3>Private</h3>
-<p>$25/hr</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-
-<h2 class="title">FAQ</h2>
-
-<div class="card">
-<b>Do beginners join?</b>
-<p>Yes, all levels welcome.</p>
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-
-<h2 class="title">Contact</h2>
-
-<div class="contact">
-spinsetacademy@gmail.com
-</div>
-
+<h1>Elite Tennis Training</h1>
 </section>
 
 <script>
 const cursor = document.querySelector(".cursor");
 
-document.addEventListener("mousemove", e=>{
+document.addEventListener("mousemove",(e)=>{
 cursor.style.left = e.clientX + "px";
 cursor.style.top = e.clientY + "px";
 });
