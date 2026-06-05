@@ -26,23 +26,24 @@ html{
 }
 
 body{
-    overflow-x:hidden;
     font-family:'Outfit',sans-serif;
-    background:#f6f8f6;
+    background:#f6f8f7;
     color:#111;
+    overflow-x:hidden;
 }
 
 /* CURSOR (TENNIS BALL TRAIL) */
 .cursor{
-    position:fixed;
     width:18px;
     height:18px;
     border-radius:50%;
-    background:#7CFF6B;
+    background:#d7ff3f;
+    position:fixed;
     pointer-events:none;
-    z-index:9999;
-    box-shadow:0 0 12px #7CFF6B;
     transform:translate(-50%,-50%);
+    z-index:9999;
+
+    box-shadow:0 0 15px rgba(215,255,63,0.6);
 }
 
 .trail{
@@ -50,8 +51,7 @@ body{
     width:10px;
     height:10px;
     border-radius:50%;
-    background:#7CFF6B;
-    opacity:0.3;
+    background:rgba(215,255,63,0.5);
     pointer-events:none;
     z-index:9998;
 }
@@ -65,22 +65,28 @@ nav{
     justify-content:space-between;
     align-items:center;
     padding:18px 8%;
-    background:rgba(255,255,255,0.75);
-    backdrop-filter:blur(12px);
+
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(0,0,0,0.06);
+
     z-index:1000;
-    border-bottom:1px solid rgba(0,0,0,0.05);
+}
+
+.logo img{
+    height:42px;
 }
 
 nav a{
     margin-left:22px;
     text-decoration:none;
-    color:#222;
+    color:#111;
     font-weight:600;
-    transition:0.3s;
 }
 
 nav a:hover{
-    color:#2ecc71;
+    color:#2a7a3f;
 }
 
 /* HERO */
@@ -91,110 +97,120 @@ nav a:hover{
     justify-content:center;
     text-align:center;
     position:relative;
-    overflow:hidden;
 
-    background:
-    radial-gradient(circle at 20% 20%, #dfffe2, transparent 40%),
-    radial-gradient(circle at 80% 70%, #e8ffe8, transparent 45%),
-    #f6f8f6;
+    background:linear-gradient(120deg,#ffffff,#eaf7ee);
+    overflow:hidden;
 }
 
-/* STADIUM LIGHT EFFECT */
+/* STADIUM SPOTLIGHT */
 .hero::before{
     content:"";
     position:absolute;
-    inset:-200px;
-    background:
-    radial-gradient(circle, rgba(120,255,150,0.25), transparent 60%);
-    animation:lightMove 6s ease-in-out infinite;
+    width:700px;
+    height:700px;
+    background:radial-gradient(circle,rgba(215,255,63,0.25),transparent 60%);
+    top:-200px;
+    left:-200px;
+    animation:spotlight 6s ease-in-out infinite;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:radial-gradient(circle,rgba(0,180,90,0.15),transparent 60%);
+    bottom:-200px;
+    right:-200px;
+    animation:spotlight2 7s ease-in-out infinite;
 }
 
 .hero-content{
     position:relative;
-    z-index:2;
     max-width:900px;
     padding:20px;
-    transform-style:preserve-3d;
 }
 
 /* LOGO */
 .hero-logo{
-    width:280px;
-    margin-bottom:25px;
+    width:320px;
+    margin-bottom:20px;
     animation:float 4s ease-in-out infinite;
 }
 
-/* SUBTITLE */
-.hero p{
+/* TEXT */
+.subtitle{
     font-size:22px;
+    margin-top:10px;
     color:#333;
-    margin-bottom:30px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn{
     display:inline-block;
-    padding:14px 28px;
-    border-radius:12px;
+    margin-top:25px;
+    padding:14px 30px;
+    border-radius:14px;
+    background:#2a7a3f;
+    color:white;
     text-decoration:none;
     font-weight:700;
     transition:0.3s;
 }
 
-.btn-main{
-    background:#2ecc71;
-    color:white;
-}
-
-.btn-main:hover{
+.btn:hover{
     transform:translateY(-4px) scale(1.05);
 }
 
 /* SECTIONS */
 section{
-    padding:110px 10%;
+    padding:100px 10%;
 }
 
-.section-title{
+/* TITLES */
+.title{
     text-align:center;
-    font-size:38px;
-    margin-bottom:45px;
+    font-size:40px;
+    margin-bottom:40px;
+    font-weight:800;
 }
 
-/* CARDS (3D HOVER PHYSICS) */
+/* CARDS (3D HOVER) */
 .card{
     background:white;
+    padding:30px;
     border-radius:18px;
-    padding:28px;
-    box-shadow:0 12px 30px rgba(0,0,0,0.06);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
     transition:0.4s;
+
     transform-style:preserve-3d;
 }
 
 .card:hover{
-    transform:rotateX(6deg) rotateY(-6deg) translateY(-8px);
-    box-shadow:0 18px 40px rgba(0,0,0,0.1);
+    transform:rotateX(8deg) rotateY(-8deg) scale(1.05);
 }
 
 /* GRID */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:22px;
+    gap:25px;
 }
 
 /* FAQ */
 .faq{
     background:white;
-    padding:22px;
-    border-radius:14px;
-    margin-bottom:14px;
-    border:1px solid rgba(0,0,0,0.05);
+    padding:25px;
+    border-radius:16px;
+    margin-bottom:15px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
 }
 
 /* CONTACT */
 .contact{
-    background:#2ecc71;
+    background:#2a7a3f;
     color:white;
     padding:40px;
     border-radius:18px;
@@ -204,14 +220,15 @@ section{
 footer{
     text-align:center;
     padding:25px;
-    color:#666;
+    background:#111;
+    color:white;
 }
 
 /* SCROLL REVEAL */
 .reveal{
     opacity:0;
     transform:translateY(40px);
-    transition:0.8s ease;
+    transition:all 0.8s ease;
 }
 
 .reveal.active{
@@ -222,13 +239,17 @@ footer{
 /* ANIMATIONS */
 @keyframes float{
     0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-10px);}
+    50%{transform:translateY(-12px);}
 }
 
-@keyframes lightMove{
-    0%{transform:translateX(0);}
-    50%{transform:translateX(60px);}
-    100%{transform:translateX(0);}
+@keyframes spotlight{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(120px,80px);}
+}
+
+@keyframes spotlight2{
+    0%,100%{transform:translate(0,0);}
+    50%{transform:translate(-100px,-60px);}
 }
 
 </style>
@@ -242,7 +263,10 @@ footer{
 
 <!-- NAV -->
 <nav>
-<div class="logo"><img src="logo.png" style="height:42px"></div>
+
+<div class="logo">
+<img src="logo.png" alt="logo">
+</div>
 
 <div>
 <a href="#about">About</a>
@@ -251,6 +275,7 @@ footer{
 <a href="#faq">FAQ</a>
 <a href="#contact">Contact</a>
 </div>
+
 </nav>
 
 <!-- HERO -->
@@ -260,9 +285,11 @@ footer{
 
 <img src="logo.png" class="hero-logo">
 
-<p>Modern and fun coaching for young tennis athletes</p>
+<p class="subtitle">
+Modern and fun coaching for young tennis athletes
+</p>
 
-<a href="#classes" class="btn btn-main">View Classes</a>
+<a href="#classes" class="btn">View Classes</a>
 
 </div>
 
@@ -271,29 +298,30 @@ footer{
 <!-- ABOUT -->
 <section id="about" class="reveal">
 
-<h2 class="section-title">About</h2>
+<h2 class="title">ABOUT</h2>
 
-<div class="card">
-We focus on building strong tennis fundamentals, confidence, and movement skills in a fun and structured environment for young athletes.
-</div>
+<p>
+SpinSet Academy provides modern tennis coaching focused on fundamentals,
+confidence, and enjoyment for young athletes.
+</p>
 
 </section>
 
 <!-- CLASSES -->
 <section id="classes" class="reveal">
 
-<h2 class="section-title">Classes</h2>
+<h2 class="title">CLASSES</h2>
 
 <div class="grid">
 
 <div class="card">
 <h3>Group Lessons</h3>
-<p>Beginner friendly training focusing on basics and consistency.</p>
+<p>Fun and structured beginner training.</p>
 </div>
 
 <div class="card">
 <h3>Private Lessons</h3>
-<p>One-on-one coaching for faster improvement.</p>
+<p>1-on-1 focused improvement sessions.</p>
 </div>
 
 </div>
@@ -303,7 +331,7 @@ We focus on building strong tennis fundamentals, confidence, and movement skills
 <!-- PRICING -->
 <section id="pricing" class="reveal">
 
-<h2 class="section-title">Pricing</h2>
+<h2 class="title">PRICING</h2>
 
 <div class="grid">
 
@@ -324,21 +352,21 @@ We focus on building strong tennis fundamentals, confidence, and movement skills
 <!-- FAQ -->
 <section id="faq" class="reveal">
 
-<h2 class="section-title">FAQ</h2>
+<h2 class="title">FAQ</h2>
 
 <div class="faq">
-<b>Do I need experience?</b>
-<p>No — beginners are welcome.</p>
+<b>Do beginners need experience?</b>
+<p>No — all levels are welcome.</p>
 </div>
 
 <div class="faq">
 <b>Where are lessons held?</b>
-<p>Old Settlers Park Tennis Courts, Round Rock.</p>
+<p>Round Rock tennis courts.</p>
 </div>
 
 <div class="faq">
 <b>What should I bring?</b>
-<p>A racket, water, and athletic shoes.</p>
+<p>Tennis racket, water, and sports shoes.</p>
 </div>
 
 </section>
@@ -346,11 +374,14 @@ We focus on building strong tennis fundamentals, confidence, and movement skills
 <!-- CONTACT -->
 <section id="contact" class="reveal">
 
-<h2 class="section-title">Contact</h2>
+<h2 class="title">CONTACT</h2>
 
 <div class="contact">
-Email: spinsetacademy@gmail.com<br>
-Phone: 5128397026
+
+<p>spinsetacademy@gmail.com</p>
+<br>
+<p>5128397026</p>
+
 </div>
 
 </section>
@@ -364,21 +395,21 @@ SpinSet Academy • Round Rock, Texas
 /* CURSOR FOLLOW */
 const cursor = document.querySelector(".cursor");
 
-document.addEventListener("mousemove", (e)=>{
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left = e.clientX + "px";
+cursor.style.top = e.clientY + "px";
 });
 
 /* SCROLL REVEAL */
-const reveals = document.querySelectorAll(".reveal");
+const items = document.querySelectorAll(".reveal");
 
-window.addEventListener("scroll", ()=>{
-    for(let el of reveals){
-        let top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            el.classList.add("active");
-        }
-    }
+window.addEventListener("scroll",()=>{
+items.forEach(el=>{
+const top = el.getBoundingClientRect().top;
+if(top < window.innerHeight - 100){
+el.classList.add("active");
+}
+});
 });
 
 </script>
