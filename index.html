@@ -7,86 +7,72 @@
 
 <title>SpinSet Academy</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* =========================
-RESET
-========================= */
-
+/* RESET */
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    font-family:'Poppins',sans-serif;
+    font-family:'Outfit',sans-serif;
     background:#f6f8f6;
     color:#111;
     overflow-x:hidden;
 }
 
-/* =========================
-CURSOR (BOUNCING TENNIS BALL + TRAIL)
-========================= */
-
-.cursor{
-    position:fixed;
+/* CURSOR + TRAIL */
+.ball{
     width:18px;
     height:18px;
+    background:#ffd84d;
     border-radius:50%;
-    background:#7CFC90;
+    position:fixed;
     pointer-events:none;
     z-index:9999;
-    transform:translate(-50%,-50%);
-    box-shadow:0 0 15px rgba(124,252,144,0.8);
+    box-shadow:0 0 15px rgba(255,216,77,0.8);
 }
 
-.cursor-trail{
-    position:fixed;
+.trail{
     width:10px;
     height:10px;
+    opacity:0.4;
+    background:#ffd84d;
     border-radius:50%;
-    background:#b6ffd0;
-    opacity:0.5;
+    position:fixed;
     pointer-events:none;
-    z-index:9998;
 }
 
-/* =========================
-NAV
-========================= */
-
+/* NAV */
 nav{
     position:fixed;
     top:0;
     width:100%;
+    padding:18px 8%;
     display:flex;
     justify-content:space-between;
-    padding:18px 8%;
-    background:rgba(255,255,255,0.75);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid #e6e6e6;
+    align-items:center;
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(12px);
     z-index:1000;
 }
 
+.logo img{
+    height:40px;
+}
+
 nav a{
-    margin-left:20px;
+    margin-left:18px;
     text-decoration:none;
     color:#111;
     font-weight:600;
 }
 
-/* =========================
-HERO (STADIUM LIGHT EFFECT + PARALLAX)
-========================= */
-
+/* HERO */
 .hero{
     height:100vh;
     display:flex;
@@ -94,93 +80,64 @@ HERO (STADIUM LIGHT EFFECT + PARALLAX)
     align-items:center;
     text-align:center;
     position:relative;
+    background:linear-gradient(135deg,#e8f5e9,#ffffff);
     overflow:hidden;
-    background:linear-gradient(to bottom,#ffffff,#f2f6f2);
 }
 
-/* stadium spotlight */
+/* STADIUM LIGHT EFFECT */
 .hero::before{
     content:"";
     position:absolute;
-    width:800px;
-    height:800px;
-    background:radial-gradient(circle,rgba(124,252,144,0.25),transparent 60%);
-    top:-200px;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,rgba(255,215,0,0.25),transparent 60%);
+    top:-150px;
     left:50%;
     transform:translateX(-50%);
     animation:lightMove 6s infinite ease-in-out;
 }
 
-/* =========================
-CONTENT
-========================= */
-
-.hero-content{
-    position:relative;
+/* PARALLAX LOGO */
+.hero img{
+    width:280px;
+    animation:float 4s ease-in-out infinite;
     z-index:2;
 }
 
-.hero h1{
-    font-size:64px;
-    letter-spacing:-1px;
-}
-
-.hero p{
-    font-size:20px;
-    margin-top:10px;
-    opacity:0.8;
-}
-
-.btn{
-    display:inline-block;
-    margin-top:25px;
-    padding:14px 28px;
-    background:#111;
-    color:white;
-    border-radius:10px;
-    text-decoration:none;
-    transition:0.3s;
-}
-
-.btn:hover{
-    transform:scale(1.05);
-}
-
-/* =========================
-SECTIONS
-========================= */
-
+/* SECTIONS */
 section{
     padding:100px 10%;
 }
 
-/* =========================
-CARDS (3D HOVER PHYSICS)
-========================= */
+.title{
+    font-size:40px;
+    text-align:center;
+    margin-bottom:40px;
+}
 
+/* CARDS */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:25px;
 }
 
 .card{
     background:white;
+    padding:30px;
     border-radius:18px;
-    padding:25px;
     box-shadow:0 10px 30px rgba(0,0,0,0.08);
-    transition:0.4s;
+
     transform-style:preserve-3d;
+    transition:0.3s;
 }
 
+/* 3D HOVER */
 .card:hover{
-    transform:rotateX(6deg) rotateY(-6deg) translateY(-8px);
+    transform:rotateX(8deg) rotateY(-8deg) scale(1.03);
 }
 
-/* =========================
-SCROLL REVEAL
-========================= */
-
+/* SCROLL REVEAL */
 .reveal{
     opacity:0;
     transform:translateY(40px);
@@ -192,13 +149,24 @@ SCROLL REVEAL
     transform:translateY(0);
 }
 
-/* =========================
-ANIMATIONS
-========================= */
+/* CONTACT */
+.contact{
+    background:#fff;
+    padding:40px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+/* ANIMATIONS */
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+}
 
 @keyframes lightMove{
-    0%,100%{transform:translateX(-50%) translateY(0);}
-    50%{transform:translateX(-45%) translateY(20px);}
+    0%,100%{transform:translateX(-50%) scale(1);}
+    50%{transform:translateX(-40%) scale(1.1);}
 }
 
 </style>
@@ -207,13 +175,15 @@ ANIMATIONS
 
 <body>
 
-<!-- CURSOR -->
-<div class="cursor"></div>
-<div class="cursor-trail"></div>
+<!-- BALL CURSOR -->
+<div class="ball"></div>
 
 <!-- NAV -->
 <nav>
-    <div><b>SPINSET</b></div>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
+
     <div>
         <a href="#about">About</a>
         <a href="#classes">Classes</a>
@@ -224,47 +194,34 @@ ANIMATIONS
 <!-- HERO -->
 <section class="hero">
 
-<div class="hero-content">
-
-<h1>SpinSet Academy</h1>
-<p>Elite Youth Tennis Training in Round Rock</p>
-
-<a class="btn" href="#classes">View Classes</a>
-
-</div>
+    <img src="logo.png" class="parallax">
 
 </section>
 
 <!-- ABOUT -->
-<section class="reveal" id="about">
+<section id="about" class="reveal">
 
-<h2>About</h2>
-<p>
-We train young tennis players with focus on movement, discipline, and consistency.
-</p>
+<h2 class="title">About</h2>
+
+<div class="card">
+SpinSet Academy trains young players with focus on movement, consistency, and confidence.
+</div>
 
 </section>
 
 <!-- CLASSES -->
-<section class="reveal" id="classes">
+<section id="classes" class="reveal">
 
-<h2>Classes</h2>
+<h2 class="title">Classes</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>Group Training</h3>
-<p>Beginner-friendly sessions.</p>
+Group Training for beginners
 </div>
 
 <div class="card">
-<h3>Private Coaching</h3>
-<p>1-on-1 improvement focus.</p>
-</div>
-
-<div class="card">
-<h3>Development</h3>
-<p>Advanced skill building.</p>
+Private Coaching sessions
 </div>
 
 </div>
@@ -272,54 +229,61 @@ We train young tennis players with focus on movement, discipline, and consistenc
 </section>
 
 <!-- CONTACT -->
-<section class="reveal" id="contact">
+<section id="contact" class="reveal">
 
-<h2>Contact</h2>
-<p>spinsetacademy@gmail.com</p>
+<h2 class="title">Contact</h2>
+
+<div class="contact">
+spinsetacademy@gmail.com
+</div>
 
 </section>
 
-<!-- SCRIPT -->
 <script>
 
-/* CURSOR + TRAIL */
+/* BALL CURSOR + TRAIL */
+const ball = document.querySelector('.ball');
+let trail = [];
 
-const cursor = document.querySelector(".cursor");
-const trail = document.querySelector(".cursor-trail");
+document.addEventListener('mousemove', (e)=>{
 
-let mouseX = 0, mouseY = 0;
-let trailX = 0, trailY = 0;
+ball.style.left = e.clientX + 'px';
+ball.style.top = e.clientY + 'px';
 
-document.addEventListener("mousemove",(e)=>{
-    mouseX = e.clientX;
-    mouseY = e.clientY;
+trail.push({x:e.clientX,y:e.clientY});
+
+if(trail.length > 12) trail.shift();
+
+document.querySelectorAll('.trail').forEach(t=>t.remove());
+
+trail.forEach((p,i)=>{
+    let d = document.createElement('div');
+    d.className='trail';
+    d.style.left = p.x + 'px';
+    d.style.top = p.y + 'px';
+    d.style.opacity = i/12;
+    document.body.appendChild(d);
 });
 
-function animate(){
-    cursor.style.left = mouseX + "px";
-    cursor.style.top = mouseY + "px";
-
-    trailX += (mouseX - trailX) * 0.15;
-    trailY += (mouseY - trailY) * 0.15;
-
-    trail.style.left = trailX + "px";
-    trail.style.top = trailY + "px";
-
-    requestAnimationFrame(animate);
-}
-animate();
+});
 
 /* SCROLL REVEAL */
-
-const reveals = document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll",()=>{
-    for(let r of reveals){
-        let top = r.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            r.classList.add("active");
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add('active');
         }
-    }
+    });
+});
+
+document.querySelectorAll('.reveal').forEach(el=>{
+    observer.observe(el);
+});
+
+/* PARALLAX */
+document.addEventListener('mousemove',(e)=>{
+    document.querySelector('.parallax').style.transform =
+    `translate(${e.clientX*0.02}px, ${e.clientY*0.02}px)`;
 });
 
 </script>
