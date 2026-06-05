@@ -7,233 +7,198 @@
 
 <title>SpinSet Academy</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-/* RESET */
+/* =========================
+RESET
+========================= */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    font-family:'Outfit',sans-serif;
-    overflow-x:hidden;
-    background:#f7f9f7;
+    font-family:'Poppins',sans-serif;
+    background:#f6f8f6;
     color:#111;
+    overflow-x:hidden;
 }
 
-/* CURSOR (tennis ball trail feel) */
+/* =========================
+CURSOR (BOUNCING TENNIS BALL + TRAIL)
+========================= */
+
 .cursor{
-    width:14px;
-    height:14px;
-    border-radius:50%;
-    background:#7CFF6B;
     position:fixed;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    z-index:9999;
-    box-shadow:0 0 15px rgba(124,255,107,0.8);
-}
-
-/* SMOOTH FOLLOW TRAIL */
-.cursor::after{
-    content:"";
-    position:absolute;
-    width:30px;
-    height:30px;
+    width:18px;
+    height:18px;
     border-radius:50%;
-    border:2px solid rgba(124,255,107,0.4);
+    background:#7CFC90;
+    pointer-events:none;
+    z-index:9999;
     transform:translate(-50%,-50%);
-    left:50%;
-    top:50%;
+    box-shadow:0 0 15px rgba(124,252,144,0.8);
 }
 
-/* NAV */
+.cursor-trail{
+    position:fixed;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#b6ffd0;
+    opacity:0.5;
+    pointer-events:none;
+    z-index:9998;
+}
+
+/* =========================
+NAV
+========================= */
+
 nav{
     position:fixed;
-    width:100%;
     top:0;
+    width:100%;
     display:flex;
     justify-content:space-between;
     padding:18px 8%;
     background:rgba(255,255,255,0.75);
-    backdrop-filter:blur(12px);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #e6e6e6;
     z-index:1000;
-    border-bottom:1px solid #e5e5e5;
-}
-
-.logo{
-    font-weight:800;
-    font-size:24px;
-    color:#2e7d32;
 }
 
 nav a{
     margin-left:20px;
     text-decoration:none;
-    color:#222;
-    font-weight:500;
+    color:#111;
+    font-weight:600;
 }
 
-/* HERO */
+/* =========================
+HERO (STADIUM LIGHT EFFECT + PARALLAX)
+========================= */
+
 .hero{
-    min-height:100vh;
+    height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
     position:relative;
     overflow:hidden;
-    background:linear-gradient(135deg,#eaf6ea,#ffffff);
+    background:linear-gradient(to bottom,#ffffff,#f2f6f2);
 }
 
-/* stadium spotlight effect */
+/* stadium spotlight */
 .hero::before{
     content:"";
     position:absolute;
-    width:600px;
-    height:600px;
-    background:radial-gradient(circle,rgba(124,255,107,0.25),transparent 70%);
+    width:800px;
+    height:800px;
+    background:radial-gradient(circle,rgba(124,252,144,0.25),transparent 60%);
     top:-200px;
-    left:-200px;
-    animation:moveLight 8s infinite ease-in-out;
+    left:50%;
+    transform:translateX(-50%);
+    animation:lightMove 6s infinite ease-in-out;
 }
+
+/* =========================
+CONTENT
+========================= */
 
 .hero-content{
-    max-width:900px;
+    position:relative;
     z-index:2;
-    transform:translateY(40px);
-    opacity:0;
-    animation:fadeUp 1.2s ease forwards;
 }
 
-/* LOGO */
-.hero img{
-    width:280px;
-    margin-bottom:20px;
-    animation:float 4s ease-in-out infinite;
-}
-
-/* TEXT */
 .hero h1{
-    font-size:48px;
-    margin-bottom:10px;
+    font-size:64px;
+    letter-spacing:-1px;
 }
 
 .hero p{
-    font-size:18px;
-    margin-bottom:25px;
-    color:#444;
+    font-size:20px;
+    margin-top:10px;
+    opacity:0.8;
 }
 
-/* BUTTONS */
 .btn{
     display:inline-block;
-    padding:14px 26px;
-    border-radius:10px;
-    background:#2e7d32;
+    margin-top:25px;
+    padding:14px 28px;
+    background:#111;
     color:white;
+    border-radius:10px;
     text-decoration:none;
-    font-weight:600;
     transition:0.3s;
 }
 
 .btn:hover{
-    transform:translateY(-4px) scale(1.03);
+    transform:scale(1.05);
 }
 
-/* SECTIONS */
+/* =========================
+SECTIONS
+========================= */
+
 section{
     padding:100px 10%;
 }
 
-/* SECTION TITLE */
-.title{
-    font-size:34px;
-    text-align:center;
-    margin-bottom:40px;
-}
+/* =========================
+CARDS (3D HOVER PHYSICS)
+========================= */
 
-/* CARDS */
-.card{
-    background:white;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
-    transition:0.4s;
-    transform-style:preserve-3d;
-}
-
-/* 3D HOVER PHYSICS */
-.card:hover{
-    transform:rotateX(6deg) rotateY(-6deg) translateY(-10px);
-}
-
-/* GRID */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
 }
 
-/* FAQ */
-.faq{
+.card{
     background:white;
-    padding:20px;
-    border-radius:12px;
-    margin-bottom:12px;
-    border:1px solid #eee;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.4s;
+    transform-style:preserve-3d;
 }
 
-/* CONTACT */
-.contact{
-    background:#2e7d32;
-    color:white;
-    padding:40px;
-    border-radius:14px;
+.card:hover{
+    transform:rotateX(6deg) rotateY(-6deg) translateY(-8px);
 }
 
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:30px;
-    color:#666;
-}
+/* =========================
+SCROLL REVEAL
+========================= */
 
-/* SCROLL ANIMATION */
-.hidden{
+.reveal{
     opacity:0;
     transform:translateY(40px);
-    transition:all 0.8s ease;
+    transition:0.8s ease;
 }
 
-.show{
+.reveal.active{
     opacity:1;
     transform:translateY(0);
 }
 
-/* ANIMATIONS */
-@keyframes fadeUp{
-    to{opacity:1; transform:translateY(0);}
-}
+/* =========================
+ANIMATIONS
+========================= */
 
-@keyframes float{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(-10px);}
-    100%{transform:translateY(0px);}
-}
-
-@keyframes moveLight{
-    0%{transform:translate(0,0);}
-    50%{transform:translate(120px,80px);}
-    100%{transform:translate(0,0);}
+@keyframes lightMove{
+    0%,100%{transform:translateX(-50%) translateY(0);}
+    50%{transform:translateX(-45%) translateY(20px);}
 }
 
 </style>
@@ -242,17 +207,18 @@ footer{
 
 <body>
 
+<!-- CURSOR -->
 <div class="cursor"></div>
+<div class="cursor-trail"></div>
 
 <!-- NAV -->
 <nav>
-<div class="logo">SpinSet Academy</div>
-<div>
-<a href="#about">About</a>
-<a href="#classes">Classes</a>
-<a href="#faq">FAQ</a>
-<a href="#contact">Contact</a>
-</div>
+    <div><b>SPINSET</b></div>
+    <div>
+        <a href="#about">About</a>
+        <a href="#classes">Classes</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
 <!-- HERO -->
@@ -260,89 +226,100 @@ footer{
 
 <div class="hero-content">
 
-<img src="logo.png">
+<h1>SpinSet Academy</h1>
+<p>Elite Youth Tennis Training in Round Rock</p>
 
-<h1>Elite Tennis Training</h1>
-
-<p>Modern coaching for young athletes in Round Rock</p>
-
-<a class="btn" href="#classes">Get Started</a>
+<a class="btn" href="#classes">View Classes</a>
 
 </div>
 
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="hidden">
-<h2 class="title">About</h2>
-<div class="card">
-We focus on fundamentals, movement, discipline, and confidence building for young players.
-</div>
+<section class="reveal" id="about">
+
+<h2>About</h2>
+<p>
+We train young tennis players with focus on movement, discipline, and consistency.
+</p>
+
 </section>
 
 <!-- CLASSES -->
-<section id="classes" class="hidden">
-<h2 class="title">Classes</h2>
+<section class="reveal" id="classes">
+
+<h2>Classes</h2>
 
 <div class="grid">
 
 <div class="card">
 <h3>Group Training</h3>
-<p>Fun beginner sessions with structured development.</p>
+<p>Beginner-friendly sessions.</p>
 </div>
 
 <div class="card">
 <h3>Private Coaching</h3>
-<p>1-on-1 focused improvement sessions.</p>
+<p>1-on-1 improvement focus.</p>
+</div>
+
+<div class="card">
+<h3>Development</h3>
+<p>Advanced skill building.</p>
 </div>
 
 </div>
-</section>
-
-<!-- FAQ -->
-<section id="faq" class="hidden">
-<h2 class="title">FAQ</h2>
-
-<div class="faq"><b>Do I need experience?</b><p>No, beginners welcome.</p></div>
-<div class="faq"><b>Where are lessons?</b><p>Old Settlers Park Tennis Courts.</p></div>
-<div class="faq"><b>What to bring?</b><p>Racket, water, athletic shoes.</p></div>
 
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="hidden">
-<h2 class="title">Contact</h2>
+<section class="reveal" id="contact">
 
-<div class="contact">
-spinsetacademy@gmail.com
-</div>
+<h2>Contact</h2>
+<p>spinsetacademy@gmail.com</p>
+
 </section>
 
-<footer>
-SpinSet Academy • Round Rock, Texas
-</footer>
-
+<!-- SCRIPT -->
 <script>
 
-/* CURSOR FOLLOW */
+/* CURSOR + TRAIL */
+
 const cursor = document.querySelector(".cursor");
+const trail = document.querySelector(".cursor-trail");
+
+let mouseX = 0, mouseY = 0;
+let trailX = 0, trailY = 0;
 
 document.addEventListener("mousemove",(e)=>{
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+    mouseX = e.clientX;
+    mouseY = e.clientY;
 });
+
+function animate(){
+    cursor.style.left = mouseX + "px";
+    cursor.style.top = mouseY + "px";
+
+    trailX += (mouseX - trailX) * 0.15;
+    trailY += (mouseY - trailY) * 0.15;
+
+    trail.style.left = trailX + "px";
+    trail.style.top = trailY + "px";
+
+    requestAnimationFrame(animate);
+}
+animate();
 
 /* SCROLL REVEAL */
-const observer = new IntersectionObserver(entries=>{
-    entries.forEach(entry=>{
-        if(entry.isIntersecting){
-            entry.target.classList.add("show");
-        }
-    });
-});
 
-document.querySelectorAll(".hidden").forEach(el=>{
-    observer.observe(el);
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll",()=>{
+    for(let r of reveals){
+        let top = r.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            r.classList.add("active");
+        }
+    }
 });
 
 </script>
