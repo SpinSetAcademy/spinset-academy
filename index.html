@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -28,26 +28,24 @@ html{
 body{
     overflow-x:hidden;
     font-family:'Outfit',sans-serif;
-    background:#f6faf7;
-    color:#0f1a12;
+
+    /* LIGHTER PREMIUM BACKGROUND */
+    background:linear-gradient(180deg,#f7faf7,#eef6ef);
+
+    color:#102015;
 }
 
 /* CURSOR */
 .cursor{
     width:16px;
     height:16px;
+    background:#6aff7a;
     border-radius:50%;
-    background:#7CFF7A;
-
     position:fixed;
-    pointer-events:none;
-
     transform:translate(-50%,-50%);
-    z-index:99999;
-
-    box-shadow:
-    0 0 10px rgba(124,255,122,0.8),
-    0 0 25px rgba(124,255,122,0.5);
+    pointer-events:none;
+    z-index:9999;
+    box-shadow:0 0 20px rgba(106,255,122,0.6);
 }
 
 /* NAV */
@@ -55,104 +53,55 @@ nav{
     position:fixed;
     top:0;
     width:100%;
-    padding:20px 8%;
+    padding:18px 8%;
 
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    background:rgba(255,255,255,0.75);
-    backdrop-filter:blur(14px);
+    background:rgba(255,255,255,0.7);
+    backdrop-filter:blur(12px);
 
-    border-bottom:1px solid rgba(0,0,0,0.06);
+    border-bottom:1px solid rgba(0,0,0,0.05);
 
     z-index:1000;
 }
 
 .logo{
     font-family:'Orbitron',sans-serif;
-    font-size:28px;
+    font-size:26px;
     font-weight:800;
 
-    color:#2f6f3e;
-
-    letter-spacing:2px;
+    color:#1f4d2a;
 }
 
 nav a{
-    color:#2b2b2b;
-    text-decoration:none;
-
     margin-left:22px;
-
+    text-decoration:none;
+    color:#2a3b2f;
     font-weight:600;
-
-    transition:0.25s;
 }
 
 nav a:hover{
-    color:#2f6f3e;
+    color:#1f8f3a;
 }
 
 /* HERO */
 .hero{
     min-height:100vh;
-
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
 
-    position:relative;
+    padding:120px 20px 60px;
 
     background:
-    radial-gradient(circle at top,
-    #eaffea 0%,
-    #f6faf7 55%,
-    #f0f6f1 100%);
-}
-
-/* SOFT LIGHT GLOW */
-.hero::before{
-    content:"";
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    background:radial-gradient(circle,
-    rgba(124,255,122,0.25),
-    transparent 70%);
-
-    top:-120px;
-    left:-80px;
-
-    animation:floatGlow 6s ease-in-out infinite;
-}
-
-.hero::after{
-    content:"";
-    position:absolute;
-
-    width:600px;
-    height:600px;
-
-    background:radial-gradient(circle,
-    rgba(124,255,122,0.18),
-    transparent 70%);
-
-    bottom:-200px;
-    right:-120px;
-
-    animation:floatGlow2 8s ease-in-out infinite;
+    radial-gradient(circle at top,#dff5e3,#f7faf7);
 }
 
 .hero-content{
-    position:relative;
-    z-index:2;
-
     max-width:900px;
-    padding:20px;
 }
 
 /* LOGO */
@@ -160,69 +109,54 @@ nav a:hover{
     width:320px;
     max-width:80%;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 
-    animation:floatLogo 4s ease-in-out infinite;
+    filter:drop-shadow(0 10px 25px rgba(0,0,0,0.12));
 
-    filter:
-    drop-shadow(0 8px 20px rgba(0,0,0,0.12));
-}
-
-.hero h1{
-    font-family:'Orbitron',sans-serif;
-    font-size:64px;
-
-    color:#1f3d28;
-
-    margin-bottom:18px;
+    animation:float 4s ease-in-out infinite;
 }
 
 .hero p{
-    font-size:22px;
-    color:#355a40;
-
-    margin-bottom:35px;
+    font-size:26px;
+    color:#2a3b2f;
+    margin-bottom:30px;
 }
 
 /* BUTTONS */
 .hero-buttons{
     display:flex;
     justify-content:center;
-    gap:18px;
+    gap:16px;
     flex-wrap:wrap;
 }
 
 .btn{
-    padding:14px 30px;
-    border-radius:14px;
-
-    font-weight:700;
-
+    padding:14px 32px;
+    border-radius:12px;
     text-decoration:none;
-
+    font-weight:700;
     transition:0.3s;
 }
 
 .btn-main{
-    background:#4caf50;
+    background:#2f7d3b;
     color:white;
-
-    box-shadow:0 10px 25px rgba(76,175,80,0.25);
 }
 
 .btn-main:hover{
-    transform:translateY(-4px);
+    transform:translateY(-3px);
+    background:#256430;
 }
 
 .btn-outline{
-    border:2px solid rgba(76,175,80,0.35);
-    color:#2f6f3e;
-    background:rgba(255,255,255,0.6);
+    border:2px solid #2f7d3b;
+    color:#2f7d3b;
+    background:transparent;
 }
 
 .btn-outline:hover{
-    border-color:#4caf50;
-    color:#4caf50;
+    background:#2f7d3b;
+    color:white;
 }
 
 /* SECTIONS */
@@ -230,125 +164,57 @@ section{
     padding:100px 10%;
 }
 
-.section-title{
+.title{
     text-align:center;
-
-    font-size:40px;
-
-    margin-bottom:50px;
-
-    font-family:'Orbitron',sans-serif;
-
-    color:#2f6f3e;
-}
-
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:26px;
+    font-size:42px;
+    margin-bottom:40px;
+    color:#1f4d2a;
 }
 
 /* CARD */
 .card{
     background:white;
-
-    padding:32px;
-
-    border-radius:22px;
-
+    padding:30px;
+    border-radius:18px;
     box-shadow:0 10px 25px rgba(0,0,0,0.06);
-
-    transition:0.3s;
 }
 
-.card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 15px 35px rgba(0,0,0,0.1);
-}
-
-.card h3{
-    color:#2f6f3e;
-    margin-bottom:12px;
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
 }
 
 /* FAQ */
 .faq{
     background:white;
-
     padding:25px;
-
-    border-radius:18px;
-
-    margin-bottom:16px;
-
-    box-shadow:0 8px 18px rgba(0,0,0,0.05);
-}
-
-.faq b{
-    color:#2f6f3e;
+    border-radius:16px;
+    margin-bottom:15px;
 }
 
 /* CONTACT */
 .contact{
-    background:#eaf7ec;
-
+    background:#1f4d2a;
+    color:white;
     padding:40px;
-
-    border-radius:22px;
-
-    text-align:center;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+    border-radius:18px;
 }
 
 /* FOOTER */
 footer{
     text-align:center;
-
     padding:25px;
-
-    color:#666;
-
-    border-top:1px solid rgba(0,0,0,0.06);
+    background:#0f1a12;
+    color:white;
 }
 
-/* ANIMATIONS */
-
-@keyframes floatLogo{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(-10px);}
-    100%{transform:translateY(0px);}
-}
-
-@keyframes floatGlow{
-    0%{transform:translate(0,0);}
-    50%{transform:translate(40px,30px);}
-    100%{transform:translate(0,0);}
-}
-
-@keyframes floatGlow2{
-    0%{transform:translate(0,0);}
-    50%{transform:translate(-40px,-30px);}
-    100%{transform:translate(0,0);}
-}
-
-/* MOBILE */
-@media(max-width:768px){
-
-.hero h1{
-    font-size:42px;
-}
-
-nav{
-    flex-direction:column;
-    gap:10px;
-}
-
-.hero-logo{
-    width:240px;
-}
-
+/* ANIMATION */
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-10px);}
+100%{transform:translateY(0px);}
 }
 
 </style>
@@ -357,13 +223,11 @@ nav{
 
 <body>
 
-<!-- CURSOR -->
 <div class="cursor"></div>
 
-<!-- NAV -->
 <nav>
 
-<div class="logo">SpinSet</div>
+<div class="logo">SPINSET</div>
 
 <div>
 <a href="#about">About</a>
@@ -375,21 +239,18 @@ nav{
 
 </nav>
 
-<!-- HERO -->
 <section class="hero">
 
 <div class="hero-content">
 
 <img src="logo.png" class="hero-logo">
 
-<h1>Elite Youth Tennis Training</h1>
-
-<p>Round Rock • Beginner Friendly • High Performance Coaching</p>
+<p>Elite Youth Tennis Training in Round Rock</p>
 
 <div class="hero-buttons">
 
-<a class="btn btn-main" href="#classes">View Classes</a>
-<a class="btn btn-outline" href="#contact">Contact</a>
+<a href="#classes" class="btn btn-main">View Classes</a>
+<a href="#contact" class="btn btn-outline">Contact</a>
 
 </div>
 
@@ -397,31 +258,20 @@ nav{
 
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-
-<h2 class="section-title">ABOUT</h2>
-
+<h2 class="title">About</h2>
 <div class="card">
-
-<p>
-SpinSet Academy trains young athletes in tennis fundamentals, movement, and confidence in a welcoming environment.
-</p>
-
+We train young athletes in a fun, structured, and competitive environment.
 </div>
-
 </section>
 
-<!-- CLASSES -->
 <section id="classes">
-
-<h2 class="section-title">CLASSES</h2>
-
+<h2 class="title">Classes</h2>
 <div class="grid">
 
 <div class="card">
 <h3>Group Lessons</h3>
-<p>Beginner-friendly group training focused on fundamentals.</p>
+<p>Beginner-friendly tennis training.</p>
 </div>
 
 <div class="card">
@@ -430,14 +280,10 @@ SpinSet Academy trains young athletes in tennis fundamentals, movement, and conf
 </div>
 
 </div>
-
 </section>
 
-<!-- PRICING -->
 <section id="pricing">
-
-<h2 class="section-title">PRICING</h2>
-
+<h2 class="title">Pricing</h2>
 <div class="grid">
 
 <div class="card">
@@ -451,49 +297,39 @@ SpinSet Academy trains young athletes in tennis fundamentals, movement, and conf
 </div>
 
 </div>
-
 </section>
 
-<!-- FAQ -->
 <section id="faq">
-
-<h2 class="section-title">FAQ</h2>
+<h2 class="title">FAQ</h2>
 
 <div class="faq">
 <b>Do I need experience?</b>
-<p>No — beginners are welcome.</p>
+<p>No.</p>
 </div>
 
 <div class="faq">
 <b>Where are lessons?</b>
-<p>Old Settlers Park Tennis Courts.</p>
+<p>Old Settlers Park, Round Rock.</p>
 </div>
 
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
-
-<h2 class="section-title">CONTACT</h2>
-
+<h2 class="title">Contact</h2>
 <div class="contact">
-
-<p>spinsetacademy@gmail.com</p>
-
+spinsetacademy@gmail.com
 </div>
-
 </section>
 
 <footer>
-SpinSet Academy • Round Rock, Texas
+SpinSet Academy • Round Rock
 </footer>
 
 <script>
-const cursor = document.querySelector(".cursor");
-
+const cursor=document.querySelector(".cursor");
 document.addEventListener("mousemove",(e)=>{
-    cursor.style.left = e.clientX + "px";
-    cursor.style.top = e.clientY + "px";
+cursor.style.left=e.clientX+"px";
+cursor.style.top=e.clientY+"px";
 });
 </script>
 
