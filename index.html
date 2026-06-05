@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
@@ -21,62 +21,64 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    font-family:'Inter',sans-serif;
-    background:#f6f8f7;
-    color:#1a1a1a;
+    font-family:'Outfit',sans-serif;
     overflow-x:hidden;
+    background:#f7f9f7;
+    color:#111;
 }
 
-/* CURSOR */
+/* CURSOR (tennis ball trail feel) */
 .cursor{
     width:14px;
     height:14px;
-    background:#2ecc71;
     border-radius:50%;
+    background:#7CFF6B;
     position:fixed;
     pointer-events:none;
     transform:translate(-50%,-50%);
     z-index:9999;
-    box-shadow:0 0 12px rgba(46,204,113,0.6);
+    box-shadow:0 0 15px rgba(124,255,107,0.8);
+}
+
+/* SMOOTH FOLLOW TRAIL */
+.cursor::after{
+    content:"";
+    position:absolute;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    border:2px solid rgba(124,255,107,0.4);
+    transform:translate(-50%,-50%);
+    left:50%;
+    top:50%;
 }
 
 /* NAV */
 nav{
     position:fixed;
-    top:0;
     width:100%;
+    top:0;
     display:flex;
     justify-content:space-between;
-    align-items:center;
     padding:18px 8%;
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(10px);
-    border-bottom:1px solid rgba(0,0,0,0.06);
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(12px);
     z-index:1000;
+    border-bottom:1px solid #e5e5e5;
 }
 
 .logo{
-    font-weight:700;
-    font-size:22px;
-    color:#2ecc71;
-    letter-spacing:1px;
+    font-weight:800;
+    font-size:24px;
+    color:#2e7d32;
 }
 
 nav a{
-    margin-left:22px;
+    margin-left:20px;
     text-decoration:none;
-    color:#333;
+    color:#222;
     font-weight:500;
-    transition:0.3s;
-}
-
-nav a:hover{
-    color:#2ecc71;
 }
 
 /* HERO */
@@ -86,68 +88,64 @@ nav a:hover{
     align-items:center;
     justify-content:center;
     text-align:center;
-    padding:120px 20px 60px;
-
-    background:
-    radial-gradient(circle at top,#eafff2,transparent 60%),
-    linear-gradient(to bottom,#ffffff,#f6f8f7);
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(135deg,#eaf6ea,#ffffff);
 }
 
-/* HERO CONTENT */
+/* stadium spotlight effect */
+.hero::before{
+    content:"";
+    position:absolute;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,rgba(124,255,107,0.25),transparent 70%);
+    top:-200px;
+    left:-200px;
+    animation:moveLight 8s infinite ease-in-out;
+}
+
 .hero-content{
     max-width:900px;
+    z-index:2;
+    transform:translateY(40px);
+    opacity:0;
+    animation:fadeUp 1.2s ease forwards;
 }
 
 /* LOGO */
-.hero-logo{
+.hero img{
     width:280px;
-    max-width:80%;
-    margin-bottom:25px;
-    animation:float 5s ease-in-out infinite;
+    margin-bottom:20px;
+    animation:float 4s ease-in-out infinite;
 }
 
-/* TITLE */
+/* TEXT */
 .hero h1{
-    font-size:52px;
-    font-weight:700;
-    margin-bottom:15px;
+    font-size:48px;
+    margin-bottom:10px;
 }
 
 .hero p{
     font-size:18px;
-    color:#555;
-    margin-bottom:30px;
+    margin-bottom:25px;
+    color:#444;
 }
 
 /* BUTTONS */
 .btn{
     display:inline-block;
-    padding:14px 28px;
-    border-radius:12px;
+    padding:14px 26px;
+    border-radius:10px;
+    background:#2e7d32;
+    color:white;
     text-decoration:none;
     font-weight:600;
     transition:0.3s;
 }
 
-.btn-primary{
-    background:#2ecc71;
-    color:white;
-    box-shadow:0 10px 20px rgba(46,204,113,0.2);
-}
-
-.btn-primary:hover{
-    transform:translateY(-3px);
-}
-
-.btn-secondary{
-    border:1px solid #ddd;
-    color:#333;
-    margin-left:10px;
-}
-
-.btn-secondary:hover{
-    border-color:#2ecc71;
-    color:#2ecc71;
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
 }
 
 /* SECTIONS */
@@ -155,98 +153,87 @@ section{
     padding:100px 10%;
 }
 
-.section-title{
-    font-size:36px;
+/* SECTION TITLE */
+.title{
+    font-size:34px;
     text-align:center;
     margin-bottom:40px;
-    font-weight:700;
-    color:#2ecc71;
-}
-
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:22px;
 }
 
 /* CARDS */
 .card{
     background:white;
-    padding:28px;
+    padding:30px;
     border-radius:16px;
-    border:1px solid rgba(0,0,0,0.06);
-    box-shadow:0 8px 20px rgba(0,0,0,0.04);
-    transition:0.3s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+    transition:0.4s;
+    transform-style:preserve-3d;
 }
 
+/* 3D HOVER PHYSICS */
 .card:hover{
-    transform:translateY(-6px);
-    box-shadow:0 12px 30px rgba(0,0,0,0.08);
+    transform:rotateX(6deg) rotateY(-6deg) translateY(-10px);
 }
 
-.card h3{
-    margin-bottom:10px;
-    color:#2ecc71;
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
 }
 
 /* FAQ */
 .faq{
     background:white;
     padding:20px;
-    border-radius:14px;
-    border:1px solid rgba(0,0,0,0.06);
+    border-radius:12px;
     margin-bottom:12px;
+    border:1px solid #eee;
 }
 
 /* CONTACT */
 .contact{
-    background:#2ecc71;
+    background:#2e7d32;
     color:white;
     padding:40px;
-    border-radius:18px;
-    text-align:center;
-    box-shadow:0 10px 25px rgba(46,204,113,0.2);
+    border-radius:14px;
 }
 
 /* FOOTER */
 footer{
     text-align:center;
-    padding:25px;
+    padding:30px;
     color:#666;
 }
 
-/* ANIMATION */
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-10px);}
-}
-
-/* SCROLL REVEAL */
-.reveal{
+/* SCROLL ANIMATION */
+.hidden{
     opacity:0;
-    transform:translateY(20px);
-    transition:0.7s ease;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
 }
 
-.reveal.active{
+.show{
     opacity:1;
     transform:translateY(0);
 }
 
-@media(max-width:768px){
-    .hero h1{
-        font-size:36px;
-    }
+/* ANIMATIONS */
+@keyframes fadeUp{
+    to{opacity:1; transform:translateY(0);}
+}
 
-    nav{
-        flex-direction:column;
-        gap:10px;
-    }
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
+}
 
-    nav a{
-        margin:0 10px;
-    }
+@keyframes moveLight{
+    0%{transform:translate(0,0);}
+    50%{transform:translate(120px,80px);}
+    100%{transform:translate(0,0);}
 }
 
 </style>
@@ -259,17 +246,13 @@ footer{
 
 <!-- NAV -->
 <nav>
-
 <div class="logo">SpinSet Academy</div>
-
 <div>
 <a href="#about">About</a>
 <a href="#classes">Classes</a>
-<a href="#pricing">Pricing</a>
 <a href="#faq">FAQ</a>
 <a href="#contact">Contact</a>
 </div>
-
 </nav>
 
 <!-- HERO -->
@@ -277,113 +260,62 @@ footer{
 
 <div class="hero-content">
 
-<img src="logo.png" class="hero-logo">
+<img src="logo.png">
 
-<h1>Elite Youth Tennis Training</h1>
+<h1>Elite Tennis Training</h1>
 
-<p>Professional coaching for beginners and developing players in Round Rock, Texas</p>
+<p>Modern coaching for young athletes in Round Rock</p>
 
-<a href="#classes" class="btn btn-primary">View Classes</a>
-<a href="#contact" class="btn btn-secondary">Contact</a>
+<a class="btn" href="#classes">Get Started</a>
 
 </div>
 
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="reveal">
-
-<h2 class="section-title">About</h2>
-
+<section id="about" class="hidden">
+<h2 class="title">About</h2>
 <div class="card">
-SpinSet Academy focuses on fundamentals, confidence, movement, and discipline in a positive training environment.
+We focus on fundamentals, movement, discipline, and confidence building for young players.
 </div>
-
 </section>
 
 <!-- CLASSES -->
-<section id="classes" class="reveal">
-
-<h2 class="section-title">Classes</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Group Lessons</h3>
-<p>Beginner-friendly group training focused on consistency and basics.</p>
-</div>
-
-<div class="card">
-<h3>Private Lessons</h3>
-<p>1-on-1 coaching for faster improvement and technique correction.</p>
-</div>
-
-<div class="card">
-<h3>Development Training</h3>
-<p>For players ready to improve movement, control, and match play.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- PRICING -->
-<section id="pricing" class="reveal">
-
-<h2 class="section-title">Pricing</h2>
+<section id="classes" class="hidden">
+<h2 class="title">Classes</h2>
 
 <div class="grid">
 
 <div class="card">
-<h3>Group Lessons</h3>
-<p>$12/hour</p>
+<h3>Group Training</h3>
+<p>Fun beginner sessions with structured development.</p>
 </div>
 
 <div class="card">
-<h3>Private Lessons</h3>
-<p>$25/hour</p>
-</div>
-
-<div class="card">
-<h3>First Session</h3>
-<p>Free trial available</p>
+<h3>Private Coaching</h3>
+<p>1-on-1 focused improvement sessions.</p>
 </div>
 
 </div>
-
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="reveal">
+<section id="faq" class="hidden">
+<h2 class="title">FAQ</h2>
 
-<h2 class="section-title">FAQ</h2>
-
-<div class="faq">
-<b>Do beginners join?</b>
-<p>Yes, all skill levels are welcome.</p>
-</div>
-
-<div class="faq">
-<b>What should I bring?</b>
-<p>Tennis racket, water, and athletic shoes.</p>
-</div>
-
-<div class="faq">
-<b>Where are lessons held?</b>
-<p>Old Settlers Park Tennis Courts in Round Rock.</p>
-</div>
+<div class="faq"><b>Do I need experience?</b><p>No, beginners welcome.</p></div>
+<div class="faq"><b>Where are lessons?</b><p>Old Settlers Park Tennis Courts.</p></div>
+<div class="faq"><b>What to bring?</b><p>Racket, water, athletic shoes.</p></div>
 
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="reveal">
-
-<h2 class="section-title">Contact</h2>
+<section id="contact" class="hidden">
+<h2 class="title">Contact</h2>
 
 <div class="contact">
-spinsetacademy@gmail.com • 512-839-7026
+spinsetacademy@gmail.com
 </div>
-
 </section>
 
 <footer>
@@ -392,7 +324,7 @@ SpinSet Academy • Round Rock, Texas
 
 <script>
 
-/* CURSOR */
+/* CURSOR FOLLOW */
 const cursor = document.querySelector(".cursor");
 
 document.addEventListener("mousemove",(e)=>{
@@ -401,15 +333,16 @@ document.addEventListener("mousemove",(e)=>{
 });
 
 /* SCROLL REVEAL */
-const reveals = document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll",()=>{
-    for(let el of reveals){
-        let top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            el.classList.add("active");
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
         }
-    }
+    });
+});
+
+document.querySelectorAll(".hidden").forEach(el=>{
+    observer.observe(el);
 });
 
 </script>
