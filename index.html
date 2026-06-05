@@ -10,11 +10,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 /* RESET */
+
 *{
     margin:0;
     padding:0;
@@ -26,56 +27,184 @@ html{
 }
 
 body{
-    overflow-x:hidden;
-    font-family:'Outfit',sans-serif;
-    background:#08110a;
+    background:#071008;
     color:white;
+    font-family:'Outfit',sans-serif;
+    overflow-x:hidden;
 }
 
-/* CUSTOM CURSOR */
+/* CUSTOM SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#071008;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#d7ff3f;
+    border-radius:20px;
+}
+
+/* CURSOR */
+
 .cursor{
     width:18px;
     height:18px;
+    border-radius:50%;
+    background:#d7ff3f;
+
+    position:fixed;
+    pointer-events:none;
+
+    transform:translate(-50%,-50%);
+    z-index:999999;
+
+    box-shadow:
+    0 0 10px #d7ff3f,
+    0 0 30px #d7ff3f,
+    0 0 60px rgba(215,255,63,0.7);
+}
+
+/* PARTICLES */
+
+.particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-5;
+}
+
+.particle{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:rgba(215,255,63,0.7);
+    border-radius:50%;
+
+    animation:floatParticle linear infinite;
+}
+
+/* INTRO */
+
+.intro{
+    position:fixed;
+    inset:0;
+
+    background:#071008;
+
+    z-index:99999;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    animation:introFade 1s ease forwards;
+    animation-delay:4.2s;
+}
+
+.intro-racket{
+    position:absolute;
+    width:240px;
+
+    left:-300px;
+    top:40%;
+
+    transform:rotate(-40deg);
+
+    animation:racketSwing 2.2s ease forwards;
+}
+
+.intro-ball{
+    position:absolute;
+
+    width:42px;
+    height:42px;
+
     background:#d7ff3f;
     border-radius:50%;
-    position:fixed;
-    transform:translate(-50%,-50%);
-    pointer-events:none;
-    z-index:9999;
+
+    left:-100px;
+    top:50%;
+
     box-shadow:
-    0 0 12px #d7ff3f,
-    0 0 25px #d7ff3f;
+    0 0 20px #d7ff3f,
+    0 0 50px #d7ff3f;
+
+    animation:ballFly 2.2s ease forwards;
+}
+
+.intro-logo{
+    width:260px;
+
+    opacity:0;
+
+    filter:
+    drop-shadow(0 0 20px rgba(215,255,63,0.5))
+    drop-shadow(0 0 50px rgba(215,255,63,0.35));
+
+    animation:logoAppear 1s ease forwards;
+    animation-delay:2s;
+}
+
+.intro-text{
+    margin-top:25px;
+
+    font-family:'Orbitron',sans-serif;
+    font-size:42px;
+    letter-spacing:4px;
+
+    opacity:0;
+
+    animation:textAppear 1s ease forwards;
+    animation-delay:2.5s;
 }
 
 /* NAVBAR */
+
 nav{
     position:fixed;
     top:0;
     width:100%;
+
     padding:22px 8%;
+
     display:flex;
     justify-content:space-between;
     align-items:center;
-    background:rgba(0,0,0,0.45);
-    backdrop-filter:blur(14px);
-    z-index:1000;
+
+    background:rgba(0,0,0,0.4);
+    backdrop-filter:blur(16px);
+
     border-bottom:1px solid rgba(255,255,255,0.08);
+
+    z-index:1000;
 }
 
 .logo{
     font-family:'Orbitron',sans-serif;
     font-size:28px;
     font-weight:800;
+
     color:#d7ff3f;
+
     letter-spacing:2px;
-    text-shadow:0 0 15px rgba(215,255,63,0.6);
+
+    text-shadow:
+    0 0 12px rgba(215,255,63,0.8);
 }
 
 nav a{
     color:white;
     text-decoration:none;
+
     margin-left:28px;
+
     font-weight:500;
+
     transition:0.3s;
 }
 
@@ -84,71 +213,113 @@ nav a:hover{
 }
 
 /* HERO */
+
 .hero{
+    position:relative;
+
     min-height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    position:relative;
-    overflow:hidden;
 
-    background:
-    radial-gradient(circle at top,#19361d 0%, #08110a 70%);
+    overflow:hidden;
 }
 
-/* GLOW EFFECTS */
+/* VIDEO */
+
+.hero video{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:-3;
+}
+
+/* OVERLAY */
+
 .hero::before{
     content:"";
+
     position:absolute;
-    width:700px;
-    height:700px;
-    background:radial-gradient(circle,rgba(215,255,63,0.18),transparent 70%);
-    top:-250px;
-    animation:glowMove 8s ease-in-out infinite;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.72),
+    rgba(0,0,0,0.65));
+
+    z-index:-2;
 }
+
+/* LIGHT EFFECT */
 
 .hero::after{
     content:"";
+
     position:absolute;
-    width:500px;
-    height:500px;
-    background:radial-gradient(circle,rgba(0,255,100,0.1),transparent 70%);
-    bottom:-200px;
-    right:-100px;
-    animation:glowMove2 10s ease-in-out infinite;
+
+    width:700px;
+    height:700px;
+
+    background:
+    radial-gradient(circle,
+    rgba(215,255,63,0.14),
+    transparent 70%);
+
+    top:-220px;
+
+    animation:heroGlow 8s ease-in-out infinite;
 }
+
+/* HERO CONTENT */
 
 .hero-content{
     position:relative;
     z-index:2;
+
     max-width:900px;
     padding:20px;
 }
 
-/* LOGO */
 .hero-logo{
-    width:320px;
-    max-width:80%;
-    margin-bottom:35px;
+    width:340px;
+    max-width:85%;
+
+    margin-bottom:30px;
+
+    animation:logoFloat 4s ease-in-out infinite;
 
     filter:
-    drop-shadow(0 0 20px rgba(215,255,63,0.5))
-    drop-shadow(0 0 40px rgba(215,255,63,0.3));
-
-    animation:floatLogo 4s ease-in-out infinite;
+    drop-shadow(0 0 25px rgba(215,255,63,0.5))
+    drop-shadow(0 0 60px rgba(215,255,63,0.2));
 }
 
-/* TEXT */
+.hero h1{
+    font-family:'Orbitron',sans-serif;
+    font-size:76px;
+    line-height:1.05;
+
+    margin-bottom:22px;
+
+    text-shadow:
+    0 0 25px rgba(215,255,63,0.15);
+}
+
 .hero p{
     font-size:28px;
-    color:#f1f1f1;
-    margin-bottom:35px;
-    font-weight:500;
-    letter-spacing:1px;
+
+    color:#eaeaea;
+
+    margin-bottom:40px;
 }
 
 /* BUTTONS */
+
 .hero-buttons{
     display:flex;
     justify-content:center;
@@ -157,28 +328,37 @@ nav a:hover{
 }
 
 .btn{
-    padding:16px 34px;
+    padding:16px 36px;
+
     border-radius:14px;
+
     text-decoration:none;
+
     font-weight:700;
-    transition:0.3s;
+
+    transition:0.35s;
 }
 
 .btn-main{
     background:#d7ff3f;
-    color:#08110a;
-    box-shadow:0 0 25px rgba(215,255,63,0.45);
+    color:#071008;
+
+    box-shadow:
+    0 0 25px rgba(215,255,63,0.4);
 }
 
 .btn-main:hover{
-    transform:translateY(-4px) scale(1.05);
+    transform:translateY(-5px) scale(1.05);
 }
 
 .btn-outline{
-    border:2px solid rgba(255,255,255,0.2);
-    color:white;
+    border:2px solid rgba(255,255,255,0.15);
+
     background:rgba(255,255,255,0.05);
-    backdrop-filter:blur(10px);
+
+    backdrop-filter:blur(12px);
+
+    color:white;
 }
 
 .btn-outline:hover{
@@ -186,57 +366,107 @@ nav a:hover{
     color:#d7ff3f;
 }
 
-/* SECTIONS */
+/* SECTION */
+
 section{
     padding:120px 10%;
+    position:relative;
 }
 
 .section-title{
     font-family:'Orbitron',sans-serif;
-    font-size:44px;
-    text-align:center;
-    margin-bottom:60px;
+    font-size:46px;
+
     color:#d7ff3f;
+
+    text-align:center;
+
+    margin-bottom:60px;
 }
 
 /* GRID */
+
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
+    gap:32px;
 }
 
 /* CARDS */
+
 .card{
     background:rgba(255,255,255,0.04);
-    border:1px solid rgba(255,255,255,0.08);
-    backdrop-filter:blur(14px);
 
-    padding:35px;
-    border-radius:24px;
+    border:1px solid rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(16px);
+
+    padding:38px;
+
+    border-radius:28px;
+
+    transition:0.4s;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(120deg,
+    transparent,
+    rgba(215,255,63,0.08),
+    transparent);
+
+    transform:translateX(-100%);
+
+    transition:0.7s;
+}
+
+.card:hover::before{
+    transform:translateX(100%);
+}
+
+.card:hover{
+    transform:
+    translateY(-12px)
+    scale(1.02);
+
+    border-color:rgba(215,255,63,0.45);
+
+    box-shadow:
+    0 0 35px rgba(215,255,63,0.08);
+}
+
+.card h3{
+    color:#d7ff3f;
+    margin-bottom:18px;
+    font-size:30px;
+}
+
+/* FAQ */
+
+.faq{
+    background:rgba(255,255,255,0.04);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    padding:28px;
+
+    border-radius:22px;
+
+    margin-bottom:20px;
 
     transition:0.35s;
 }
 
-.card:hover{
-    transform:translateY(-10px);
-    border-color:rgba(215,255,63,0.4);
-    box-shadow:0 0 30px rgba(215,255,63,0.08);
-}
-
-.card h3{
-    margin-bottom:15px;
-    font-size:28px;
-    color:#d7ff3f;
-}
-
-/* FAQ */
-.faq{
-    background:rgba(255,255,255,0.04);
-    padding:28px;
-    border-radius:20px;
-    margin-bottom:18px;
-    border:1px solid rgba(255,255,255,0.08);
+.faq:hover{
+    border-color:rgba(215,255,63,0.35);
 }
 
 .faq b{
@@ -244,24 +474,42 @@ section{
 }
 
 /* CONTACT */
+
 .contact{
-    background:linear-gradient(145deg,#122616,#1c3820);
-    padding:45px;
-    border-radius:24px;
+    background:
+    linear-gradient(145deg,
+    #122616,
+    #1d3820);
+
+    padding:55px;
+
+    border-radius:28px;
+
     text-align:center;
-    border:1px solid rgba(215,255,63,0.15);
+
+    border:1px solid rgba(215,255,63,0.18);
+
+    box-shadow:
+    0 0 30px rgba(215,255,63,0.05);
+}
+
+.contact p{
+    font-size:22px;
 }
 
 /* FOOTER */
+
 footer{
     padding:30px;
     text-align:center;
     color:#aaa;
+
     border-top:1px solid rgba(255,255,255,0.08);
 }
 
 /* ANIMATIONS */
-@keyframes floatLogo{
+
+@keyframes logoFloat{
 
 0%{
     transform:translateY(0px);
@@ -277,39 +525,106 @@ footer{
 
 }
 
-@keyframes glowMove{
-
-0%{
-    transform:translateX(0px) translateY(0px);
-}
-
-50%{
-    transform:translateX(60px) translateY(40px);
-}
-
-100%{
-    transform:translateX(0px) translateY(0px);
-}
-
-}
-
-@keyframes glowMove2{
+@keyframes heroGlow{
 
 0%{
     transform:translateX(0px);
 }
 
 50%{
-    transform:translateX(-60px);
+    transform:translateX(90px);
 }
 
 100%{
     transform:translateX(0px);
+}
+
+}
+
+@keyframes racketSwing{
+
+0%{
+    left:-350px;
+    transform:rotate(-55deg);
+}
+
+70%{
+    left:40%;
+    transform:rotate(18deg);
+}
+
+100%{
+    left:35%;
+    transform:rotate(0deg);
+}
+
+}
+
+@keyframes ballFly{
+
+0%{
+    left:-120px;
+    transform:scale(1);
+}
+
+70%{
+    left:50%;
+    transform:scale(1.5);
+}
+
+100%{
+    left:50%;
+    opacity:0;
+    transform:scale(2);
+}
+
+}
+
+@keyframes logoAppear{
+
+to{
+    opacity:1;
+}
+
+}
+
+@keyframes textAppear{
+
+to{
+    opacity:1;
+}
+
+}
+
+@keyframes introFade{
+
+to{
+    opacity:0;
+    visibility:hidden;
+}
+
+}
+
+@keyframes floatParticle{
+
+0%{
+    transform:translateY(100vh);
+    opacity:0;
+}
+
+10%{
+    opacity:1;
+}
+
+100%{
+    transform:translateY(-120vh);
+    opacity:0;
 }
 
 }
 
 /* MOBILE */
+
 @media(max-width:768px){
 
 nav{
@@ -318,19 +633,32 @@ nav{
 }
 
 nav a{
-    margin:0 10px;
+    margin:0 8px;
 }
 
-.hero-logo{
-    width:240px;
+.hero h1{
+    font-size:44px;
 }
 
 .hero p{
     font-size:22px;
 }
 
+.hero-logo{
+    width:240px;
+}
+
 .section-title{
     font-size:34px;
+}
+
+.hero-buttons{
+    flex-direction:column;
+    align-items:center;
+}
+
+.intro-text{
+    font-size:26px;
 }
 
 }
@@ -341,9 +669,42 @@ nav a{
 
 <body>
 
+<!-- PARTICLES -->
+
+<div class="particles">
+
+<div class="particle" style="left:10%; animation-duration:14s;"></div>
+<div class="particle" style="left:20%; animation-duration:18s;"></div>
+<div class="particle" style="left:35%; animation-duration:12s;"></div>
+<div class="particle" style="left:50%; animation-duration:20s;"></div>
+<div class="particle" style="left:65%; animation-duration:15s;"></div>
+<div class="particle" style="left:80%; animation-duration:19s;"></div>
+<div class="particle" style="left:92%; animation-duration:13s;"></div>
+
+</div>
+
+<!-- INTRO -->
+
+<div class="intro">
+
+<img src="racket.png" class="intro-racket">
+
+<div class="intro-ball"></div>
+
+<img src="logo.png" class="intro-logo">
+
+<div class="intro-text">
+SPINSET ACADEMY
+</div>
+
+</div>
+
+<!-- CURSOR -->
+
 <div class="cursor"></div>
 
 <!-- NAVBAR -->
+
 <nav>
 
 <div class="logo">SPINSET</div>
@@ -359,13 +720,25 @@ nav a{
 </nav>
 
 <!-- HERO -->
+
 <section class="hero">
+
+<video autoplay muted loop playsinline>
+<source src="tennis-video.mp4" type="video/mp4">
+</video>
 
 <div class="hero-content">
 
 <img src="logo.png" class="hero-logo">
 
-<p>Elite Youth Tennis Training In Round Rock</p>
+<h1>
+ELITE YOUTH<br>
+TENNIS TRAINING
+</h1>
+
+<p>
+Professional Coaching • Competitive Development • Round Rock, Texas
+</p>
 
 <div class="hero-buttons">
 
@@ -384,22 +757,25 @@ Contact Us
 </section>
 
 <!-- ABOUT -->
+
 <section id="about">
 
-<h2 class="section-title">ABOUT</h2>
+<h2 class="section-title">
+ABOUT
+</h2>
 
 <div class="card">
 
 <p>
-SpinSet Academy helps young athletes develop strong tennis fundamentals,
-movement, confidence, and discipline in a positive competitive environment.
+SpinSet Academy helps young athletes build strong tennis fundamentals,
+confidence, movement, discipline, and competitive mindset in a positive environment.
 </p>
 
 <br>
 
 <p>
-Lessons are designed for beginners and developing players who want
-professional-level coaching while still enjoying the game.
+Our goal is to make high-level training accessible to beginner and developing players
+while creating a fun and motivating experience.
 </p>
 
 </div>
@@ -407,9 +783,12 @@ professional-level coaching while still enjoying the game.
 </section>
 
 <!-- CLASSES -->
+
 <section id="classes">
 
-<h2 class="section-title">CLASSES</h2>
+<h2 class="section-title">
+CLASSES
+</h2>
 
 <div class="grid">
 
@@ -418,19 +797,30 @@ professional-level coaching while still enjoying the game.
 <h3>Group Lessons</h3>
 
 <p>
-Beginner-friendly training focused on fundamentals, movement,
-consistency, and confidence.
+Beginner-focused sessions emphasizing movement,
+consistency, fundamentals, and confidence.
 </p>
 
 </div>
 
 <div class="card">
 
-<h3>Private Lessons</h3>
+<h3>Private Coaching</h3>
 
 <p>
-One-on-one sessions built around personalized improvement
-and focused coaching.
+One-on-one personalized coaching focused on improvement,
+technique, and competitive growth.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Development Training</h3>
+
+<p>
+Advanced sessions designed to improve rally control,
+footwork, and match performance.
 </p>
 
 </div>
@@ -440,9 +830,12 @@ and focused coaching.
 </section>
 
 <!-- PRICING -->
+
 <section id="pricing">
 
-<h2 class="section-title">PRICING</h2>
+<h2 class="section-title">
+PRICING
+</h2>
 
 <div class="grid">
 
@@ -450,7 +843,9 @@ and focused coaching.
 
 <h3>Group Training</h3>
 
-<p>$12/hr</p>
+<p>
+$12/hr
+</p>
 
 </div>
 
@@ -458,7 +853,19 @@ and focused coaching.
 
 <h3>Private Coaching</h3>
 
-<p>$25/hr</p>
+<p>
+$25/hr
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>First Class</h3>
+
+<p>
+FREE for new students
+</p>
 
 </div>
 
@@ -467,39 +874,64 @@ and focused coaching.
 </section>
 
 <!-- FAQ -->
+
 <section id="faq">
 
-<h2 class="section-title">FAQ</h2>
+<h2 class="section-title">
+FAQ
+</h2>
 
 <div class="faq">
+
 <b>Do I need experience?</b>
-<p>No — beginners are welcome.</p>
+
+<p>
+No — beginners are welcome.
+</p>
+
 </div>
 
 <div class="faq">
+
 <b>Where are lessons held?</b>
-<p>Old Settlers Park Tennis Courts in Round Rock.</p>
+
+<p>
+Old Settlers Park Tennis Courts in Round Rock.
+</p>
+
 </div>
 
 <div class="faq">
+
 <b>What should players bring?</b>
-<p>A racket, water bottle, and athletic shoes.</p>
+
+<p>
+A racket, water bottle, and athletic shoes.
+</p>
+
 </div>
 
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact">
 
-<h2 class="section-title">CONTACT</h2>
+<h2 class="section-title">
+CONTACT
+</h2>
 
 <div class="contact">
 
-<p>spinsetacademy@gmail.com</p>
+<p>
+spinsetacademy@gmail.com
+</p>
 
 <br>
 
-<p>512-839-7026</p>
+<p>
+512-839-7026
+</p>
 
 </div>
 
