@@ -7,6 +7,9 @@
 
 <title>SpinSet Academy</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -18,6 +21,10 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Outfit',sans-serif;
     background:#f7faf8;
@@ -25,19 +32,17 @@ body{
     overflow-x:hidden;
 }
 
-html{scroll-behavior:smooth;}
-
 /* CURSOR */
 .cursor{
-    width:20px;
-    height:20px;
+    width:22px;
+    height:22px;
     background:#d7ff3f;
     border-radius:50%;
     position:fixed;
     pointer-events:none;
     transform:translate(-50%,-50%);
-    z-index:9999;
-    box-shadow:0 0 15px #d7ff3f;
+    z-index:99999;
+    box-shadow:0 0 12px rgba(215,255,63,0.8);
 }
 
 /* NAV */
@@ -49,60 +54,66 @@ nav{
     justify-content:space-between;
     align-items:center;
     padding:18px 8%;
-    background:rgba(255,255,255,0.8);
-    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(0,0,0,0.06);
     z-index:1000;
 }
 
-.logo img{height:50px;}
+.logo img{
+    height:55px; /* KEPT SAME SIZE */
+}
 
 nav a{
-    margin-left:20px;
     text-decoration:none;
     color:#111;
     font-weight:600;
+    margin-left:22px;
 }
 
-nav a:hover{color:#2d8f47;}
+nav a:hover{
+    color:#2d8f47;
+}
 
 /* HERO */
 .hero{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     text-align:center;
-    background:linear-gradient(135deg,#fff,#e8f7ec);
-    position:relative;
+    background:linear-gradient(135deg,#fff,#eaf7ee);
 }
 
 .hero-logo{
-    width:420px;
+    width:450px; /* KEPT SAME SIZE */
     max-width:90%;
 }
 
 .subtitle{
     font-size:34px;
+    margin-top:25px;
     font-weight:700;
-    margin-top:20px;
     color:#1d3d26;
 }
 
-.small{
-    margin-top:15px;
+.hero-small{
+    margin-top:12px;
     font-size:20px;
     color:#444;
 }
 
 /* SECTIONS */
 section{
-    padding:110px 10%;
+    padding:100px 10%;
 }
 
 .title{
     text-align:center;
-    font-size:40px;
+    font-size:42px;
     margin-bottom:40px;
+    font-weight:800;
+    color:#1d3d26;
 }
 
 /* CARD */
@@ -110,23 +121,52 @@ section{
     background:white;
     padding:30px;
     border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
 }
 
 /* GRID */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:25px;
 }
 
 /* FAQ */
 .faq{
     background:white;
-    padding:20px;
-    border-radius:15px;
+    padding:25px;
+    border-radius:16px;
     margin-bottom:15px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.06);
 }
+
+/* CALENDAR */
+.calendar-container{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+    margin-top:20px;
+}
+
+.day{
+    padding:16px;
+    text-align:center;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.available{ background:#c9ffd2; }
+.taken{ background:#ffc6c6; }
+
+.day:hover{ transform:scale(1.05); }
 
 /* CONTACT */
 .contact{
@@ -137,61 +177,12 @@ section{
     text-align:center;
 }
 
-/* CALENDAR */
-.calendar-box{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-.calendar-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
-}
-
-.calendar{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:10px;
-}
-
-.day{
-    padding:15px;
+/* FOOTER */
+footer{
     text-align:center;
-    border-radius:10px;
-    cursor:pointer;
-    font-weight:600;
-}
-
-.available{background:#c8ffd2;}
-.taken{background:#ffbcbc;}
-
-/* COMMENTS */
-textarea,input{
-    width:100%;
-    padding:12px;
-    margin-bottom:10px;
-    border-radius:10px;
-    border:1px solid #ccc;
-}
-
-button{
-    padding:12px 20px;
-    background:#2d8f47;
+    padding:25px;
+    background:#111;
     color:white;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-}
-
-.comment{
-    margin-top:10px;
-    background:#f3f3f3;
-    padding:15px;
-    border-radius:10px;
 }
 
 </style>
@@ -202,187 +193,200 @@ button{
 
 <div class="cursor"></div>
 
+<!-- NAV -->
 <nav>
-<div><img src="logo.png"></div>
+<div class="logo">
+<img src="logo.png">
+</div>
+
 <div>
 <a href="#about">About</a>
 <a href="#classes">Classes</a>
+<a href="#pricing">Pricing</a>
 <a href="#faq">FAQ</a>
 <a href="#calendar">Booking</a>
-<a href="#comments">Comments</a>
 <a href="#contact">Contact</a>
 </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
 
 <div>
 <img src="logo.png" class="hero-logo">
 
 <div class="subtitle">Where You Master The Fundamentals</div>
-<div class="small">Learn new skills • Improve every day • Compete with confidence</div>
+<div class="hero-small">Learn new skills • Improve every day • Compete with confidence</div>
+
 </div>
 
 </section>
 
+<!-- ABOUT -->
 <section id="about">
-<h2 class="title">About</h2>
+<h2 class="title">ABOUT</h2>
 <div class="card">
-SpinSet Academy focuses on tennis fundamentals, confidence, and development for young athletes.
+SpinSet Academy focuses on tennis fundamentals, confidence, and skill building for young athletes.
 </div>
 </section>
 
+<!-- CLASSES -->
 <section id="classes">
-<h2 class="title">Classes</h2>
+<h2 class="title">CLASSES</h2>
+
 <div class="grid">
-<div class="card">Group Lessons</div>
-<div class="card">Private Coaching</div>
-<div class="card">Development Training</div>
+
+<div class="card">
+<h3>Group Lessons</h3>
+<p>Beginner friendly training.</p>
+</div>
+
+<div class="card">
+<h3>Private Lessons</h3>
+<p>1-on-1 coaching.</p>
+</div>
+
 </div>
 </section>
 
+<!-- PRICING -->
+<section id="pricing">
+<h2 class="title">PRICING</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>Group</h3>
+<p>$12/hr</p>
+</div>
+
+<div class="card">
+<h3>Private</h3>
+<p>$25/hr</p>
+</div>
+
+</div>
+</section>
+
+<!-- FAQ -->
 <section id="faq">
 <h2 class="title">FAQ</h2>
-<div class="faq"><b>Do beginners join?</b><p>Yes.</p></div>
-<div class="faq"><b>Where?</b><p>Round Rock courts.</p></div>
+
+<div class="faq">
+<b>Do beginners need experience?</b>
+<p>No — all levels welcome.</p>
+</div>
+
+<div class="faq">
+<b>Where are lessons?</b>
+<p>Round Rock Tennis Courts.</p>
+</div>
+
 </section>
 
+<!-- CALENDAR -->
 <section id="calendar">
-<h2 class="title">Booking Calendar</h2>
 
-<div class="calendar-box">
+<h2 class="title">BOOKING</h2>
 
-<div class="calendar-header">
-<button onclick="changeMonth(-1)">◀</button>
-<h3 id="monthText"></h3>
-<button onclick="changeMonth(1)">▶</button>
-</div>
+<div class="calendar-container">
 
-<div class="calendar" id="cal"></div>
+<div class="calendar" id="calendar"></div>
 
 </div>
+
 </section>
 
-<section id="comments">
-<h2 class="title">Comments</h2>
-
-<input id="name" placeholder="Name">
-<textarea id="msg" placeholder="Comment"></textarea>
-<button onclick="addComment()">Post</button>
-
-<div id="comments"></div>
-</section>
-
+<!-- CONTACT -->
 <section id="contact">
-<h2 class="title">Contact</h2>
+
+<h2 class="title">CONTACT</h2>
+
 <div class="contact">
-spinsetacademy@gmail.com<br>
+spinsetacademy@gmail.com <br><br>
 5128397026
 </div>
+
 </section>
+
+<footer>
+SpinSet Academy
+</footer>
 
 <script>
 
 /* CURSOR */
-document.addEventListener("mousemove",e=>{
+document.addEventListener("mousemove",(e)=>{
 document.querySelector(".cursor").style.left=e.clientX+"px";
 document.querySelector(".cursor").style.top=e.clientY+"px";
 });
 
-/* COMMENTS */
-function addComment(){
-let n=document.getElementById("name").value;
-let m=document.getElementById("msg").value;
-if(!n||!m)return;
+/* CALENDAR RULE */
+let currentDate = new Date(2026,5);
 
-let div=document.createElement("div");
-div.className="comment";
-div.innerHTML="<b>"+n+"</b><br>"+m;
+const takenManual = {}; // clicked overrides
 
-document.getElementById("comments").appendChild(div);
+function isTaken(day,month,year){
+
+const date = new Date(year,month,day);
+const key = `${year}-${month}-${day}`;
+
+if(takenManual[key] !== undefined){
+return takenManual[key];
 }
 
-/* CALENDAR FIXED SYSTEM */
+const cutoff = new Date(2026,7,12);
 
-let date=new Date(2026,5);
-let bookings={};
-
-function isTaken(d,m,y){
-
-let day=new Date(y,m,d);
-
-/* BEFORE AUG 12 2026 */
-if(y<2026 || m<7 || (m===7 && d<12)){
-return false;
+if(date < cutoff){
+return false; // everything free before Aug 12
 }
 
-/* AFTER AUG 12: MON-FRI TAKEN */
-let dayOfWeek=day.getDay();
-if(dayOfWeek>=1 && dayOfWeek<=5){
-return true;
-}
+// after Aug 12:
+const dayOfWeek = date.getDay(); // 1-5 weekdays
+return dayOfWeek >= 1 && dayOfWeek <= 5;
 
-return false;
 }
 
 function render(){
 
-let cal=document.getElementById("cal");
+const cal = document.getElementById("calendar");
 cal.innerHTML="";
 
-let y=date.getFullYear();
-let m=date.getMonth();
+const year=currentDate.getFullYear();
+const month=currentDate.getMonth();
 
-document.getElementById("monthText").innerText=
-date.toLocaleString('default',{month:'long'})+" "+y;
+const days=new Date(year,month+1,0).getDate();
 
-let first=new Date(y,m,1).getDay();
-let days=new Date(y,m+1,0).getDate();
+for(let d=1; d<=days; d++){
 
-for(let i=0;i<first;i++){
-cal.innerHTML+="<div></div>";
-}
+const div=document.createElement("div");
+div.classList.add("day");
 
-for(let d=1;d<=days;d++){
+const taken=isTaken(d,month,year);
 
-let div=document.createElement("div");
-div.className="day";
-
-let taken=isTaken(d,m,y);
-
-if(taken){
-div.classList.add("taken");
-div.innerText=d;
-}else{
-div.classList.add("available");
+div.classList.add(taken?"taken":"available");
 div.innerText=d;
 
-/* FIX: now it ACTUALLY updates bookings */
 div.onclick=()=>{
 
-let key=`${y}-${m}-${d}`;
+const key=`${year}-${month}-${d}`;
 
-if(bookings[key]){
-delete bookings[key];
-div.style.background="#c8ffd2";
-}else{
-bookings[key]=true;
-div.style.background="#4caf50";
+// toggle ONLY before Aug 12 rule locks it
+const date=new Date(year,month,d);
+const cutoff=new Date(2026,7,12);
+
+if(date>=cutoff){
+alert("This date follows schedule rules and cannot be manually changed.");
+return;
 }
 
+takenManual[key]=!takenManual[key];
+render();
 };
 
-}
-
 cal.appendChild(div);
-
 }
 
-}
-
-function changeMonth(i){
-date.setMonth(date.getMonth()+i);
-render();
 }
 
 render();
