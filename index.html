@@ -18,10 +18,28 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
     font-family:'Outfit',sans-serif;
     background:#f7faf8;
     color:#111;
+    overflow-x:hidden;
+}
+
+/* CURSOR */
+.cursor{
+    width:22px;
+    height:22px;
+    background:#d7ff3f;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:9999;
+    box-shadow:0 0 20px rgba(215,255,63,0.7);
 }
 
 /* NAV */
@@ -32,9 +50,10 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 8%;
-    background:rgba(255,255,255,0.8);
-    backdrop-filter:blur(12px);
+    padding:16px 8%;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(0,0,0,0.06);
     z-index:1000;
 }
 
@@ -57,29 +76,47 @@ nav a:hover{
 .hero{
     min-height:100vh;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
     text-align:center;
-    flex-direction:column;
-    padding:120px 20px 60px;
-    background:linear-gradient(135deg,#fff,#eaf7ee);
+    background:linear-gradient(135deg,#fff,#e9f7ed);
+    position:relative;
 }
 
+.hero-content{
+    max-width:900px;
+}
+
+/* MOVED LOGO HIGHER */
 .hero-logo{
-    height:160px;
+    width:450px;
+    max-width:90%;
+    margin-top:-40px;
 }
 
 .subtitle{
     font-size:34px;
-    margin-top:25px;
     font-weight:700;
-    color:#1d3d26;
+    margin-top:20px;
+    color:#1f3d26;
 }
 
-.subtext{
+.hero-small{
+    font-size:20px;
     margin-top:12px;
-    font-size:18px;
     color:#444;
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    margin-top:25px;
+    padding:14px 30px;
+    background:#2d8f47;
+    color:white;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:700;
 }
 
 /* SECTIONS */
@@ -89,45 +126,38 @@ section{
 
 .title{
     text-align:center;
-    font-size:40px;
+    font-size:42px;
     margin-bottom:40px;
-    color:#1d3d26;
 }
 
-/* GRID */
+/* CARDS */
 .grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:25px;
 }
 
-/* CARDS */
 .card{
     background:white;
     padding:30px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
 }
 
 /* FAQ */
 .faq{
     background:white;
     padding:25px;
-    border-radius:16px;
     margin-bottom:15px;
-    box-shadow:0 8px 18px rgba(0,0,0,0.06);
-}
-
-.faq b{
-    color:#2d8f47;
+    border-radius:16px;
 }
 
 /* CALENDAR */
 .calendar-box{
     background:white;
     padding:30px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.06);
 }
 
 .calendar-header{
@@ -140,9 +170,9 @@ section{
 .calendar-header button{
     padding:10px 14px;
     border:none;
-    border-radius:10px;
     background:#2d8f47;
     color:white;
+    border-radius:8px;
     cursor:pointer;
 }
 
@@ -153,38 +183,28 @@ section{
 }
 
 .day{
-    padding:14px;
+    padding:16px;
     text-align:center;
     border-radius:12px;
     cursor:pointer;
-    font-weight:600;
-    transition:0.2s;
-}
-
-.day:hover{
-    transform:scale(1.05);
+    font-weight:700;
 }
 
 .available{
-    background:#c9ffd2;
+    background:#c8ffd2;
     color:#145c25;
 }
 
 .taken{
-    background:#ffbcbc;
-    color:#7a1e1e;
-}
-
-.selected{
-    outline:3px solid #2d8f47;
+    background:#ffc7c7;
+    color:#8a1f1f;
 }
 
 /* COMMENTS */
 .comments-box{
     background:white;
     padding:30px;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    border-radius:20px;
 }
 
 .comments-box input,
@@ -194,16 +214,11 @@ section{
     margin-bottom:12px;
     border-radius:10px;
     border:1px solid #ddd;
-    font-family:inherit;
-}
-
-.comments-box textarea{
-    height:120px;
 }
 
 .comment{
     background:#f4f7f4;
-    padding:12px;
+    padding:15px;
     margin-top:10px;
     border-radius:10px;
 }
@@ -213,7 +228,7 @@ section{
     background:#2d8f47;
     color:white;
     padding:40px;
-    border-radius:18px;
+    border-radius:20px;
     text-align:center;
 }
 
@@ -231,66 +246,82 @@ footer{
 
 <body>
 
+<div class="cursor"></div>
+
 <!-- NAV -->
 <nav>
-    <div class="logo">
-        <img src="logo.png">
-    </div>
 
-    <div>
-        <a href="#classes">Classes</a>
-        <a href="#calendar">Booking</a>
-        <a href="#faq">FAQ</a>
-        <a href="#comments">Comments</a>
-        <a href="#contact">Contact</a>
-    </div>
+<div class="logo">
+<img src="logo.png">
+</div>
+
+<div>
+<a href="#about">About</a>
+<a href="#classes">Classes</a>
+<a href="#pricing">Pricing</a>
+<a href="#faq">FAQ</a>
+<a href="#calendar">Booking</a>
+<a href="#comments">Comments</a>
+<a href="#contact">Contact</a>
+</div>
+
 </nav>
 
 <!-- HERO -->
 <section class="hero">
 
-    <img src="logo.png" class="hero-logo">
+<div class="hero-content">
 
-    <div class="subtitle">Where You Master The Fundamentals</div>
-    <div class="subtext">
-        Learn new skills • Improve every day • Compete with confidence
-    </div>
+<img src="logo.png" class="hero-logo">
+
+<p class="subtitle">Where You Master The Fundamentals</p>
+
+<p class="hero-small">
+Learn new skills • Improve every day • Compete with confidence
+</p>
+
+<a class="btn" href="#calendar">Book a Lesson</a>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+
+<h2 class="title">ABOUT</h2>
+
+<div class="card">
+SpinSet Academy focuses on building strong tennis fundamentals,
+confidence, and consistency for young athletes.
+</div>
 
 </section>
 
 <!-- CLASSES -->
 <section id="classes">
-    <h2 class="title">Classes</h2>
 
-    <div class="grid">
+<h2 class="title">CLASSES</h2>
 
-        <div class="card">
-            <h3>Group Lessons</h3>
-            <p>Beginner friendly tennis training.</p>
-        </div>
+<div class="grid">
 
-        <div class="card">
-            <h3>Private Lessons</h3>
-            <p>1-on-1 focused coaching.</p>
-        </div>
+<div class="card">Group Lessons</div>
+<div class="card">Private Lessons</div>
+<div class="card">Development Training</div>
 
-    </div>
+</div>
+
 </section>
 
-<!-- CALENDAR -->
-<section id="calendar">
+<!-- PRICING -->
+<section id="pricing">
 
-<h2 class="title">Book a Lesson</h2>
+<h2 class="title">PRICING</h2>
 
-<div class="calendar-box">
+<div class="grid">
 
-    <div class="calendar-header">
-        <button onclick="changeMonth(-1)">◀</button>
-        <h3 id="monthTitle"></h3>
-        <button onclick="changeMonth(1)">▶</button>
-    </div>
-
-    <div class="calendar" id="calendar"></div>
+<div class="card">$12/hr Group</div>
+<div class="card">$25/hr Private</div>
 
 </div>
 
@@ -301,14 +332,27 @@ footer{
 
 <h2 class="title">FAQ</h2>
 
-<div class="faq">
-<b>Do beginners need experience?</b>
-<p>No — all levels are welcome.</p>
+<div class="faq"><b>Do beginners need experience?</b><br>No.</div>
+<div class="faq"><b>Where are lessons?</b><br>Round Rock courts.</div>
+<div class="faq"><b>What to bring?</b><br>Racket + water.</div>
+
+</section>
+
+<!-- CALENDAR -->
+<section id="calendar">
+
+<h2 class="title">BOOKING CALENDAR</h2>
+
+<div class="calendar-box">
+
+<div class="calendar-header">
+<button onclick="changeMonth(-1)">◀</button>
+<h3 id="monthText"></h3>
+<button onclick="changeMonth(1)">▶</button>
 </div>
 
-<div class="faq">
-<b>When are lessons available?</b>
-<p>Weekends and selected weekdays depending on schedule.</p>
+<div class="calendar" id="calendar"></div>
+
 </div>
 
 </section>
@@ -316,15 +360,15 @@ footer{
 <!-- COMMENTS -->
 <section id="comments">
 
-<h2 class="title">Comments</h2>
+<h2 class="title">COMMENTS</h2>
 
 <div class="comments-box">
 
 <input id="name" placeholder="Name">
-<textarea id="message" placeholder="Comment"></textarea>
-<button onclick="addComment()">Post</button>
+<textarea id="msg" placeholder="Comment"></textarea>
+<button class="btn" onclick="addComment()">Post</button>
 
-<div id="commentList"></div>
+<div id="commentsList"></div>
 
 </div>
 
@@ -333,11 +377,13 @@ footer{
 <!-- CONTACT -->
 <section id="contact">
 
-<h2 class="title">Contact</h2>
+<h2 class="title">CONTACT</h2>
 
 <div class="contact">
+
 <p>spinsetacademy@gmail.com</p>
 <p>5128397026</p>
+
 </div>
 
 </section>
@@ -348,89 +394,86 @@ SpinSet Academy
 
 <script>
 
-/* COMMENTS */
-function addComment(){
-    const name = document.getElementById("name").value;
-    const msg = document.getElementById("message").value;
-
-    if(!name || !msg) return;
-
-    const div = document.createElement("div");
-    div.className = "comment";
-    div.innerHTML = `<b>${name}</b><p>${msg}</p>`;
-
-    document.getElementById("commentList").prepend(div);
-
-    document.getElementById("name").value = "";
-    document.getElementById("message").value = "";
-}
-
-/* CALENDAR LOGIC */
+const calendarEl = document.getElementById("calendar");
+const monthText = document.getElementById("monthText");
 
 let current = new Date(2026, 5);
 
-function isTaken(date, month, year){
+/* FIXED RULE */
+function isTaken(day, month, year){
 
-    const d = new Date(year, month, date);
+const date = new Date(year, month, day);
 
-    const aug12 = new Date(2026, 7, 12);
+/* BEFORE AUG 12 2026 = ALL AVAILABLE */
+if(year < 2026 || month < 7 || (month === 7 && day < 12)){
+return false;
+}
 
-    // before aug 12 = all available
-    if(d < aug12) return false;
-
-    // after aug 12 = weekdays taken
-    const day = d.getDay(); // 1-5 weekday
-
-    if(day >= 1 && day <= 5) return true;
-
-    return false;
+/* AFTER AUG 12: MON-FRI TAKEN */
+let dayOfWeek = date.getDay();
+return dayOfWeek >= 1 && dayOfWeek <= 5;
 }
 
 function render(){
 
-    const cal = document.getElementById("calendar");
-    const title = document.getElementById("monthTitle");
+calendarEl.innerHTML = "";
 
-    cal.innerHTML = "";
+let year = current.getFullYear();
+let month = current.getMonth();
 
-    const y = current.getFullYear();
-    const m = current.getMonth();
+monthText.innerText =
+current.toLocaleString('default',{month:'long'}) + " " + year;
 
-    const days = new Date(y, m+1, 0).getDate();
+let first = new Date(year, month, 1).getDay();
+let days = new Date(year, month+1,0).getDate();
 
-    title.innerText = current.toLocaleString('default',{month:'long'}) + " " + y;
-
-    for(let i=1;i<=days;i++){
-
-        const div = document.createElement("div");
-        div.className = "day";
-
-        if(isTaken(i,m,y)){
-            div.classList.add("taken");
-        } else {
-            div.classList.add("available");
-
-            div.onclick = () => {
-
-                // toggle selection
-                document.querySelectorAll(".selected").forEach(x=>x.classList.remove("selected"));
-                div.classList.add("selected");
-
-                alert("Selected " + i + "/" + (m+1) + "/" + y);
-            };
-        }
-
-        div.innerText = i;
-        cal.appendChild(div);
-    }
+for(let i=0;i<first;i++){
+calendarEl.innerHTML += "<div></div>";
 }
 
-function changeMonth(dir){
-    current.setMonth(current.getMonth() + dir);
-    render();
+for(let d=1; d<=days; d++){
+
+let div = document.createElement("div");
+div.classList.add("day");
+
+if(isTaken(d,month,year)){
+div.classList.add("taken");
+}else{
+div.classList.add("available");
+div.onclick = () => {
+alert("Booked " + d + "/" + (month+1) + "/" + year);
+};
+}
+
+div.innerText = d;
+calendarEl.appendChild(div);
+}
+
+}
+
+function changeMonth(x){
+current.setMonth(current.getMonth()+x);
+render();
 }
 
 render();
+
+/* COMMENTS */
+function addComment(){
+let n = document.getElementById("name").value;
+let m = document.getElementById("msg").value;
+
+if(!n || !m) return;
+
+let div = document.createElement("div");
+div.classList.add("comment");
+div.innerHTML = "<b>"+n+"</b><br>"+m;
+
+document.getElementById("commentsList").prepend(div);
+
+document.getElementById("name").value="";
+document.getElementById("msg").value="";
+}
 
 </script>
 
