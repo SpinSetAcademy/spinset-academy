@@ -7,9 +7,6 @@
 
 <title>SpinSet Academy</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
@@ -21,28 +18,10 @@
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     font-family:'Outfit',sans-serif;
     background:#f7faf8;
     color:#111;
-    overflow-x:hidden;
-}
-
-/* CURSOR */
-.cursor{
-    width:22px;
-    height:22px;
-    background:#d7ff3f;
-    border-radius:50%;
-    position:fixed;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    z-index:99999;
-    box-shadow:0 0 12px rgba(215,255,63,0.8);
 }
 
 /* NAV */
@@ -54,21 +33,20 @@ nav{
     justify-content:space-between;
     align-items:center;
     padding:18px 8%;
-    background:rgba(255,255,255,0.75);
-    backdrop-filter:blur(18px);
-    border-bottom:1px solid rgba(0,0,0,0.06);
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(12px);
     z-index:1000;
 }
 
 .logo img{
-    height:55px; /* KEPT SAME SIZE */
+    height:55px;
 }
 
 nav a{
+    margin-left:20px;
     text-decoration:none;
     color:#111;
     font-weight:600;
-    margin-left:22px;
 }
 
 nav a:hover{
@@ -82,12 +60,13 @@ nav a:hover{
     justify-content:center;
     align-items:center;
     text-align:center;
+    flex-direction:column;
+    padding:120px 20px 60px;
     background:linear-gradient(135deg,#fff,#eaf7ee);
 }
 
 .hero-logo{
-    width:450px; /* KEPT SAME SIZE */
-    max-width:90%;
+    height:160px;
 }
 
 .subtitle{
@@ -97,9 +76,9 @@ nav a:hover{
     color:#1d3d26;
 }
 
-.hero-small{
+.subtext{
     margin-top:12px;
-    font-size:20px;
+    font-size:18px;
     color:#444;
 }
 
@@ -110,25 +89,24 @@ section{
 
 .title{
     text-align:center;
-    font-size:42px;
+    font-size:40px;
     margin-bottom:40px;
-    font-weight:800;
     color:#1d3d26;
-}
-
-/* CARD */
-.card{
-    background:white;
-    padding:30px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.06);
 }
 
 /* GRID */
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
     gap:25px;
+}
+
+/* CARDS */
+.card{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* FAQ */
@@ -137,43 +115,105 @@ section{
     padding:25px;
     border-radius:16px;
     margin-bottom:15px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.06);
+    box-shadow:0 8px 18px rgba(0,0,0,0.06);
+}
+
+.faq b{
+    color:#2d8f47;
 }
 
 /* CALENDAR */
-.calendar-container{
+.calendar-box{
     background:white;
     padding:30px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.06);
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.calendar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.calendar-header button{
+    padding:10px 14px;
+    border:none;
+    border-radius:10px;
+    background:#2d8f47;
+    color:white;
+    cursor:pointer;
 }
 
 .calendar{
     display:grid;
     grid-template-columns:repeat(7,1fr);
     gap:10px;
-    margin-top:20px;
 }
 
 .day{
-    padding:16px;
+    padding:14px;
     text-align:center;
     border-radius:12px;
-    font-weight:700;
     cursor:pointer;
+    font-weight:600;
+    transition:0.2s;
 }
 
-.available{ background:#c9ffd2; }
-.taken{ background:#ffc6c6; }
+.day:hover{
+    transform:scale(1.05);
+}
 
-.day:hover{ transform:scale(1.05); }
+.available{
+    background:#c9ffd2;
+    color:#145c25;
+}
+
+.taken{
+    background:#ffbcbc;
+    color:#7a1e1e;
+}
+
+.selected{
+    outline:3px solid #2d8f47;
+}
+
+/* COMMENTS */
+.comments-box{
+    background:white;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.comments-box input,
+.comments-box textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:12px;
+    border-radius:10px;
+    border:1px solid #ddd;
+    font-family:inherit;
+}
+
+.comments-box textarea{
+    height:120px;
+}
+
+.comment{
+    background:#f4f7f4;
+    padding:12px;
+    margin-top:10px;
+    border-radius:10px;
+}
 
 /* CONTACT */
 .contact{
     background:#2d8f47;
     color:white;
     padding:40px;
-    border-radius:20px;
+    border-radius:18px;
     text-align:center;
 }
 
@@ -191,107 +231,100 @@ footer{
 
 <body>
 
-<div class="cursor"></div>
-
 <!-- NAV -->
 <nav>
-<div class="logo">
-<img src="logo.png">
-</div>
+    <div class="logo">
+        <img src="logo.png">
+    </div>
 
-<div>
-<a href="#about">About</a>
-<a href="#classes">Classes</a>
-<a href="#pricing">Pricing</a>
-<a href="#faq">FAQ</a>
-<a href="#calendar">Booking</a>
-<a href="#contact">Contact</a>
-</div>
+    <div>
+        <a href="#classes">Classes</a>
+        <a href="#calendar">Booking</a>
+        <a href="#faq">FAQ</a>
+        <a href="#comments">Comments</a>
+        <a href="#contact">Contact</a>
+    </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
 
-<div>
-<img src="logo.png" class="hero-logo">
+    <img src="logo.png" class="hero-logo">
 
-<div class="subtitle">Where You Master The Fundamentals</div>
-<div class="hero-small">Learn new skills • Improve every day • Compete with confidence</div>
+    <div class="subtitle">Where You Master The Fundamentals</div>
+    <div class="subtext">
+        Learn new skills • Improve every day • Compete with confidence
+    </div>
 
-</div>
-
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-<h2 class="title">ABOUT</h2>
-<div class="card">
-SpinSet Academy focuses on tennis fundamentals, confidence, and skill building for young athletes.
-</div>
 </section>
 
 <!-- CLASSES -->
 <section id="classes">
-<h2 class="title">CLASSES</h2>
+    <h2 class="title">Classes</h2>
 
-<div class="grid">
+    <div class="grid">
 
-<div class="card">
-<h3>Group Lessons</h3>
-<p>Beginner friendly training.</p>
-</div>
+        <div class="card">
+            <h3>Group Lessons</h3>
+            <p>Beginner friendly tennis training.</p>
+        </div>
 
-<div class="card">
-<h3>Private Lessons</h3>
-<p>1-on-1 coaching.</p>
-</div>
+        <div class="card">
+            <h3>Private Lessons</h3>
+            <p>1-on-1 focused coaching.</p>
+        </div>
 
-</div>
-</section>
-
-<!-- PRICING -->
-<section id="pricing">
-<h2 class="title">PRICING</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Group</h3>
-<p>$12/hr</p>
-</div>
-
-<div class="card">
-<h3>Private</h3>
-<p>$25/hr</p>
-</div>
-
-</div>
-</section>
-
-<!-- FAQ -->
-<section id="faq">
-<h2 class="title">FAQ</h2>
-
-<div class="faq">
-<b>Do beginners need experience?</b>
-<p>No — all levels welcome.</p>
-</div>
-
-<div class="faq">
-<b>Where are lessons?</b>
-<p>Round Rock Tennis Courts.</p>
-</div>
-
+    </div>
 </section>
 
 <!-- CALENDAR -->
 <section id="calendar">
 
-<h2 class="title">BOOKING</h2>
+<h2 class="title">Book a Lesson</h2>
 
-<div class="calendar-container">
+<div class="calendar-box">
 
-<div class="calendar" id="calendar"></div>
+    <div class="calendar-header">
+        <button onclick="changeMonth(-1)">◀</button>
+        <h3 id="monthTitle"></h3>
+        <button onclick="changeMonth(1)">▶</button>
+    </div>
+
+    <div class="calendar" id="calendar"></div>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+
+<h2 class="title">FAQ</h2>
+
+<div class="faq">
+<b>Do beginners need experience?</b>
+<p>No — all levels are welcome.</p>
+</div>
+
+<div class="faq">
+<b>When are lessons available?</b>
+<p>Weekends and selected weekdays depending on schedule.</p>
+</div>
+
+</section>
+
+<!-- COMMENTS -->
+<section id="comments">
+
+<h2 class="title">Comments</h2>
+
+<div class="comments-box">
+
+<input id="name" placeholder="Name">
+<textarea id="message" placeholder="Comment"></textarea>
+<button onclick="addComment()">Post</button>
+
+<div id="commentList"></div>
 
 </div>
 
@@ -300,11 +333,11 @@ SpinSet Academy focuses on tennis fundamentals, confidence, and skill building f
 <!-- CONTACT -->
 <section id="contact">
 
-<h2 class="title">CONTACT</h2>
+<h2 class="title">Contact</h2>
 
 <div class="contact">
-spinsetacademy@gmail.com <br><br>
-5128397026
+<p>spinsetacademy@gmail.com</p>
+<p>5128397026</p>
 </div>
 
 </section>
@@ -315,78 +348,86 @@ SpinSet Academy
 
 <script>
 
-/* CURSOR */
-document.addEventListener("mousemove",(e)=>{
-document.querySelector(".cursor").style.left=e.clientX+"px";
-document.querySelector(".cursor").style.top=e.clientY+"px";
-});
+/* COMMENTS */
+function addComment(){
+    const name = document.getElementById("name").value;
+    const msg = document.getElementById("message").value;
 
-/* CALENDAR RULE */
-let currentDate = new Date(2026,5);
+    if(!name || !msg) return;
 
-const takenManual = {}; // clicked overrides
+    const div = document.createElement("div");
+    div.className = "comment";
+    div.innerHTML = `<b>${name}</b><p>${msg}</p>`;
 
-function isTaken(day,month,year){
+    document.getElementById("commentList").prepend(div);
 
-const date = new Date(year,month,day);
-const key = `${year}-${month}-${day}`;
-
-if(takenManual[key] !== undefined){
-return takenManual[key];
+    document.getElementById("name").value = "";
+    document.getElementById("message").value = "";
 }
 
-const cutoff = new Date(2026,7,12);
+/* CALENDAR LOGIC */
 
-if(date < cutoff){
-return false; // everything free before Aug 12
-}
+let current = new Date(2026, 5);
 
-// after Aug 12:
-const dayOfWeek = date.getDay(); // 1-5 weekdays
-return dayOfWeek >= 1 && dayOfWeek <= 5;
+function isTaken(date, month, year){
 
+    const d = new Date(year, month, date);
+
+    const aug12 = new Date(2026, 7, 12);
+
+    // before aug 12 = all available
+    if(d < aug12) return false;
+
+    // after aug 12 = weekdays taken
+    const day = d.getDay(); // 1-5 weekday
+
+    if(day >= 1 && day <= 5) return true;
+
+    return false;
 }
 
 function render(){
 
-const cal = document.getElementById("calendar");
-cal.innerHTML="";
+    const cal = document.getElementById("calendar");
+    const title = document.getElementById("monthTitle");
 
-const year=currentDate.getFullYear();
-const month=currentDate.getMonth();
+    cal.innerHTML = "";
 
-const days=new Date(year,month+1,0).getDate();
+    const y = current.getFullYear();
+    const m = current.getMonth();
 
-for(let d=1; d<=days; d++){
+    const days = new Date(y, m+1, 0).getDate();
 
-const div=document.createElement("div");
-div.classList.add("day");
+    title.innerText = current.toLocaleString('default',{month:'long'}) + " " + y;
 
-const taken=isTaken(d,month,year);
+    for(let i=1;i<=days;i++){
 
-div.classList.add(taken?"taken":"available");
-div.innerText=d;
+        const div = document.createElement("div");
+        div.className = "day";
 
-div.onclick=()=>{
+        if(isTaken(i,m,y)){
+            div.classList.add("taken");
+        } else {
+            div.classList.add("available");
 
-const key=`${year}-${month}-${d}`;
+            div.onclick = () => {
 
-// toggle ONLY before Aug 12 rule locks it
-const date=new Date(year,month,d);
-const cutoff=new Date(2026,7,12);
+                // toggle selection
+                document.querySelectorAll(".selected").forEach(x=>x.classList.remove("selected"));
+                div.classList.add("selected");
 
-if(date>=cutoff){
-alert("This date follows schedule rules and cannot be manually changed.");
-return;
+                alert("Selected " + i + "/" + (m+1) + "/" + y);
+            };
+        }
+
+        div.innerText = i;
+        cal.appendChild(div);
+    }
 }
 
-takenManual[key]=!takenManual[key];
-render();
-};
-
-cal.appendChild(div);
-}
-
+function changeMonth(dir){
+    current.setMonth(current.getMonth() + dir);
+    render();
 }
 
 render();
