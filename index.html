@@ -1,11 +1,874 @@
-<!-- =========================
-ADD THIS RIGHT BEFORE </body>
-========================= -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<!-- COMMENTS SECTION -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SpinSet Academy</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Outfit',sans-serif;
+    background:#f7faf8;
+    color:#111;
+    overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#78c67b;
+    border-radius:20px;
+}
+
+/* TENNIS BALL CURSOR */
+
+.cursor{
+    width:22px;
+    height:22px;
+
+    background:#d7ff3f;
+
+    border-radius:50%;
+
+    position:fixed;
+
+    pointer-events:none;
+
+    transform:translate(-50%,-50%);
+
+    z-index:99999;
+
+    box-shadow:
+    0 0 12px rgba(215,255,63,0.8),
+    0 0 25px rgba(215,255,63,0.45);
+
+    transition:
+    transform 0.08s linear;
+}
+
+.trail{
+    width:10px;
+    height:10px;
+
+    background:rgba(215,255,63,0.45);
+
+    border-radius:50%;
+
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:99998;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 8%;
+
+    background:rgba(255,255,255,0.72);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(0,0,0,0.06);
+
+    z-index:1000;
+}
+
+.logo img{
+    height:52px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#111;
+    font-weight:600;
+    margin-left:22px;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#2d8f47;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(135deg,#ffffff,#eaf8ee);
+}
+
+/* STADIUM SPOTLIGHTS */
+
+.hero::before{
+    content:"";
+
+    position:absolute;
+
+    width:800px;
+    height:800px;
+
+    background:
+    radial-gradient(circle,
+    rgba(144,255,164,0.25),
+    transparent 65%);
+
+    top:-250px;
+    left:-250px;
+
+    animation:spotlight1 8s ease-in-out infinite;
+}
+
+.hero::after{
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    background:
+    radial-gradient(circle,
+    rgba(215,255,63,0.2),
+    transparent 65%);
+
+    bottom:-200px;
+    right:-200px;
+
+    animation:spotlight2 7s ease-in-out infinite;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    max-width:900px;
+    padding:20px;
+}
+
+/* LOGO */
+
+.hero-logo{
+    width:340px;
+    max-width:85%;
+
+    animation:logoFloat 4s ease-in-out infinite;
+
+    filter:
+    drop-shadow(0 0 20px rgba(144,255,164,0.45))
+    drop-shadow(0 0 50px rgba(144,255,164,0.25));
+}
+
+/* SUBTITLE */
+
+.subtitle{
+    font-size:25px;
+
+    color:#2c2c2c;
+
+    margin-top:22px;
+
+    font-weight:500;
+}
+
+/* BUTTONS */
+
+.hero-buttons{
+    margin-top:35px;
+
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:15px 34px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    transition:0.35s;
+}
+
+.btn-main{
+    background:#2d8f47;
+    color:white;
+
+    box-shadow:
+    0 10px 25px rgba(45,143,71,0.22);
+}
+
+.btn-main:hover{
+    transform:
+    translateY(-4px)
+    scale(1.05);
+}
+
+.btn-outline{
+    border:2px solid rgba(0,0,0,0.08);
+
+    background:white;
+
+    color:#111;
+}
+
+.btn-outline:hover{
+    border-color:#2d8f47;
+    color:#2d8f47;
+}
+
+/* SECTIONS */
+
+section{
+    padding:110px 10%;
+    position:relative;
+}
+
+/* TITLES */
+
+.title{
+    text-align:center;
+
+    font-size:42px;
+
+    margin-bottom:50px;
+
+    font-weight:800;
+
+    color:#1f4028;
+}
+
+/* CARDS */
+
+.grid{
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(280px,1fr));
+
+    gap:28px;
+}
+
+.card{
+    background:white;
+
+    padding:34px;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.06);
+
+    transition:0.4s;
+
+    transform-style:preserve-3d;
+}
+
+.card:hover{
+    transform:
+    rotateX(7deg)
+    rotateY(-7deg)
+    translateY(-10px);
+
+    box-shadow:
+    0 25px 40px rgba(45,143,71,0.14);
+}
+
+.card h3{
+    margin-bottom:15px;
+    color:#2d8f47;
+}
+
+/* FAQ */
+
+.faq{
+    background:white;
+
+    padding:26px;
+
+    border-radius:20px;
+
+    margin-bottom:18px;
+
+    box-shadow:
+    0 8px 18px rgba(0,0,0,0.05);
+}
+
+.faq b{
+    color:#2d8f47;
+}
+
+/* CALENDAR */
+
+.calendar-container{
+    background:white;
+
+    padding:35px;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.06);
+}
+
+.calendar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:30px;
+}
+
+.calendar-header button{
+    border:none;
+
+    background:#2d8f47;
+    color:white;
+
+    padding:10px 18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+
+    gap:12px;
+}
+
+.day{
+    padding:18px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.day:hover{
+    transform:scale(1.08);
+}
+
+.available{
+    background:#c9ffd2;
+    color:#156327;
+}
+
+.taken{
+    background:#ffc6c6;
+    color:#822222;
+}
+
+.calendar-legend{
+    margin-top:20px;
+
+    display:flex;
+    gap:25px;
+}
+
+.available-box,
+.taken-box{
+    width:18px;
+    height:18px;
+
+    border-radius:5px;
+
+    display:inline-block;
+
+    margin-right:8px;
+}
+
+.available-box{
+    background:#c9ffd2;
+}
+
+.taken-box{
+    background:#ffc6c6;
+}
+
+/* COMMENTS */
+
+.comments-box{
+    background:white;
+
+    padding:35px;
+
+    border-radius:24px;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.06);
+}
+
+.comments-box input,
+.comments-box textarea{
+    width:100%;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+    border-radius:14px;
+
+    border:1px solid #ddd;
+
+    font-family:'Outfit',sans-serif;
+
+    font-size:16px;
+}
+
+.comments-box textarea{
+    min-height:130px;
+    resize:vertical;
+}
+
+.comment{
+    background:#f5f7f5;
+
+    padding:18px;
+
+    border-radius:14px;
+
+    margin-top:15px;
+}
+
+/* CONTACT */
+
+.contact{
+    background:
+    linear-gradient(135deg,#2d8f47,#48a85f);
+
+    color:white;
+
+    padding:45px;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    box-shadow:
+    0 15px 35px rgba(45,143,71,0.18);
+}
+
+.contact p{
+    font-size:22px;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+
+    padding:30px;
+
+    background:#111;
+
+    color:white;
+}
+
+/* SCROLL REVEAL */
+
+.reveal{
+    opacity:0;
+
+    transform:
+    translateY(50px);
+
+    transition:
+    all 0.9s ease;
+}
+
+.reveal.active{
+    opacity:1;
+
+    transform:
+    translateY(0);
+}
+
+/* ANIMATIONS */
+
+@keyframes logoFloat{
+
+0%,100%{
+    transform:translateY(0);
+}
+
+50%{
+    transform:translateY(-14px);
+}
+
+}
+
+@keyframes spotlight1{
+
+0%,100%{
+    transform:translate(0,0);
+}
+
+50%{
+    transform:translate(130px,70px);
+}
+
+}
+
+@keyframes spotlight2{
+
+0%,100%{
+    transform:translate(0,0);
+}
+
+50%{
+    transform:translate(-120px,-60px);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+nav{
+    flex-direction:column;
+    gap:12px;
+}
+
+nav a{
+    margin:0 8px;
+}
+
+.hero-logo{
+    width:240px;
+}
+
+.subtitle{
+    font-size:20px;
+}
+
+.title{
+    font-size:34px;
+}
+
+.calendar{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- CURSOR -->
+
+<div class="cursor"></div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">
+<img src="logo.png">
+</div>
+
+<div>
+<a href="#about">About</a>
+<a href="#classes">Classes</a>
+<a href="#pricing">Pricing</a>
+<a href="#faq">FAQ</a>
+<a href="#calendar">Booking</a>
+<a href="#comments">Comments</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content reveal">
+
+<img src="logo.png" class="hero-logo">
+
+<p class="subtitle">
+Modern and fun coaching for young tennis athletes
+</p>
+
+<div class="hero-buttons">
+
+<a href="#classes" class="btn btn-main">
+View Classes
+</a>
+
+<a href="#calendar" class="btn btn-outline">
+Book A Lesson
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about" class="reveal">
+
+<h2 class="title">
+ABOUT
+</h2>
+
+<div class="card">
+
+<p>
+SpinSet Academy provides modern tennis coaching focused on confidence,
+fundamentals, movement, and enjoyment for young athletes in Round Rock.
+</p>
+
+<br>
+
+<p>
+Lessons are designed to help beginners and developing players improve
+while building discipline and passion for the game.
+</p>
+
+</div>
+
+</section>
+
+<!-- CLASSES -->
+
+<section id="classes" class="reveal">
+
+<h2 class="title">
+CLASSES
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Group Lessons</h3>
+
+<p>
+Structured beginner-friendly training focused on movement,
+consistency, and confidence.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Private Lessons</h3>
+
+<p>
+Personalized one-on-one coaching sessions tailored
+to each player's development.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>Development Training</h3>
+
+<p>
+Competitive-focused sessions for improving footwork,
+rallying, and match performance.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PRICING -->
+
+<section id="pricing" class="reveal">
+
+<h2 class="title">
+PRICING
+</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Group Lessons</h3>
+
+<p>$12/hr</p>
+
+</div>
+
+<div class="card">
+
+<h3>Private Lessons</h3>
+
+<p>$25/hr</p>
+
+</div>
+
+<div class="card">
+
+<h3>First Class</h3>
+
+<p>FREE for new students</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FAQ -->
+
+<section id="faq" class="reveal">
+
+<h2 class="title">
+FAQ
+</h2>
+
+<div class="faq">
+
+<b>Do players need experience?</b>
+
+<p>
+No — beginners are welcome.
+</p>
+
+</div>
+
+<div class="faq">
+
+<b>Where are lessons held?</b>
+
+<p>
+Round Rock tennis courts.
+</p>
+
+</div>
+
+<div class="faq">
+
+<b>What should students bring?</b>
+
+<p>
+A tennis racket, water bottle, and athletic shoes.
+</p>
+
+</div>
+
+</section>
+
+<!-- CALENDAR -->
+
+<section id="calendar" class="reveal">
+
+<h2 class="title">
+BOOK A LESSON
+</h2>
+
+<div class="calendar-container">
+
+<div class="calendar-header">
+
+<button onclick="changeMonth(-1)">
+◀
+</button>
+
+<h3 id="monthYear"></h3>
+
+<button onclick="changeMonth(1)">
+▶
+</button>
+
+</div>
+
+<div class="calendar" id="calendarDays"></div>
+
+<div class="calendar-legend">
+
+<div>
+<span class="available-box"></span>
+Available
+</div>
+
+<div>
+<span class="taken-box"></span>
+Taken
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- COMMENTS -->
+
 <section id="comments" class="reveal">
 
-<h2 class="title">COMMENTS & QUESTIONS</h2>
+<h2 class="title">
+COMMENTS & QUESTIONS
+</h2>
 
 <div class="comments-box">
 
@@ -13,7 +876,7 @@ ADD THIS RIGHT BEFORE </body>
 
 <textarea id="commentInput" placeholder="Questions, concerns, or feedback..."></textarea>
 
-<button onclick="addComment()" class="btn">
+<button onclick="addComment()" class="btn btn-main">
 Post Comment
 </button>
 
@@ -23,262 +886,211 @@ Post Comment
 
 </section>
 
-<!-- BOOKING CALENDAR -->
-<section id="calendar" class="reveal">
+<!-- CONTACT -->
 
-<h2 class="title">BOOK A LESSON</h2>
+<section id="contact" class="reveal">
 
-<div class="calendar-container">
+<h2 class="title">
+CONTACT
+</h2>
 
-<div class="calendar-header">
+<div class="contact">
 
-<button onclick="changeMonth(-1)">◀</button>
+<p>
+spinsetacademy@gmail.com
+</p>
 
-<h3 id="monthYear"></h3>
+<br>
 
-<button onclick="changeMonth(1)">▶</button>
-
-</div>
-
-<div class="calendar" id="calendar"></div>
-
-<p class="calendar-legend">
-<span class="available-box"></span> Available
-<span class="taken-box"></span> Taken
+<p>
+5128397026
 </p>
 
 </div>
 
 </section>
 
-<style>
-
-/* COMMENTS */
-
-.comments-box{
-    background:white;
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-.comments-box input,
-.comments-box textarea{
-
-    width:100%;
-
-    padding:16px;
-
-    margin-bottom:18px;
-
-    border-radius:12px;
-
-    border:1px solid #ccc;
-
-    font-family:'Outfit',sans-serif;
-
-    font-size:16px;
-}
-
-.comments-box textarea{
-    min-height:140px;
-    resize:vertical;
-}
-
-.comment{
-    margin-top:18px;
-    padding:18px;
-    background:#f5f5f5;
-    border-radius:14px;
-}
-
-/* CALENDAR */
-
-.calendar-container{
-    background:white;
-    padding:35px;
-    border-radius:20px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
-
-.calendar-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:25px;
-}
-
-.calendar-header button{
-    padding:10px 16px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
-    background:#2a7a3f;
-    color:white;
-    font-size:18px;
-}
-
-.calendar{
-    display:grid;
-    grid-template-columns:repeat(7,1fr);
-    gap:12px;
-}
-
-.day{
-    padding:18px;
-    border-radius:14px;
-    text-align:center;
-    font-weight:700;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.available{
-    background:#b7ffb7;
-    color:#115511;
-}
-
-.taken{
-    background:#ffb8b8;
-    color:#771111;
-}
-
-.day:hover{
-    transform:scale(1.08);
-}
-
-.calendar-legend{
-    margin-top:20px;
-    display:flex;
-    gap:20px;
-    align-items:center;
-}
-
-.available-box,
-.taken-box{
-    width:18px;
-    height:18px;
-    display:inline-block;
-    border-radius:5px;
-    margin-right:6px;
-}
-
-.available-box{
-    background:#b7ffb7;
-}
-
-.taken-box{
-    background:#ffb8b8;
-}
-
-</style>
+<footer>
+SpinSet Academy • Round Rock, Texas
+</footer>
 
 <script>
+
+/* TENNIS BALL CURSOR */
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove",(e)=>{
+
+cursor.style.left = e.clientX + "px";
+cursor.style.top = e.clientY + "px";
+
+/* TRAIL */
+
+const trail = document.createElement("div");
+
+trail.classList.add("trail");
+
+trail.style.left = e.clientX + "px";
+trail.style.top = e.clientY + "px";
+
+document.body.appendChild(trail);
+
+setTimeout(()=>{
+trail.remove();
+},300);
+
+});
+
+/* SCROLL REVEAL */
+
+const reveals = document.querySelectorAll(".reveal");
+
+window.addEventListener("scroll",()=>{
+
+reveals.forEach((el)=>{
+
+const top = el.getBoundingClientRect().top;
+
+if(top < window.innerHeight - 100){
+
+el.classList.add("active");
+
+}
+
+});
+
+});
 
 /* COMMENTS */
 
 function addComment(){
 
-    const name = document.getElementById("nameInput").value;
-    const comment = document.getElementById("commentInput").value;
+const name =
+document.getElementById("nameInput").value;
 
-    if(name === "" || comment === ""){
-        alert("Please fill out both fields.");
-        return;
-    }
+const comment =
+document.getElementById("commentInput").value;
 
-    const commentDiv = document.createElement("div");
-    commentDiv.classList.add("comment");
+if(name === "" || comment === ""){
 
-    commentDiv.innerHTML = `
-        <strong>${name}</strong>
-        <p>${comment}</p>
-    `;
+alert("Please fill out both fields.");
 
-    document.getElementById("commentsContainer").prepend(commentDiv);
+return;
 
-    document.getElementById("nameInput").value = "";
-    document.getElementById("commentInput").value = "";
+}
+
+const commentDiv =
+document.createElement("div");
+
+commentDiv.classList.add("comment");
+
+commentDiv.innerHTML = `
+<strong>${name}</strong>
+<p>${comment}</p>
+`;
+
+document
+.getElementById("commentsContainer")
+.prepend(commentDiv);
+
+document.getElementById("nameInput").value = "";
+document.getElementById("commentInput").value = "";
+
 }
 
 /* CALENDAR */
 
-const calendar = document.getElementById("calendar");
-const monthYear = document.getElementById("monthYear");
+const calendarDays =
+document.getElementById("calendarDays");
 
-let currentDate = new Date();
+const monthYear =
+document.getElementById("monthYear");
 
-const takenDates = [5, 8, 14, 20];
+let currentDate = new Date(2026,5);
+
+const takenDates = [6,7,11,13,18,20,25];
 
 function renderCalendar(){
 
-    calendar.innerHTML = "";
+calendarDays.innerHTML = "";
 
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
+const year =
+currentDate.getFullYear();
 
-    const firstDay = new Date(year, month, 1).getDay();
+const month =
+currentDate.getMonth();
 
-    const daysInMonth = new Date(year, month + 1, 0).getDate();
+const firstDay =
+new Date(year,month,1).getDay();
 
-    const monthNames = [
-        "January","February","March","April",
-        "May","June","July","August",
-        "September","October","November","December"
-    ];
+const daysInMonth =
+new Date(year,month+1,0).getDate();
 
-    monthYear.innerText =
-    `${monthNames[month]} ${year}`;
+const months = [
+"January","February","March","April",
+"May","June","July","August",
+"September","October","November","December"
+];
 
-    for(let i = 0; i < firstDay; i++){
+monthYear.innerText =
+`${months[month]} ${year}`;
 
-        const blank = document.createElement("div");
-        calendar.appendChild(blank);
+for(let i=0;i<firstDay;i++){
 
-    }
+const blank =
+document.createElement("div");
 
-    for(let day = 1; day <= daysInMonth; day++){
+calendarDays.appendChild(blank);
 
-        const dayDiv = document.createElement("div");
+}
 
-        dayDiv.classList.add("day");
+for(let day=1;day<=daysInMonth;day++){
 
-        dayDiv.innerText = day;
+const dayBox =
+document.createElement("div");
 
-        if(takenDates.includes(day)){
+dayBox.classList.add("day");
 
-            dayDiv.classList.add("taken");
+dayBox.innerText = day;
 
-        }else{
+if(takenDates.includes(day)){
 
-            dayDiv.classList.add("available");
+dayBox.classList.add("taken");
 
-            dayDiv.onclick = () => {
+}else{
 
-                alert(
-                    `You selected ${monthNames[month]} ${day}.`
-                );
+dayBox.classList.add("available");
 
-            };
+dayBox.onclick = ()=>{
 
-        }
+alert(
+`You selected ${months[month]} ${day}, ${year}`
+);
 
-        calendar.appendChild(dayDiv);
+};
 
-    }
+}
+
+calendarDays.appendChild(dayBox);
+
+}
 
 }
 
 function changeMonth(direction){
 
-    currentDate.setMonth(
-        currentDate.getMonth() + direction
-    );
+currentDate.setMonth(
+currentDate.getMonth()+direction
+);
 
-    renderCalendar();
+renderCalendar();
 
 }
 
 renderCalendar();
 
 </script>
+
+</body>
+</html>
