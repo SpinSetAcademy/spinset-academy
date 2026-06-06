@@ -7,23 +7,15 @@
 
 <title>SpinSet Academy</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
 
 /* RESET */
-
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 body{
@@ -33,622 +25,173 @@ body{
     overflow-x:hidden;
 }
 
-/* SCROLLBAR */
+html{scroll-behavior:smooth;}
 
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#63c76a;
-    border-radius:20px;
-}
-
-/* TENNIS BALL CURSOR */
-
+/* CURSOR */
 .cursor{
-    width:22px;
-    height:22px;
-
+    width:20px;
+    height:20px;
     background:#d7ff3f;
-
     border-radius:50%;
-
     position:fixed;
-
     pointer-events:none;
-
     transform:translate(-50%,-50%);
-
-    z-index:99999;
-
-    box-shadow:
-    0 0 12px rgba(215,255,63,0.8),
-    0 0 25px rgba(215,255,63,0.45);
-
-    transition:transform 0.08s linear;
+    z-index:9999;
+    box-shadow:0 0 15px #d7ff3f;
 }
 
-.trail{
-    width:10px;
-    height:10px;
-
-    background:rgba(215,255,63,0.45);
-
-    border-radius:50%;
-
-    position:fixed;
-
-    pointer-events:none;
-
-    z-index:99998;
-}
-
-/* MOUSE LIGHTING */
-
-.light{
-    position:fixed;
-
-    width:450px;
-    height:450px;
-
-    border-radius:50%;
-
-    background:
-    radial-gradient(circle,
-    rgba(136,255,153,0.22),
-    transparent 70%);
-
-    pointer-events:none;
-
-    z-index:0;
-
-    transform:translate(-50%,-50%);
-}
-
-/* NAVBAR */
-
+/* NAV */
 nav{
     position:fixed;
     top:0;
     width:100%;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
-
     padding:18px 8%;
-
-    background:rgba(255,255,255,0.74);
-
-    backdrop-filter:blur(18px);
-
-    border-bottom:1px solid rgba(0,0,0,0.06);
-
+    background:rgba(255,255,255,0.8);
+    backdrop-filter:blur(15px);
     z-index:1000;
 }
 
-.logo img{
-    height:55px;
-}
+.logo img{height:50px;}
 
 nav a{
+    margin-left:20px;
     text-decoration:none;
     color:#111;
-
     font-weight:600;
-
-    margin-left:22px;
-
-    transition:0.3s;
 }
 
-nav a:hover{
-    color:#2d8f47;
-}
+nav a:hover{color:#2d8f47;}
 
 /* HERO */
-
 .hero{
     min-height:100vh;
-
     display:flex;
-    justify-content:center;
     align-items:center;
-
+    justify-content:center;
     text-align:center;
-
+    background:linear-gradient(135deg,#fff,#e8f7ec);
     position:relative;
-
-    overflow:hidden;
-
-    background:
-    linear-gradient(135deg,#ffffff,#e8f7ec);
 }
-
-/* STADIUM LIGHTS */
-
-.hero::before{
-    content:"";
-
-    position:absolute;
-
-    width:850px;
-    height:850px;
-
-    background:
-    radial-gradient(circle,
-    rgba(126,255,156,0.24),
-    transparent 65%);
-
-    top:-300px;
-    left:-250px;
-
-    animation:stadium1 8s ease-in-out infinite;
-}
-
-.hero::after{
-    content:"";
-
-    position:absolute;
-
-    width:700px;
-    height:700px;
-
-    background:
-    radial-gradient(circle,
-    rgba(215,255,63,0.18),
-    transparent 65%);
-
-    bottom:-250px;
-    right:-200px;
-
-    animation:stadium2 7s ease-in-out infinite;
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-
-    max-width:950px;
-    padding:20px;
-}
-
-/* LOGO */
 
 .hero-logo{
-    width:450px;
+    width:420px;
     max-width:90%;
-
-    animation:logoFloat 4s ease-in-out infinite;
-
-    filter:
-    drop-shadow(0 0 25px rgba(126,255,156,0.35))
-    drop-shadow(0 0 60px rgba(126,255,156,0.22));
 }
-
-/* TEXT */
 
 .subtitle{
     font-size:34px;
-
-    margin-top:28px;
-
-    color:#183420;
-
     font-weight:700;
+    margin-top:20px;
+    color:#1d3d26;
 }
 
-.hero-small{
-    margin-top:18px;
-
-    font-size:21px;
-
-    color:#4a4a4a;
-
-    font-weight:500;
-}
-
-/* BUTTONS */
-
-.hero-buttons{
-    margin-top:38px;
-
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    flex-wrap:wrap;
-}
-
-.btn{
-    padding:15px 34px;
-
-    border-radius:14px;
-
-    text-decoration:none;
-
-    font-weight:700;
-
-    transition:0.35s;
-}
-
-.btn-main{
-    background:#2d8f47;
-    color:white;
-
-    box-shadow:
-    0 10px 25px rgba(45,143,71,0.2);
-}
-
-.btn-main:hover{
-    transform:
-    translateY(-4px)
-    scale(1.05);
-}
-
-.btn-outline{
-    background:white;
-
-    color:#111;
-
-    border:2px solid rgba(0,0,0,0.08);
-}
-
-.btn-outline:hover{
-    border-color:#2d8f47;
-    color:#2d8f47;
+.small{
+    margin-top:15px;
+    font-size:20px;
+    color:#444;
 }
 
 /* SECTIONS */
-
 section{
     padding:110px 10%;
-    position:relative;
-    z-index:2;
 }
-
-/* TITLES */
 
 .title{
     text-align:center;
+    font-size:40px;
+    margin-bottom:40px;
+}
 
-    font-size:42px;
-
-    margin-bottom:50px;
-
-    color:#1d3d26;
-
-    font-weight:800;
+/* CARD */
+.card{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* GRID */
-
 .grid{
     display:grid;
-
-    grid-template-columns:
-    repeat(auto-fit,minmax(280px,1fr));
-
-    gap:28px;
-}
-
-/* CARDS */
-
-.card{
-    background:white;
-
-    padding:34px;
-
-    border-radius:24px;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,0.06);
-
-    transition:0.4s;
-
-    transform-style:preserve-3d;
-}
-
-.card:hover{
-    transform:
-    rotateX(7deg)
-    rotateY(-7deg)
-    translateY(-10px);
-
-    box-shadow:
-    0 25px 40px rgba(45,143,71,0.14);
-}
-
-.card h3{
-    margin-bottom:16px;
-
-    color:#2d8f47;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
 }
 
 /* FAQ */
-
 .faq{
     background:white;
-
-    padding:26px;
-
-    border-radius:20px;
-
-    margin-bottom:18px;
-
-    box-shadow:
-    0 8px 18px rgba(0,0,0,0.05);
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:15px;
 }
 
-.faq b{
-    color:#2d8f47;
+/* CONTACT */
+.contact{
+    background:#2d8f47;
+    color:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
 }
 
 /* CALENDAR */
-
-.calendar-container{
+.calendar-box{
     background:white;
-
-    padding:35px;
-
-    border-radius:24px;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,0.06);
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
 .calendar-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-
-    margin-bottom:30px;
-}
-
-.calendar-header button{
-    border:none;
-
-    background:#2d8f47;
-    color:white;
-
-    padding:10px 18px;
-
-    border-radius:10px;
-
-    cursor:pointer;
+    margin-bottom:20px;
 }
 
 .calendar{
     display:grid;
     grid-template-columns:repeat(7,1fr);
-
-    gap:12px;
+    gap:10px;
 }
 
 .day{
-    padding:18px;
-
-    border-radius:14px;
-
+    padding:15px;
     text-align:center;
-
-    font-weight:700;
-
+    border-radius:10px;
     cursor:pointer;
-
-    transition:0.3s;
+    font-weight:600;
 }
 
-.day:hover{
-    transform:scale(1.08);
-}
-
-.available{
-    background:#c8ffd2;
-    color:#145c25;
-}
-
-.taken{
-    background:#ffc6c6;
-    color:#842020;
-}
-
-.calendar-legend{
-    margin-top:22px;
-
-    display:flex;
-    gap:24px;
-}
-
-.available-box,
-.taken-box{
-    width:18px;
-    height:18px;
-
-    border-radius:5px;
-
-    display:inline-block;
-
-    margin-right:7px;
-}
-
-.available-box{
-    background:#c8ffd2;
-}
-
-.taken-box{
-    background:#ffc6c6;
-}
+.available{background:#c8ffd2;}
+.taken{background:#ffbcbc;}
 
 /* COMMENTS */
-
-.comments-box{
-    background:white;
-
-    padding:35px;
-
-    border-radius:24px;
-
-    box-shadow:
-    0 10px 25px rgba(0,0,0,0.06);
-}
-
-.comments-box input,
-.comments-box textarea{
+textarea,input{
     width:100%;
-
-    padding:16px;
-
-    margin-bottom:18px;
-
-    border-radius:14px;
-
-    border:1px solid #ddd;
-
-    font-family:'Outfit',sans-serif;
-
-    font-size:16px;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:10px;
+    border:1px solid #ccc;
 }
 
-.comments-box textarea{
-    min-height:130px;
-    resize:vertical;
+button{
+    padding:12px 20px;
+    background:#2d8f47;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
 }
 
 .comment{
-    background:#f4f7f4;
-
-    padding:18px;
-
-    border-radius:14px;
-
-    margin-top:15px;
-}
-
-/* CONTACT */
-
-.contact{
-    background:
-    linear-gradient(135deg,#2d8f47,#4eb668);
-
-    color:white;
-
-    padding:50px;
-
-    border-radius:24px;
-
-    text-align:center;
-
-    box-shadow:
-    0 15px 35px rgba(45,143,71,0.18);
-}
-
-.contact p{
-    font-size:22px;
-}
-
-/* FOOTER */
-
-footer{
-    background:#111;
-
-    color:white;
-
-    text-align:center;
-
-    padding:30px;
-}
-
-/* SCROLL REVEAL */
-
-.reveal{
-    opacity:0;
-
-    transform:
-    translateY(50px);
-
-    transition:
-    all 0.9s ease;
-}
-
-.reveal.active{
-    opacity:1;
-
-    transform:
-    translateY(0);
-}
-
-/* ANIMATIONS */
-
-@keyframes logoFloat{
-
-0%,100%{
-    transform:translateY(0);
-}
-
-50%{
-    transform:translateY(-14px);
-}
-
-}
-
-@keyframes stadium1{
-
-0%,100%{
-    transform:translate(0,0);
-}
-
-50%{
-    transform:translate(140px,70px);
-}
-
-}
-
-@keyframes stadium2{
-
-0%,100%{
-    transform:translate(0,0);
-}
-
-50%{
-    transform:translate(-120px,-60px);
-}
-
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-nav{
-    flex-direction:column;
-    gap:12px;
-}
-
-nav a{
-    margin:0 8px;
-}
-
-.hero-logo{
-    width:280px;
-}
-
-.subtitle{
-    font-size:25px;
-}
-
-.hero-small{
-    font-size:18px;
-}
-
-.title{
-    font-size:34px;
-}
-
-.calendar{
-    grid-template-columns:repeat(2,1fr);
-}
-
+    margin-top:10px;
+    background:#f3f3f3;
+    padding:15px;
+    border-radius:10px;
 }
 
 </style>
@@ -657,532 +200,192 @@ nav a{
 
 <body>
 
-<div class="light"></div>
-
 <div class="cursor"></div>
 
-<!-- NAVBAR -->
-
 <nav>
-
-<div class="logo">
-<img src="logo.png">
-</div>
-
+<div><img src="logo.png"></div>
 <div>
 <a href="#about">About</a>
 <a href="#classes">Classes</a>
-<a href="#pricing">Pricing</a>
 <a href="#faq">FAQ</a>
 <a href="#calendar">Booking</a>
 <a href="#comments">Comments</a>
 <a href="#contact">Contact</a>
 </div>
-
 </nav>
-
-<!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-content reveal">
-
+<div>
 <img src="logo.png" class="hero-logo">
 
-<p class="subtitle">
-Where You Master The Fundamentals
-</p>
-
-<p class="hero-small">
-Learn new skills • Improve every day • Compete with confidence
-</p>
-
-<div class="hero-buttons">
-
-<a href="#classes" class="btn btn-main">
-View Classes
-</a>
-
-<a href="#calendar" class="btn btn-outline">
-Book A Lesson
-</a>
-
-</div>
-
+<div class="subtitle">Where You Master The Fundamentals</div>
+<div class="small">Learn new skills • Improve every day • Compete with confidence</div>
 </div>
 
 </section>
 
-<!-- ABOUT -->
-
-<section id="about" class="reveal">
-
-<h2 class="title">
-ABOUT
-</h2>
-
+<section id="about">
+<h2 class="title">About</h2>
 <div class="card">
-
-<p>
-SpinSet Academy provides modern tennis coaching focused on confidence,
-movement, fundamentals, and helping young athletes improve in a fun,
-professional environment.
-</p>
-
-<br>
-
-<p>
-Lessons are designed to help beginners and developing players build
-real skills while growing their love for the game.
-</p>
-
+SpinSet Academy focuses on tennis fundamentals, confidence, and development for young athletes.
 </div>
-
 </section>
 
-<!-- CLASSES -->
-
-<section id="classes" class="reveal">
-
-<h2 class="title">
-CLASSES
-</h2>
-
+<section id="classes">
+<h2 class="title">Classes</h2>
 <div class="grid">
-
-<div class="card">
-
-<h3>Group Lessons</h3>
-
-<p>
-Structured beginner-friendly training focused on movement,
-consistency, and confidence.
-</p>
-
+<div class="card">Group Lessons</div>
+<div class="card">Private Coaching</div>
+<div class="card">Development Training</div>
 </div>
-
-<div class="card">
-
-<h3>Private Lessons</h3>
-
-<p>
-Personalized one-on-one coaching tailored to each player.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>Development Training</h3>
-
-<p>
-Competitive-focused sessions improving rallying,
-footwork, and match performance.
-</p>
-
-</div>
-
-</div>
-
 </section>
 
-<!-- PRICING -->
-
-<section id="pricing" class="reveal">
-
-<h2 class="title">
-PRICING
-</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Group Lessons</h3>
-
-<p>$12/hr</p>
-
-</div>
-
-<div class="card">
-
-<h3>Private Lessons</h3>
-
-<p>$25/hr</p>
-
-</div>
-
-<div class="card">
-
-<h3>First Class</h3>
-
-<p>FREE for all new students</p>
-
-</div>
-
-</div>
-
+<section id="faq">
+<h2 class="title">FAQ</h2>
+<div class="faq"><b>Do beginners join?</b><p>Yes.</p></div>
+<div class="faq"><b>Where?</b><p>Round Rock courts.</p></div>
 </section>
 
-<!-- FAQ -->
+<section id="calendar">
+<h2 class="title">Booking Calendar</h2>
 
-<section id="faq" class="reveal">
-
-<h2 class="title">
-FAQ
-</h2>
-
-<div class="faq">
-
-<b>Do students need experience?</b>
-
-<p>
-No — beginners are welcome.
-</p>
-
-</div>
-
-<div class="faq">
-
-<b>Where are lessons held?</b>
-
-<p>
-Round Rock tennis courts.
-</p>
-
-</div>
-
-<div class="faq">
-
-<b>What should players bring?</b>
-
-<p>
-A tennis racket, water bottle, and athletic shoes.
-</p>
-
-</div>
-
-</section>
-
-<!-- CALENDAR -->
-
-<section id="calendar" class="reveal">
-
-<h2 class="title">
-BOOK A LESSON
-</h2>
-
-<div class="calendar-container">
+<div class="calendar-box">
 
 <div class="calendar-header">
-
-<button onclick="changeMonth(-1)">
-◀
-</button>
-
-<h3 id="monthYear"></h3>
-
-<button onclick="changeMonth(1)">
-▶
-</button>
-
+<button onclick="changeMonth(-1)">◀</button>
+<h3 id="monthText"></h3>
+<button onclick="changeMonth(1)">▶</button>
 </div>
 
-<div class="calendar" id="calendarDays"></div>
-
-<div class="calendar-legend">
-
-<div>
-<span class="available-box"></span>
-Available
-</div>
-
-<div>
-<span class="taken-box"></span>
-Taken
-</div>
+<div class="calendar" id="cal"></div>
 
 </div>
-
-</div>
-
 </section>
 
-<!-- COMMENTS -->
+<section id="comments">
+<h2 class="title">Comments</h2>
 
-<section id="comments" class="reveal">
+<input id="name" placeholder="Name">
+<textarea id="msg" placeholder="Comment"></textarea>
+<button onclick="addComment()">Post</button>
 
-<h2 class="title">
-COMMENTS & QUESTIONS
-</h2>
-
-<div class="comments-box">
-
-<input type="text" id="nameInput" placeholder="Your Name">
-
-<textarea id="commentInput" placeholder="Questions, concerns, or feedback..."></textarea>
-
-<button onclick="addComment()" class="btn btn-main">
-Post Comment
-</button>
-
-<div id="commentsContainer"></div>
-
-</div>
-
+<div id="comments"></div>
 </section>
 
-<!-- CONTACT -->
-
-<section id="contact" class="reveal">
-
-<h2 class="title">
-CONTACT
-</h2>
-
+<section id="contact">
+<h2 class="title">Contact</h2>
 <div class="contact">
-
-<p>
-spinsetacademy@gmail.com
-</p>
-
-<br>
-
-<p>
+spinsetacademy@gmail.com<br>
 5128397026
-</p>
-
 </div>
-
 </section>
-
-<footer>
-SpinSet Academy • Round Rock, Texas
-</footer>
 
 <script>
 
 /* CURSOR */
-
-const cursor =
-document.querySelector(".cursor");
-
-const light =
-document.querySelector(".light");
-
-document.addEventListener("mousemove",(e)=>{
-
-cursor.style.left =
-e.clientX + "px";
-
-cursor.style.top =
-e.clientY + "px";
-
-light.style.left =
-e.clientX + "px";
-
-light.style.top =
-e.clientY + "px";
-
-/* TRAIL */
-
-const trail =
-document.createElement("div");
-
-trail.classList.add("trail");
-
-trail.style.left =
-e.clientX + "px";
-
-trail.style.top =
-e.clientY + "px";
-
-document.body.appendChild(trail);
-
-setTimeout(()=>{
-trail.remove();
-},300);
-
-});
-
-/* REVEAL */
-
-const reveals =
-document.querySelectorAll(".reveal");
-
-window.addEventListener("scroll",()=>{
-
-reveals.forEach((el)=>{
-
-const top =
-el.getBoundingClientRect().top;
-
-if(top < window.innerHeight - 100){
-
-el.classList.add("active");
-
-}
-
-});
-
+document.addEventListener("mousemove",e=>{
+document.querySelector(".cursor").style.left=e.clientX+"px";
+document.querySelector(".cursor").style.top=e.clientY+"px";
 });
 
 /* COMMENTS */
-
 function addComment(){
+let n=document.getElementById("name").value;
+let m=document.getElementById("msg").value;
+if(!n||!m)return;
 
-const name =
-document.getElementById("nameInput").value;
+let div=document.createElement("div");
+div.className="comment";
+div.innerHTML="<b>"+n+"</b><br>"+m;
 
-const comment =
-document.getElementById("commentInput").value;
-
-if(name === "" || comment === ""){
-
-alert("Please fill out both fields.");
-
-return;
-
+document.getElementById("comments").appendChild(div);
 }
 
-const commentDiv =
-document.createElement("div");
+/* CALENDAR FIXED SYSTEM */
 
-commentDiv.classList.add("comment");
+let date=new Date(2026,5);
+let bookings={};
 
-commentDiv.innerHTML = `
-<strong>${name}</strong>
-<p>${comment}</p>
-`;
+function isTaken(d,m,y){
 
-document
-.getElementById("commentsContainer")
-.prepend(commentDiv);
+let day=new Date(y,m,d);
 
-document.getElementById("nameInput").value = "";
-document.getElementById("commentInput").value = "";
-
-}
-
-/* CALENDAR */
-
-const calendarDays =
-document.getElementById("calendarDays");
-
-const monthYear =
-document.getElementById("monthYear");
-
-let currentDate =
-new Date(2026,5);
-
-function isTakenDate(day, month, year){
-
-/* BEFORE AUGUST 12 EVERYTHING AVAILABLE */
-
-if(
-year < 2026 ||
-(year === 2026 && month < 7) ||
-(year === 2026 && month === 7 && day < 12)
-){
+/* BEFORE AUG 12 2026 */
+if(y<2026 || m<7 || (m===7 && d<12)){
 return false;
 }
 
-/* AFTER AUGUST 12:
-MONDAY-FRIDAY TAKEN
-WEEKENDS AVAILABLE */
-
-const date =
-new Date(year, month, day);
-
-const dayOfWeek =
-date.getDay();
-
-if(dayOfWeek >= 1 && dayOfWeek <= 5){
+/* AFTER AUG 12: MON-FRI TAKEN */
+let dayOfWeek=day.getDay();
+if(dayOfWeek>=1 && dayOfWeek<=5){
 return true;
 }
 
 return false;
-
 }
 
-function renderCalendar(){
+function render(){
 
-calendarDays.innerHTML = "";
+let cal=document.getElementById("cal");
+cal.innerHTML="";
 
-const year =
-currentDate.getFullYear();
+let y=date.getFullYear();
+let m=date.getMonth();
 
-const month =
-currentDate.getMonth();
+document.getElementById("monthText").innerText=
+date.toLocaleString('default',{month:'long'})+" "+y;
 
-const firstDay =
-new Date(year,month,1).getDay();
+let first=new Date(y,m,1).getDay();
+let days=new Date(y,m+1,0).getDate();
 
-const daysInMonth =
-new Date(year,month+1,0).getDate();
-
-const months = [
-"January","February","March","April",
-"May","June","July","August",
-"September","October","November","December"
-];
-
-monthYear.innerText =
-`${months[month]} ${year}`;
-
-for(let i=0;i<firstDay;i++){
-
-const blank =
-document.createElement("div");
-
-calendarDays.appendChild(blank);
-
+for(let i=0;i<first;i++){
+cal.innerHTML+="<div></div>";
 }
 
-for(let day=1;day<=daysInMonth;day++){
+for(let d=1;d<=days;d++){
 
-const dayBox =
-document.createElement("div");
+let div=document.createElement("div");
+div.className="day";
 
-dayBox.classList.add("day");
+let taken=isTaken(d,m,y);
 
-dayBox.innerText = day;
-
-if(isTakenDate(day,month,year)){
-
-dayBox.classList.add("taken");
-
+if(taken){
+div.classList.add("taken");
+div.innerText=d;
 }else{
+div.classList.add("available");
+div.innerText=d;
 
-dayBox.classList.add("available");
+/* FIX: now it ACTUALLY updates bookings */
+div.onclick=()=>{
 
-dayBox.onclick = ()=>{
+let key=`${y}-${m}-${d}`;
 
-alert(
-`You selected ${months[month]} ${day}, ${year}`
-);
+if(bookings[key]){
+delete bookings[key];
+div.style.background="#c8ffd2";
+}else{
+bookings[key]=true;
+div.style.background="#4caf50";
+}
 
 };
 
 }
 
-calendarDays.appendChild(dayBox);
+cal.appendChild(div);
 
 }
 
 }
 
-function changeMonth(direction){
-
-currentDate.setMonth(
-currentDate.getMonth()+direction
-);
-
-renderCalendar();
-
+function changeMonth(i){
+date.setMonth(date.getMonth()+i);
+render();
 }
 
-renderCalendar();
+render();
 
 </script>
 
