@@ -1,418 +1,284 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!-- =========================
+ADD THIS RIGHT BEFORE </body>
+========================= -->
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- COMMENTS SECTION -->
+<section id="comments" class="reveal">
 
-<title>SpinSet Academy</title>
+<h2 class="title">COMMENTS & QUESTIONS</h2>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<div class="comments-box">
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Orbitron:wght@500;700;800&display=swap" rel="stylesheet">
+<input type="text" id="nameInput" placeholder="Your Name">
+
+<textarea id="commentInput" placeholder="Questions, concerns, or feedback..."></textarea>
+
+<button onclick="addComment()" class="btn">
+Post Comment
+</button>
+
+<div id="commentsContainer"></div>
+
+</div>
+
+</section>
+
+<!-- BOOKING CALENDAR -->
+<section id="calendar" class="reveal">
+
+<h2 class="title">BOOK A LESSON</h2>
+
+<div class="calendar-container">
+
+<div class="calendar-header">
+
+<button onclick="changeMonth(-1)">◀</button>
+
+<h3 id="monthYear"></h3>
+
+<button onclick="changeMonth(1)">▶</button>
+
+</div>
+
+<div class="calendar" id="calendar"></div>
+
+<p class="calendar-legend">
+<span class="available-box"></span> Available
+<span class="taken-box"></span> Taken
+</p>
+
+</div>
+
+</section>
 
 <style>
 
-/* RESET */
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* COMMENTS */
+
+.comments-box{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
 }
 
-html{
-    scroll-behavior:smooth;
-}
+.comments-box input,
+.comments-box textarea{
 
-body{
-    font-family:'Outfit',sans-serif;
-    background:#f6f8f7;
-    color:#111;
-    overflow-x:hidden;
-}
-
-/* CURSOR (TENNIS BALL TRAIL) */
-.cursor{
-    width:18px;
-    height:18px;
-    border-radius:50%;
-    background:#d7ff3f;
-    position:fixed;
-    pointer-events:none;
-    transform:translate(-50%,-50%);
-    z-index:9999;
-
-    box-shadow:0 0 15px rgba(215,255,63,0.6);
-}
-
-.trail{
-    position:fixed;
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:rgba(215,255,63,0.5);
-    pointer-events:none;
-    z-index:9998;
-}
-
-/* NAV */
-nav{
-    position:fixed;
-    top:0;
     width:100%;
+
+    padding:16px;
+
+    margin-bottom:18px;
+
+    border-radius:12px;
+
+    border:1px solid #ccc;
+
+    font-family:'Outfit',sans-serif;
+
+    font-size:16px;
+}
+
+.comments-box textarea{
+    min-height:140px;
+    resize:vertical;
+}
+
+.comment{
+    margin-top:18px;
+    padding:18px;
+    background:#f5f5f5;
+    border-radius:14px;
+}
+
+/* CALENDAR */
+
+.calendar-container{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.calendar-header{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 8%;
-
-    background:rgba(255,255,255,0.7);
-    backdrop-filter:blur(14px);
-
-    border-bottom:1px solid rgba(0,0,0,0.06);
-
-    z-index:1000;
+    margin-bottom:25px;
 }
 
-.logo img{
-    height:42px;
-}
-
-nav a{
-    margin-left:22px;
-    text-decoration:none;
-    color:#111;
-    font-weight:600;
-}
-
-nav a:hover{
-    color:#2a7a3f;
-}
-
-/* HERO */
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    position:relative;
-
-    background:linear-gradient(120deg,#ffffff,#eaf7ee);
-    overflow:hidden;
-}
-
-/* STADIUM SPOTLIGHT */
-.hero::before{
-    content:"";
-    position:absolute;
-    width:700px;
-    height:700px;
-    background:radial-gradient(circle,rgba(215,255,63,0.25),transparent 60%);
-    top:-200px;
-    left:-200px;
-    animation:spotlight 6s ease-in-out infinite;
-}
-
-.hero::after{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:radial-gradient(circle,rgba(0,180,90,0.15),transparent 60%);
-    bottom:-200px;
-    right:-200px;
-    animation:spotlight2 7s ease-in-out infinite;
-}
-
-.hero-content{
-    position:relative;
-    max-width:900px;
-    padding:20px;
-}
-
-/* LOGO */
-.hero-logo{
-    width:320px;
-    margin-bottom:20px;
-    animation:float 4s ease-in-out infinite;
-}
-
-/* TEXT */
-.subtitle{
-    font-size:22px;
-    margin-top:10px;
-    color:#333;
-}
-
-/* BUTTON */
-.btn{
-    display:inline-block;
-    margin-top:25px;
-    padding:14px 30px;
-    border-radius:14px;
+.calendar-header button{
+    padding:10px 16px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
     background:#2a7a3f;
     color:white;
-    text-decoration:none;
+    font-size:18px;
+}
+
+.calendar{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:12px;
+}
+
+.day{
+    padding:18px;
+    border-radius:14px;
+    text-align:center;
     font-weight:700;
+    cursor:pointer;
     transition:0.3s;
 }
 
-.btn:hover{
-    transform:translateY(-4px) scale(1.05);
+.available{
+    background:#b7ffb7;
+    color:#115511;
 }
 
-/* SECTIONS */
-section{
-    padding:100px 10%;
+.taken{
+    background:#ffb8b8;
+    color:#771111;
 }
 
-/* TITLES */
-.title{
-    text-align:center;
-    font-size:40px;
-    margin-bottom:40px;
-    font-weight:800;
+.day:hover{
+    transform:scale(1.08);
 }
 
-/* CARDS (3D HOVER) */
-.card{
-    background:white;
-    padding:30px;
-    border-radius:18px;
-
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
-    transition:0.4s;
-
-    transform-style:preserve-3d;
+.calendar-legend{
+    margin-top:20px;
+    display:flex;
+    gap:20px;
+    align-items:center;
 }
 
-.card:hover{
-    transform:rotateX(8deg) rotateY(-8deg) scale(1.05);
+.available-box,
+.taken-box{
+    width:18px;
+    height:18px;
+    display:inline-block;
+    border-radius:5px;
+    margin-right:6px;
 }
 
-/* GRID */
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:25px;
+.available-box{
+    background:#b7ffb7;
 }
 
-/* FAQ */
-.faq{
-    background:white;
-    padding:25px;
-    border-radius:16px;
-    margin-bottom:15px;
-    box-shadow:0 6px 18px rgba(0,0,0,0.06);
-}
-
-/* CONTACT */
-.contact{
-    background:#2a7a3f;
-    color:white;
-    padding:40px;
-    border-radius:18px;
-}
-
-/* FOOTER */
-footer{
-    text-align:center;
-    padding:25px;
-    background:#111;
-    color:white;
-}
-
-/* SCROLL REVEAL */
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:all 0.8s ease;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-/* ANIMATIONS */
-@keyframes float{
-    0%,100%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
-}
-
-@keyframes spotlight{
-    0%,100%{transform:translate(0,0);}
-    50%{transform:translate(120px,80px);}
-}
-
-@keyframes spotlight2{
-    0%,100%{transform:translate(0,0);}
-    50%{transform:translate(-100px,-60px);}
+.taken-box{
+    background:#ffb8b8;
 }
 
 </style>
 
-</head>
-
-<body>
-
-<!-- CURSOR -->
-<div class="cursor"></div>
-
-<!-- NAV -->
-<nav>
-
-<div class="logo">
-<img src="logo.png" alt="logo">
-</div>
-
-<div>
-<a href="#about">About</a>
-<a href="#classes">Classes</a>
-<a href="#pricing">Pricing</a>
-<a href="#faq">FAQ</a>
-<a href="#contact">Contact</a>
-</div>
-
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-
-<div class="hero-content reveal">
-
-<img src="logo.png" class="hero-logo">
-
-<p class="subtitle">
-Modern and fun coaching for young tennis athletes
-</p>
-
-<a href="#classes" class="btn">View Classes</a>
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-<section id="about" class="reveal">
-
-<h2 class="title">ABOUT</h2>
-
-<p>
-SpinSet Academy provides modern tennis coaching focused on fundamentals,
-confidence, and enjoyment for young athletes.
-</p>
-
-</section>
-
-<!-- CLASSES -->
-<section id="classes" class="reveal">
-
-<h2 class="title">CLASSES</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Group Lessons</h3>
-<p>Fun and structured beginner training.</p>
-</div>
-
-<div class="card">
-<h3>Private Lessons</h3>
-<p>1-on-1 focused improvement sessions.</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- PRICING -->
-<section id="pricing" class="reveal">
-
-<h2 class="title">PRICING</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Group</h3>
-<p>$12/hr</p>
-</div>
-
-<div class="card">
-<h3>Private</h3>
-<p>$25/hr</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- FAQ -->
-<section id="faq" class="reveal">
-
-<h2 class="title">FAQ</h2>
-
-<div class="faq">
-<b>Do beginners need experience?</b>
-<p>No — all levels are welcome.</p>
-</div>
-
-<div class="faq">
-<b>Where are lessons held?</b>
-<p>Round Rock tennis courts.</p>
-</div>
-
-<div class="faq">
-<b>What should I bring?</b>
-<p>Tennis racket, water, and sports shoes.</p>
-</div>
-
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="reveal">
-
-<h2 class="title">CONTACT</h2>
-
-<div class="contact">
-
-<p>spinsetacademy@gmail.com</p>
-<br>
-<p>5128397026</p>
-
-</div>
-
-</section>
-
-<footer>
-SpinSet Academy • Round Rock, Texas
-</footer>
-
 <script>
 
-/* CURSOR FOLLOW */
-const cursor = document.querySelector(".cursor");
+/* COMMENTS */
 
-document.addEventListener("mousemove",(e)=>{
-cursor.style.left = e.clientX + "px";
-cursor.style.top = e.clientY + "px";
-});
+function addComment(){
 
-/* SCROLL REVEAL */
-const items = document.querySelectorAll(".reveal");
+    const name = document.getElementById("nameInput").value;
+    const comment = document.getElementById("commentInput").value;
 
-window.addEventListener("scroll",()=>{
-items.forEach(el=>{
-const top = el.getBoundingClientRect().top;
-if(top < window.innerHeight - 100){
-el.classList.add("active");
+    if(name === "" || comment === ""){
+        alert("Please fill out both fields.");
+        return;
+    }
+
+    const commentDiv = document.createElement("div");
+    commentDiv.classList.add("comment");
+
+    commentDiv.innerHTML = `
+        <strong>${name}</strong>
+        <p>${comment}</p>
+    `;
+
+    document.getElementById("commentsContainer").prepend(commentDiv);
+
+    document.getElementById("nameInput").value = "";
+    document.getElementById("commentInput").value = "";
 }
-});
-});
+
+/* CALENDAR */
+
+const calendar = document.getElementById("calendar");
+const monthYear = document.getElementById("monthYear");
+
+let currentDate = new Date();
+
+const takenDates = [5, 8, 14, 20];
+
+function renderCalendar(){
+
+    calendar.innerHTML = "";
+
+    const year = currentDate.getFullYear();
+    const month = currentDate.getMonth();
+
+    const firstDay = new Date(year, month, 1).getDay();
+
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    const monthNames = [
+        "January","February","March","April",
+        "May","June","July","August",
+        "September","October","November","December"
+    ];
+
+    monthYear.innerText =
+    `${monthNames[month]} ${year}`;
+
+    for(let i = 0; i < firstDay; i++){
+
+        const blank = document.createElement("div");
+        calendar.appendChild(blank);
+
+    }
+
+    for(let day = 1; day <= daysInMonth; day++){
+
+        const dayDiv = document.createElement("div");
+
+        dayDiv.classList.add("day");
+
+        dayDiv.innerText = day;
+
+        if(takenDates.includes(day)){
+
+            dayDiv.classList.add("taken");
+
+        }else{
+
+            dayDiv.classList.add("available");
+
+            dayDiv.onclick = () => {
+
+                alert(
+                    `You selected ${monthNames[month]} ${day}.`
+                );
+
+            };
+
+        }
+
+        calendar.appendChild(dayDiv);
+
+    }
+
+}
+
+function changeMonth(direction){
+
+    currentDate.setMonth(
+        currentDate.getMonth() + direction
+    );
+
+    renderCalendar();
+
+}
+
+renderCalendar();
 
 </script>
-
-</body>
-</html>
